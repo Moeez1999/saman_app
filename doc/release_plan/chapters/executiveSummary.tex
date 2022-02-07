@@ -1,0 +1,66 @@
+\section{Executive summary}
+
+\noindent This document presents the policy for software releases proposed for the saman project. The initial project plan foresaw software releases corresponding to an initial final milestone on 1st of January 2021. At the 7th of December 2020 the saman project came to a general consensus that the remaining work to reach completed “working product” and the adaptation of a model in which integration happens more frequently than defined in the original project plan with incremental steps to minimise the effort and time involved and permit user feedback to be incorporated more quickly was postposed to the \textbf{1st of February 2021}.\\
+
+\noindent The proposed software release schedule includes incremental releases in January (0.1), January (0.2), January (0.3) and January 2021 (0.4) leading up to testbed 1 (1.0). A similar release schedule is planned for the preceding periods when more experience has been gained with iterative releases.\\
+
+\noindent The proposed procedure for the planning and deployment of successive software releases is intended to ensure development remains focused on the highest priority issues and to improve the manner in which subsequent releases are produced.\\
+
+\noindent The software release procedure is composed of the following steps:
+\begin{itemize}
+\item \textit{Coordination meeting} - project participants provide feedback on the previous release and develop a basic work-plan for the next software release;  
+\item \textit{Team follow-up meetings} – Team members elaborate their specific work-plans for the next release;
+\item \textit{Software Release work-plan coordination} - the technical coordinator consults with the project managers and takes the output of the coordination and teams members follow-up meetings to establish an overall plan for the next release;
+\item \textit{The technical coordinator provides unit-tested software and associated documentation for the saman project as it is produced;}
+\item \textit{The technical coordinator integrates internal and external software packages and performs integration tests;}
+\item \textit{An integrated software release is made available for validation and acceptance testing;}
+\item \textit{The release roll-out} is accompanied by documentation for the end users, stakeholders and software developers. A meeting is hosted by the technical coordinator to present the contents of the new software release and indicate the changes made since the previous release;
+\item The software release is made available to all end users and stakeholders for general deployment; 
+\end{itemize}
+In order to support more frequent software releases, a number of tools and techniques need to be put in place by the technical coordinator. Such a toolset will provide a convenient, standardised, project-wide mechanism for building, distributing and documenting the software. It is important that all the team members learn and start using the toolset as early as possible. The details of this toolset are described later.\\
+
+\noindent As a means of providing feedback on integration issues to software developers in each release as early as possible, mechanisms to automatically build, test and document all the software on a daily basis will be put in place. The responsible party for this implementation is the technical-coordinator.\\
+
+\noindent The policy outlined in this document is presented as a detailed implementation plan for each software release.
+
+\subsection{Frequency of release}
+
+\noindent The overall project plan foresees 6 months between testbed 1 (project month 1) and testbed 2 (project month 7).  A period of 6 months between testbeds limits the speed of reaction to evolving requirements from the end users and stakeholders and deployed in the overall software planning.\\
+
+\noindent Adding more releases to the project plan increases the total work-load for the team members and users and stakeholders alike but allows more frequent feedback to ensure development concentrates on the most relevant points and reduces the time required for the integration phase of each release. One of the goals of the proposed approach is to maximise the advantage that can be gained from iterative software releases while reducing to a minimum the extra work required.\\
+
+\noindent While every effort will be made to minimise the impact on the users and stakeholders of upgrading from one software release to the next, it will be productive to guarantee backward compatibility between releases in this overall project. However, the use of techniques, such as abstract interfaces and encapsulation to isolate users from changes in the software, should be considered adopted by the team members. \\
+
+\noindent The effects of pending extensions/improvements must be made known to the team members well in advance so that their impact can be estimated. Hence the decision about when and how to introduce major modifications must be made in consultation with the team members at all times.
+
+\subsection{Release schedule}
+
+\noindent Given the size of the project in terms of software packages and groups of people involved, the following iterations of software releases between testbed 1 and testbed 2 are proposed:
+
+\begin{itemize}
+\item \textbf{Release 0.1} (10th of January 2021);\newline
+Usman (\#5, \#9), Asso (\#10), Samir (\#3, \#6, \#7, \#8, \#12)
+\item \textbf{Release 0.2} (17th of January 2021);\newline
+Usman (\#11), Asso (\#1), Samir (\#2)
+\item \textbf{Release 0.3} (24th of January 2021);\newline
+Usman, Asso (\#21), Samir (\#28)
+\item \textbf{Release 0.4} (31th of January 2021);\newline
+Usman (\#26), Asso, Samir (\#27)
+\item \textbf{Testbed 1 - February 2021};\newline
+Originally scheduled for January 2021 and delivered in February 2021\newline
+First integrated release produced by the project, i.e. a operational and working product should be completed.\\ 
+\hspace*{-1cm}\rule{\textwidth}{0.4pt}
+\item \textbf{Release 1.1 - March 2021};\newline
+Contains bug-fixes, modifications as a result of feedback from use of testbed 1 and first use of release infrastructure by the middle-ware (see Supporting )
+\item \textbf{Release 1.2 - April 2021};\newline
+Contain bug fixes, modifications as a result of feedback from use of the previous releases by applications, further use of the software infrastructure and extensions/improvements foreseen by team members
+\item \textbf{Release 1.3 - May 2021};\newline
+Contain bug fixes, modifications as a result of feedback from use of the previous releases by applications, further use of the software infrastructure and extensions/improvements foreseen by team members
+\item \textbf{Release 1.4 - June 2021};\newline
+Contain bug fixes, modifications as a result of feedback from use of the previous releases by applications, further use of the software infrastructure and extensions/improvements foreseen by team members
+\item \textbf{Testbed 2 - July 2021};\newline
+A similar release schedule will be planned for the period between testbeds 2, 3 (September 2021) and 4 (December 2021) at a later date when more experience has been gained with iterative releases.
+\end{itemize}
+
+
+\newpage

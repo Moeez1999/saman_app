@@ -1,0 +1,54 @@
+\section{Supporting infrastructure}
+
+\noindent In order to support more frequent software releases, a number of supporting tools and techniques need to be put in place. A sub-set of such tools and techniques are already deployed by technical coordinator to support the testbed 1 of the project. The technical coordinator is responsible for establishing and managing the toolset.\\
+
+\noindent The saman Github repo plays a vital role in the production of software releases. In order to support more frequent software releases the repo must continue to be active between the scheduled testbed integration phases. Its activity in any interim periods will not be so intense, but rapid response to integration issues will be important.\\
+
+\noindent The technical coordinator has already put in place a number of tools and techniques to ease software integration and the production of the software release for testbed 1. These include a code repository, communication platform (Slack) and an incident tracking processing (Github issue management). Further steps can be taken to reduce integration effort by catching potential conflicts earlier in the development cycle. Such measures, as with the software itself, will be extended with each release and subject to more detailed planning.\\
+
+\noindent As a means of providing feedback on integration issues to software developers in each release as early as possible, the aim is to put in place mechanisms to automatically build, test and document all the software on a daily basis. Such “nightly builds” are for the benefit of the team developers and hence will not be systematically distributed to the application groups and users since they will not be the subject of the release testing procedure (see below). However, the contents and status of the nightly builds will be available to everyone in the project via tools such as Travis-CI.
+
+\subsection{Centralised code repository}
+
+\noindent Many of the tools and techniques foreseen within the software infrastructure are linked to the use of a code repository. In the build-up to testbed 1, team members have to produce commits containing their software to either the saman central repository or their own repositories that are then mirrored into the \texttt{dev} branch before merging to \texttt{master} branch.\\
+
+\noindent This central repository will act as the core facility on which the automated building, testing and documentation tools will be based. It is essential that all team members adopt the code repository as an integral part of their daily working practises. Sustained software development without committing modifications to the central repository for extended periods (weeks) will undermine the functioning and value of the nightly build procedure.\\
+
+\noindent To enable the use of several of the proposed tools and to simplify browsing, the source code should be stored in the repository as individual files. The application can then be produced as one of the final parts of the build procedure.\\
+
+\noindent It is expected that detailed documentation including code descriptions, class hierarchies and dependencies can be extracted from comments in the source code and by auto-documentation tools. More high-level documentation will still need to be written by hand. All documentation, both extracted and hand-written, will evolve with each software release. To ensure users get the correct version of the hand-written documentation for a software release it will be necessary to archive the documentation, preferably in the same repository as the code itself. This implies using documentation formats (e.g., separate \LaTeX\: or Dart Docstrings / documentation and style documentation files, e.g. .css, .html or .js) that lends themselves to archiving tools such as Github.  
+
+\subsection{Development branch}
+
+A development branch is required in order to support iterative development, integration and testing without interfering with the validation activities performed by the stakeholders in the \texttt{master} branch. In the current planning, it is foreseen that commits for development or integration work will first be committed to the \texttt{dev} branch before any merges are done to the \texttt{master} branch. The daily development versions of any branches in the software can be tested at any time by any of the team members. It is recommended that all team members get to know the development done on each active branch in the saman central repository. The overall progress and status of the development branch will be managed by technical coordinator in conjunction with the team members.\\
+
+\noindent If a developer wants to add features to the saman project he needs to branch from the \texttt{dev} branch and name the branch in accordance with the following naming convention \texttt{feature\_name\_1}. Ones the feature is ready for deployment to \texttt{dev} it can be merged. It needs to be emphasized that any merges to the \texttt{dev} branch must be done through a \texttt{pull\_request\_1} (PR) where all developers except the creator of the PR are assigned roles as reviewers. Ones all \texttt{pull\_requests} are merged to the \texttt{dev} branch and the team feels confident in the content of the \texttt{dev} branch and the release date has come then the application is ready to be released (\texttt{release\_1}), i.e. merge \texttt{dev} with the \texttt{master} branch. The illustration below (Figure \ref{fig:git_flow}) shows the relation between \texttt{feature}, \texttt{dev} and \texttt{master} branches.\\
+
+\noindent All branches must remain available to the developers for the duration of the project. If a branch is to be deleted this must be confirmed and agreed upon by the technical coordinator.
+
+\begin{figure}
+\centering
+\input{images/git_flow}
+\caption{Github workflow}
+\label{fig:git_flow}
+\end{figure}
+
+\subsection{Toolset}
+
+Recommendations including guidelines/templates and examples for the use of tools and techniques to support automated building, testing and documentation are currently in preparation. Such a toolset will provide a convenient, standardised, project-wide mechanism for building the software and documentation. It is important that all the team members adopt the toolset as early as possible. The details of this toolset are defined in below, but this list is a non-exhaustive list of these tools and techniques:
+
+\begin{itemize}
+\item Mark-up techniques (e.g., Dart style comments) for document generation from source code;
+\item A tool capable of extracting formatted source comments and producing documentation in various formats (e.g., Android Studio build in linters);
+\item A web interface for browsing the repository (e.g., Google Chrome);
+\item Github issue management for problem reporting and tracking;
+\item Test harnesses (e.g., codecov etc.);
+\item Build tools (e.g., Travic CI etc.) capable of constructing the software on all supported platforms and producing RPMs for distribution;
+\item A “slack repo notifier” providing a daily digest of commits to the repository from all team members;
+\item A web page providing access to the results of the most recent automated build, test and documentation cycle;
+\item Coding style recommendations and tools for checking them (e.g., Dart lint);
+\end{itemize}
+
+\noindent The tools at the top of the list are the highest priority and work using them is already started by the team members.\\
+
+\noindent All tools or techniques will be set-up by the technical coordinator using the centralised code repository as a basis and will be deployed in a step-wise manner. It is not intended to develop new tools to support the nightly builds but rather configure existing widely used tools. In this manner, development by team members can be concentrated on exploiting such tools and techniques in their daily work without worrying about the installation and support issues for the tools they use.

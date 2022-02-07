@@ -1,0 +1,50 @@
+\section{Testing}
+
+This section outlines the software testing procedures foreseen within the project. The basic approach is to address software testing in a bottom-up manner via three distinct phases:
+\begin{itemize}
+\item \textbf{Unit tests};\newline
+Performed on individual software modules to test their basic functionality 
+\item \textbf{Integration tests};\newline
+Performed on integrated software components to verify their correct inter-operation
+\item \textbf{Acceptance tests};\newline
+Performed using users and test scenarios. The acceptance tests are to be created, organized and managed by the technical coordinator.
+\end{itemize}
+
+\subsection{Testplans}
+
+\noindent To drive the testing procedure a set of testplans are required. The testplans outline the goals and priorities of the testing and list the set of test scenarios foreseen to meet the goals. A description of the tests to be performed for each phase should be documented in the test-plans.\\
+
+\noindent For unit tests, it is the responsibility of the technical coordinator to produce a test plan document based on recommended templates. Each team member should read and understand the test plan. The test plan should include details of testing individual software modules and their integration within the application.\\
+
+\noindent A separate test plan for the project-wide integration tests is also to be produced by the technical coordinator.\\
+
+\noindent Documentation for acceptance tests is foreseen as part of the project deliverables. 
+The three phases of the test procedure are to be performed for each release of the software delivered to users and all stakeholders. The details of each testing phase are described below.
+
+\subsection{Unit tests}
+
+\noindent Unit tests address the basic functionality of a single component of the application. They are to be provided and executed by the team members on their own machines or branches before delivering their software to the dev branch for integration. The individual tests should make use of the test harness software to be provided as part of the toolset and may need to simulate services provided by other team members according to the build dependencies. A subset of the unit tests should be run as part of the nightly build procedure.\\
+
+\noindent Details of the unit tests should be documented as part of the individual test-plans. Sufficient documentation should be provided to allow other people (i.e., not the developers) to execute the tests and interpret the results.\\
+
+\noindent Unit tests should also be established for external software packages and it is necessary to identify individuals or groups responsible for such tests.
+
+\subsection{Integration tests}
+
+\noindent The integration tests verify successful integration of the components developed within the project and underlying external toolkits. Integration tests are executed on the development branch whenever new software for a release is received from team members and built. Their development (though they may be gathered from elsewhere), management and execution are the responsibility of the technical coordinator.\\
+
+\noindent The basic approach is to test all the components via typical user scenarios based on job submission. The integration tests represent a succession of increasingly complex job submissions. The tests cover all aspects of job processing/monitoring that are important to the users and stakeholders. The intention is to add one more component or level of complexity with each job so that by executing the jobs in sequence it should be relatively easy to quickly identify a defective component.\\
+
+\noindent It is expected that the set of test scenarios should be expanded as the project gains more experience with the software and requirements from the users.\\
+
+\noindent Initially the test scenarios will be run by hand but it is hoped that a subset can be automated (e.g., via scripts etc.) once their usefulness has been proven and integrated as part of the nightly build procedure.\\
+
+\noindent Details of the integration tests should be documented as part of the overall test-plan.
+
+\subsection{Acceptance tests}
+
+\noindent Acceptance tests are to be performed in conjunction with the application groups using scenarios provided by the users (typically based on their own application software). Such tests are to be executed before merge is done to the \texttt{master} branch in a distributed manner (i.e., typically involving multiple users on multiple mobile phones). The definition of the test scenarios and their execution is the responsibility of the technical coordinator and will be supported by the team members. The acceptance tests correspond to the validation tests that all IT projects are recommended to have.
+
+\subsection{Further testing}
+
+\noindent Scalability, reliability and resilience tests involving the full saman software should also be defined. Such tests will require more infrastructure (e.g., more users than are available via the development branch) and planning (e.g., continuous 24 hours tests etc.) and hence will need to be scheduled in advance.

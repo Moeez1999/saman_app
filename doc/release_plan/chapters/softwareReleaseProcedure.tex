@@ -1,0 +1,56 @@
+\section{Software release procedure}
+
+\noindent A well-defined procedure related to the planning and deployment of successive software releases will be established.\\
+
+\noindent As part of the software release production procedure, there must be the opportunity for all the parties involved to provide feedback on the software and the release procedure to ensure development remains focused on the highest priority issues and to improve the manner in which subsequent releases are produced.\\
+
+\noindent The planned contents and schedule for subsequent releases should be reviewed by the project manager to ensure the plan remains as accurate as possible.\\
+
+\noindent An overview of the proposed software release procedure is described below as a sequence of steps:
+
+\begin{enumerate}
+\item \textbf{Coordination meeting}
+
+\noindent The purpose of the coordination meeting is to allow the project participants to provide feedback gathering their experiences from working with the previous release and outline a work-plan for the next software release.  It should be scheduled after the previous software release has been deployed and used by possible users, but long enough before the next release to enable its findings to be taken into account. The product of the coordination meeting should be an appraisal of the previous release’s quality and suitability including how it has been used and a prioritised list of requested modifications/extensions from the next release.\\
+
+\noindent The coordination meetings will be organised by the technical co-ordination and are open to everyone involved in the project but the participants should include:
+\begin{itemize}
+\item Project manger;
+\item Team developer(s);
+\item Any other relevant stakeholders;
+\end{itemize}
+The agenda for the coordination meeting should include presentations by each of the team developers with sufficient time for discussion to establish a list of agreed priorities for the next release. The plan for the next release should include:
+\begin{itemize}
+\item software components to be included along with their modifications/extensions relative to the previous release;
+\item Operating system and compiler versions to be part of the reference platform;
+\item Versions of external toolkits and supporting packages to be used by all team members;
+\end{itemize}
+
+\noindent All team members should remember that their input must be collated and hence relative priorities may change in order to establish the most suitable plan for the project.\\
+
+\noindent Such coordination meetings can also be based on similar format to that used for the \textit{application groups’ meeting} done in the industry.\\
+
+\noindent In preparation for the coordination meeting, it is assumed that each of the team members will have gathered input and clarified their position on relevant topics to be discusses in the coordination meeting.\\
+
+\noindent Project manager should also hold a preparation meeting where the team members may raise release production issues and make suggestions about how to simplify or improve integration for the next release.
+
+\item \textbf{Team follow-up meetings}\\
+\noindent Each team member can hold a meeting to establish its work-plan for the next release. Such meetings should take into account the output of the coordination meeting and produce a work-plan for the next release describing a prioritised list of expected modifications/extensions and including details of responsibilities for performing the work that takes into account an estimation of the effort and resources involved. The team follow-up meetings can be held in parallel but dependencies on other team members should also be respected when scheduling these meetings.
+
+\item \textbf{Software release work-plan coordination}\\
+\noindent The technical co-ordination will, in consultation with the project managers, take the output of the coordination and team follow-up meetings to establish an overall plan for the next release. The overall work-plan will be published and made available to all participants of the project.
+
+\hspace*{-0,5cm}The rest of the software release procedure should be similar to that of any other release:
+
+\item \textbf{Unit tests} should be performed by the individual team members before it is submitted to the \texttt{dev} branch. The proposed development can be used for this purpose. The submission of the software should be made via the code repository and clearly tagged for subsequent retrieval.
+\item The technical coordinator maintains and integrates dependencies with external software packages. Basic integration tests are performed. The integration step is deemed to have been successfully completed when a stable version of the software passes the integration tests as defined in the test-plan is available in the \texttt{dev} branch. During this time the associated documentation for the release (including release notes) is prepared by the technical coordinator.
+\item An integrated software release is made available to the users for \textbf{acceptance testing}. During this time the team members are available for consultation and support of the new release. The acceptance testing phase is deemed to have been successfully completed when the set of test scenarios defined by the test plan execute correctly.
+\item The release roll-out is accompanied by \textbf{documentation} for the end users, stakeholders and software developers. A meeting should be hosted by the technical coordinator to present the contents of the new software release and indicate the changes made since the previous release. Issues concerning compatibility with the previous release should be presented together with recipes for how to migrate applications and data. The format of this roll-out meeting should be similar to the coordination meeting.
+\item The software release is made available to all users and stakeholders for general deployment on the \texttt{master} branch.
+\end{enumerate}
+
+\subsection{Themed technical meetings}
+
+\noindent A number of technical issues confront the project which affect multiple parts of the application. The intention is to address such issues via special themed meetings involving representatives from the part and the technical coordinator. Candidate subjects for such themed meetings include any team member. It is expected that the priority for topics for the themed meetings will come from the list of priorities established at the release coordination meetings. Urgent technical clashes that arise on a day-to-day basis at the implementation level are perhaps best solved with direct communication between the team members involved which may take the form of bi-lateral meetings. Only if they affect the overall strategy, external interfaces or if a satisfactory solution cannot be found should it be necessary to present them at the themed technical meetings.\\
+
+\noindent The proposed organisation of the themed meetings is to distribute a description of the issues involved and a suggested approach/solution before the meeting. The proposal is intended to focus the discussion and ensure the meetings result in a clear conclusion.

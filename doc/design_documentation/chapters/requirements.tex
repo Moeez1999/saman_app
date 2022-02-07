@@ -1,0 +1,54 @@
+\section{Requirements}
+
+\subsection{Minimum viable product (MVP)}
+
+\noindent A minimum viable product (MVP) is a version of the saman application which includes the features that will allow to release the product to a small group of test users by solving the core problem for these sets of users. The purpose is to provide immediate value, quickly, while minimizing development costs.\\
+
+\noindent A common misconception is that an MVP consists of the minimum set of features deemed necessary for a working software product, with the goal of bringing it to market quickly. This misses the mark on several levels, most notably in the over-emphasis on speedy delivery and time to market, as opposed to focusing on customer and market acceptance. Indeed, rapid development is of essence, but only to the extent that learning and research objectives can be obtained quickly. Accordingly, some of the noted purposes of an MVP below begin to open up a more significant discussion:
+\begin{itemize}
+    \item Be able to test a product hypothesis with minimal resources
+    \item Accelerate learning
+    \item Reduce wasted engineering hours
+    \item Get the product to early customers as soon as possible 
+\end{itemize}
+
+\noindent Accordingly, in terms of the saman application the MVP serves as a common ground to reach agreement on the implementation of the requirements left for the final version of the application. All the source code related to the saman application is to be published and accessed through the saman Central Github Repository.\\
+
+\noindent In the preceding subsection (section \ref{subsec:overall_workflow}), an overall workflow in the MVP is presented which provide the software developers the information they need to set up the saman working product. A list of future requirements are also presented in subsection \ref{subsec:future_req}. We need to emphasize that the requirements listed in subsection \ref{subsec:future_req} are not included as they fall outside the scope of this MVP.
+
+\subsection{Overall workflow}
+\label{subsec:overall_workflow}
+
+\noindent A decision was made to create a simple MVP in order to make it easier for users and potential business partners to understand, download and test the saman application for the  transportation of goods in the goods markets of Pakistan. The overall workflow of the saman application is created by the project and can be used by users and all stakeholders to get an overview and supply feedback to the development team to solve their specific issues. It can also be used by any who are interested in details about the saman project.\\
+
+\noindent The saman application contain a number of views (\texttt{screens}) which the project has agreed to be included in the MVP. The overall workflow includes the following \texttt{screens}:
+\begin{itemize}
+    \item \texttt{SplashScreen}: This is the landing page that links to the \texttt{WelcomeScreen};
+    \item \texttt{WelomeScreen}: Contains buttons that allow the user to choose to either \texttt{SignInWithPhoneNumber}, \texttt{SignInWithFacebook}, \texttt{SignInWithGoogle}, \texttt{SignInWithEmail}, \texttt{SignUpIfNoAccount};
+    \item \texttt{LanguageScreen}: As it is assumed that users may not speak English, this \texttt{screen} will allow the users to select between the two default languages in the application, i.e. English or Urdu;
+    \item \texttt{PhoneLoginScreen}: The users use this \texttt{screen} to login with the default method, i.e. with phone number;
+    \item \texttt{SignUpWithEmailScreen}: Should the user not have an account, this can be created in this \texttt{screen} with an email; 
+    \item \texttt{EmailLoginScreen}: The users use this \texttt{screen} to login with the default method, i.e. email. This assumes that the user already has an account in the application;
+    \item \texttt{SelectionScreen (reDirectWrapper)}; When creating an account the users is asked to choose to be a customer or driver. This selection is done in this \texttt{screeen} and the \texttt{screen} re-directs the users to one of two preceding \texttt{screens};
+    \item \texttt{DriverHomeScreen}: This \texttt{screen} is reserved for users with driver account. As a minimum this \texttt{screen} should include a list of all the open possible orders (\texttt{ListOfOrders}) that the driver can choose to pursue; 
+    \item \texttt{CustomerHomeScreen}: Assuming that the user is sign-in as an customer, this screen allows the users to select \texttt{From}, \texttt{To} and the \texttt{SizeOfObject} that they which to transport; 
+\end{itemize}
+
+\noindent The overall workflow is illustrated in Figure \ref{fig:overall_flow}.
+
+\subsection{Future requirements}
+\label{subsec:future_req}
+
+\noindent As part of discussions within the project team, a list of possible future features is attached below. It needs to be emphasized that this part of the document is an evolving part, i.e. team members are recommended to contact the author whenever new or changes to future requirements are introduced.
+\begin{itemize}
+    \item \textbf{Cost-effective zones}: This future requirement involves showing drivers recommended areas that are more cost-effective, i.e. areas with high demand, but without sufficient number of drivers to satisfy the demand.
+    \item \textbf{Drill-down areas}: In addition for drivers and customers to select district polygons in map. It should be possible to select sub-districts as a way to "drill-down" areas in order to specify a trip more accurately. This is done as full address information may not be available at all times and for all users.
+    \item \textbf{Dynamic pricing}: This requirement includes the possibility to set prices of a trip based on the supply and demand, i.e. high demand should transfer to higher prices and vice-versa. This is done to incentive driver to use the saman platform.
+    \item \textbf{Real-time database}
+\end{itemize}
+
+\begin{figure}
+\input{images/overall_workflow.tikz}    
+\caption{MVP overall workflow}
+\label{fig:overall_flow}
+\end{figure}

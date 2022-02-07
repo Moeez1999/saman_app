@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Objectives of this document}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Application area}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Applicable and reference resources}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Document amendment procedure}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Terminology}{5}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Glossary}{5}{subsubsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.6}Role of the technical coordinator}{5}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Executive summary}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Frequency of release}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Release schedule}{8}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Supporting infrastructure}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Centralised code repository}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Development branch}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Toolset}{11}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Testing}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Testplans}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Unit tests}{13}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Integration tests}{13}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Acceptance tests}{14}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Further testing}{14}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Software release procedure}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Themed technical meetings}{17}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Next steps}{17}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Establish release contents}{17}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Develop testplans}{18}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Deploy infrastructure}{18}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Gather resources for a development deployment}{18}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Checklists}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Technical coordinator}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Developers / team members}{19}{subsection.7.2}%
