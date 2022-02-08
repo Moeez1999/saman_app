@@ -48,6 +48,7 @@ dependencies:
   firebase_storage:
   maps_launcher:
   firebase_messaging:
+  get: ^4.6.1
 #  foree_checkout: ^0.0.5
   latlong:
 #  uuid: ^2.2.2

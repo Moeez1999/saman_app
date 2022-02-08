@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:saman/views/business/businessHomePage/business_homePage.dart';
@@ -20,7 +21,6 @@ import 'package:saman/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -30,6 +30,7 @@ class AuthService {
 
   String verificationId;
   String error;
+
   fcmToken1(id) async {
     String fcmToken = await _fcm.getToken();
     Map<String, dynamic> receiverData = {
@@ -40,6 +41,7 @@ class AuthService {
     final tokenRef = Firestore.instance.collection('tokens').document(id);
     await tokenRef.setData(receiverData);
   }
+
   // sign in with Facebook credentials
   signInWithFB(BuildContext context, bool isLoading) async {
     _facebookLogin.loginBehavior = FacebookLoginBehavior.webOnly;
@@ -82,6 +84,7 @@ class AuthService {
                                         .setData({
                                           "name": userDetails.displayName,
                                           "email": userDetails.email,
+                                          "status": "false",
                                           "id": userDetails.uid.toString(),
                                           "userId":
                                               value1.documents[0]['userId'] + 1
@@ -114,6 +117,7 @@ class AuthService {
                                                                         (context) =>
                                                                             LanguageScreen(
                                                                               userId: "${value1.documents[0]['userId'] + 1}",
+                                                                              status: value1.documents[0]['status'],
                                                                             )),
                                                                 (route) =>
                                                                     false),
@@ -138,6 +142,8 @@ class AuthService {
                                       builder: (context) => LanguageScreen(
                                             userId: value.documents[0]['userId']
                                                 .toString(),
+                                            status: value.documents[0]['status']
+                                                .toString(),
                                           )),
                                   (route) => false),
                             }
@@ -155,10 +161,16 @@ class AuthService {
                                               userId: value.documents[0]
                                                       ['userId']
                                                   .toString(),
+                                              status: value.documents[0]
+                                                      ['status']
+                                                  .toString(),
                                             )
                                           : DriverRegistrationScreen(
                                               userId: value.documents[0]
                                                       ['userId']
+                                                  .toString(),
+                                              status: value.documents[0]
+                                                      ['status']
                                                   .toString(),
                                             )),
                                   (route) => false),
@@ -175,6 +187,8 @@ class AuthService {
                                                 ['userType'],
                                             userId: value.documents[0]['userId']
                                                 .toString(),
+                                        status: value.documents[0]
+                                        ['status'],
                                           )),
                                   (route) => false),
                             }
@@ -185,15 +199,20 @@ class AuthService {
                               secureStorage.writeSecureData('userType',
                                   "${value.documents[0]['userType']}"),
                               isLoading = false,
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => value.documents[0]
-                                                  ['userType'] ==
-                                              "Business"
-                                          ? BusinessHomePage()
-                                          : DriverHomePage()),
-                                  (route) => false),
+
+                              if(value.documents[0]['status']=="true"){
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        value.documents[0]
+                                        ['userType'] ==
+                                            "Business"
+                                            ? BusinessHomePage(
+                                        )
+                                            : DriverHomePage()),
+                                        (route) => false),
+                              }
                             }
                         }
                     });
@@ -254,6 +273,7 @@ class AuthService {
                                     .setData({
                                       "name": userDetails.displayName,
                                       "email": userDetails.email,
+                                      "status": "false",
                                       "id": userDetails.uid.toString(),
                                       "userId":
                                           value1.documents[0]['userId'] + 1
@@ -285,7 +305,7 @@ class AuthService {
                                                                     (context) =>
                                                                         LanguageScreen(
                                                                           userId:
-                                                                          "${value1.documents[0]['userId'] + 1}",
+                                                                              "${value1.documents[0]['userId'] + 1}",
                                                                         )),
                                                             (route) => false),
                                                     // _showMyDialog(context),
@@ -303,8 +323,7 @@ class AuthService {
                       isLoading = false,
                       if (!value.documents[0].data.containsKey('userType'))
                         {
-                          print(value.documents[0]['userId']
-                              .toString()),
+                          print(value.documents[0]['userId'].toString()),
                           isLoading = false,
                           Navigator.pushAndRemoveUntil(
                               context,
@@ -384,12 +403,10 @@ class AuthService {
   // sign in with email and password
 
   Future signInWithEmailAndPassword(
-      String email, String password, bool isLoading,context) async {
+      String email, String password, bool isLoading, context) async {
     final FirebaseUser firebaseUser = (await _auth
-        .signInWithEmailAndPassword(
-        email: email,
-        password: password)
-        .catchError((errMsg) {
+            .signInWithEmailAndPassword(email: email, password: password)
+            .catchError((errMsg) {
       print(errMsg);
       isLoading = false;
       displayToastMessage("Email or Password is Invalid!", context);
@@ -401,55 +418,100 @@ class AuthService {
           .where("email", isEqualTo: email.trim())
           .getDocuments()
           .then((value) => {
-        if (!value.documents[0].data.containsKey('userType'))
-          {
-            isLoading = false,
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => LanguageScreen(userId: value.documents[0]['userId'].toString(),)),
-                    (route) => false),
-          }
-        else if (!value.documents[0].data.containsKey('firstName'))
-          {
-            isLoading = false,
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                    value.documents[0]['userType'] == "Business"
-                        ? BusinessRegistrationScreen(userId: value.documents[0]['userId'].toString(),)
-                        : DriverRegistrationScreen(userId: value.documents[0]['userId'].toString(),)),
-                    (route) => false),
-          }else if (!value.documents[0].data
-              .containsKey('isVerified'))
-            {
-              isLoading = false,
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => OtpScreen(name:value.documents[0]
-                      ['userType'] ,userId: value.documents[0]['userId'].toString(),)),
-                      (route) => false),
-            }
-          else
-            {
-              isLoading = false,
-              fcmToken1(value.documents[0]['userId'].toString()),
-              secureStorage.writeSecureData(
-                  'userId', "${value.documents[0]['userId']}"),
-              secureStorage.writeSecureData('userType',
-                  "${value.documents[0]['userType']}"),
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                      value.documents[0]['userType'] == "Business"
-                          ? BusinessHomePage()
-                          : DriverHomePage()),
-                      (route) => false),
-            }
-      }).catchError((onError){
+                if (!value.documents[0].data.containsKey('userType'))
+                  {
+                    isLoading = false,
+                    if(value.documents[0]['status'] == 'true')
+                      {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LanguageScreen(
+                                  userId:
+                                  value.documents[0]['userId'].toString(),
+                                )),
+                                (route) => false),
+                      }
+                    else
+                      {
+                        AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                      }
+
+                  }
+                else if (!value.documents[0].data.containsKey('firstName'))
+                  {
+                    isLoading = false,
+                    if(value.documents[0]['status'] == 'true')
+                      {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                value.documents[0]['userType'] == "Business"
+                                    ? BusinessRegistrationScreen(
+                                  userId: value.documents[0]['userId']
+                                      .toString(),
+                                )
+                                    : DriverRegistrationScreen(
+                                  userId: value.documents[0]['userId']
+                                      .toString(),
+                                )),
+                                (route) => false),
+                      }
+                    else
+                      {
+                        AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                      }
+
+                  }
+                else if (!value.documents[0].data.containsKey('isVerified'))
+                  {
+                    isLoading = false,
+                    if(value.documents[0]['status'] == 'true')
+                      {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OtpScreen(
+                                  name: value.documents[0]['userType'],
+                                  userId:
+                                  value.documents[0]['userId'].toString(),
+                                )),
+                                (route) => false),
+                      }
+                    else
+                      {
+                        AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                      }
+                  }
+                else
+                  {
+                    isLoading = false,
+                    if(value.documents[0]['status'] == 'true')
+                      {
+                        fcmToken1(value.documents[0]['userId'].toString()),
+                        secureStorage.writeSecureData(
+                            'userId', "${value.documents[0]['userId']}"),
+                        secureStorage.writeSecureData(
+                            'userType', "${value.documents[0]['userType']}"),
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                value.documents[0]['userType'] == "Business"
+                                    ? BusinessHomePage()
+                                    : DriverHomePage()),
+                                (route) => false),
+                      }
+                    else
+                      {
+                        AuthService().displayToastMessage(
+                            "Your request is send to admin for approved",
+                            context)
+                      }
+                  }
+              })
+          .catchError((onError) {
         AuthService().displayToastMessage("No record found!", context);
         isLoading = false;
       });
@@ -458,10 +520,12 @@ class AuthService {
       print("error");
     }
   }
-  void _changeLanguage(language,context) async {
+
+  void _changeLanguage(language, context) async {
     Locale _locale = await setLocale(language);
     Saman.setLocale(context, _locale);
   }
+
   // sign out from the app
   Future signOut(BuildContext context) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -470,7 +534,7 @@ class AuthService {
     await _googleSignIn.signOut();
     await _auth.signOut();
     await _facebookLogin.logOut();
-    _changeLanguage("en",context);
+    _changeLanguage("en", context);
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => WelcomeScreen()),

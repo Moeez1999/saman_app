@@ -14,8 +14,9 @@ import 'package:saman/views/business/businessRegistration/address_pickup_screen.
 
 class BusinessRegistrationScreen extends StatefulWidget {
   final String userId;
+  final String status;
 
-  BusinessRegistrationScreen({@required this.userId});
+  BusinessRegistrationScreen({@required this.userId , this.status});
 
   @override
   _BusinessRegistrationScreenState createState() =>
@@ -272,6 +273,7 @@ class _BusinessRegistrationScreenState
                                 builder: (context) => OtpScreen(
                                       name: "Business",
                                       userId: widget.userId,
+                                  status: widget.status,
                                     )),
                             (route) => false),
                       })

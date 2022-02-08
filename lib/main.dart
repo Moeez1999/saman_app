@@ -1,10 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:saman/views/splash/splash.dart';
 import 'package:saman/localization/localization_constants.dart';
-import 'localization/app_localization.dart';
-import 'package:flutter/services.dart';
 
 void main() async {
   //

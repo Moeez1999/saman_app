@@ -3,6 +3,7 @@ import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saman/components/rounded_input_field.dart';
 import 'package:saman/services/auth.dart';
 import 'package:saman/views/business/businessHomePage/business_homePage.dart';
@@ -16,8 +17,9 @@ import '../constants.dart';
 class OtpScreen extends StatefulWidget {
   final String name;
   final String userId;
+  final String status;
 
-  const OtpScreen({this.name, @required this.userId});
+  const OtpScreen({this.name, @required this.userId, this.status});
 
   @override
   _OtpScreenState createState() => _OtpScreenState();
@@ -38,6 +40,7 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
@@ -208,12 +211,20 @@ class _OtpScreenState extends State<OtpScreen> {
                           .updateData(data)
                           .then((value) => {
                                 isLoading = false,
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            BusinessHomePage()),
-                                    (route) => false),
+                                if (widget.status == 'true')
+                                  {
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BusinessHomePage()),
+                                        (route) => false)
+                                  }
+                                else
+                                  {
+                                    Get.snackbar('Warning',
+                                        'Your request send to admin for approved')
+                                  }
                               })
                           .catchError((e) {
                         print(e);
@@ -238,11 +249,20 @@ class _OtpScreenState extends State<OtpScreen> {
                           .updateData(data)
                           .then((value) => {
                                 isLoading = false,
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DriverHomePage()),
-                                    (route) => false),
+                                if (widget.status == 'true')
+                                  {
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DriverHomePage()),
+                                        (route) => false),
+                                  }
+                                else
+                                  {
+                                    Get.snackbar('Warning',
+                                        'Your request send to admin for approved')
+                                  }
                               })
                           .catchError((e) {
                         isLoading = false;
@@ -313,12 +333,20 @@ class _OtpScreenState extends State<OtpScreen> {
                                 .document(val.documents[0].documentID)
                                 .updateData(data)
                                 .then((value) => {
-                                      Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BusinessHomePage()),
-                                          (route) => false),
+                                      if (widget.status == "true")
+                                        {
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      BusinessHomePage()),
+                                              (route) => false),
+                                        }
+                                      else
+                                        {
+                                          Get.snackbar('Warning',
+                                              'Your request send to admin for approved')
+                                        }
                                     })
                                 .catchError((e) {
                               print(e);
@@ -343,12 +371,20 @@ class _OtpScreenState extends State<OtpScreen> {
                                 .document(val.documents[0].documentID)
                                 .updateData(data)
                                 .then((value) => {
-                                      Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DriverHomePage()),
-                                          (route) => false),
+                                      if (widget.status == "true")
+                                        {
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DriverHomePage()),
+                                              (route) => false),
+                                        }
+                                      else
+                                        {
+                                          Get.snackbar('Warning',
+                                              'Your request send to admin for approved')
+                                        }
                                     })
                                 .catchError((e) {
                               print(e);

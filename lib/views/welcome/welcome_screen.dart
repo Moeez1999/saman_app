@@ -71,8 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: size.width*0.75,
                 text: "Sign in with Facebook",
                 assetIcon: 'assets/icons/facebook-icon.png',
-                color: blueColor
-                ,
+                color: blueColor,
                 textColor: Colors.white,
                 press: () async {
                   setState(() {

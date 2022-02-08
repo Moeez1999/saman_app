@@ -293,7 +293,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                                       margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
                                     ),
                                     Text(
-                                      getTranslated(context, 'addNewOrder'),
+                                      "addNewOrder",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontSize: 17,

@@ -15,8 +15,9 @@ import 'dart:async';
 
 class DriverRegistrationScreen extends StatefulWidget {
   final String userId;
+  final String status;
 
-  DriverRegistrationScreen({@required this.userId});
+  DriverRegistrationScreen({@required this.userId , this.status});
   @override
   _DriverRegistrationScreenState createState() =>
       _DriverRegistrationScreenState();
@@ -438,6 +439,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
               builder: (context) => OtpScreen(
                 userId: widget.userId,
                 name: 'Driver',
+                status: widget.status,
               )),
         ),
       })

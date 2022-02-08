@@ -11,8 +11,9 @@ import '../../constants.dart';
 
 class RoleSelection extends StatefulWidget {
   final String userId;
+  final String status;
 
-  RoleSelection({@required this.userId});
+  RoleSelection({@required this.userId , this.status});
 
   @override
   _RoleSelectionState createState() => _RoleSelectionState();
@@ -188,6 +189,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                           MaterialPageRoute(
                               builder: (context) => BusinessRegistrationScreen(
                                     userId: widget.userId,
+                                status: widget.status,
                                   )),
                         ),
                       }),
@@ -210,6 +212,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                           MaterialPageRoute(
                               builder: (context) => DriverRegistrationScreen(
                                     userId: widget.userId,
+                                status: widget.status,
                                   )),
                         ),
                       }),

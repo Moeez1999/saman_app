@@ -49,7 +49,8 @@ class EmailSignUpState extends State<EmailSignUp> {
       child: isLoading == true
           ? Container(
               child: Center(
-                child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(yellowColor)),
+                child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(yellowColor)),
               ),
             )
           : SingleChildScrollView(
@@ -98,8 +99,8 @@ class EmailSignUpState extends State<EmailSignUp> {
                               validator: (possibleEmail) =>
                                   validateEmail(possibleEmail),
                               hintText: "Email",
-                        textColor: primaryColor,
-                        // fillColor: yellowColor,
+                              textColor: primaryColor,
+                              // fillColor: yellowColor,
                               onChanged: (possibleEmail) {
                                 setState(() {
                                   email.text = possibleEmail;
@@ -137,7 +138,7 @@ class EmailSignUpState extends State<EmailSignUp> {
                         height: size.height * 0.04,
                       ),
                       RoundedPasswordField(
-                         textColor: primaryColor,
+                        textColor: primaryColor,
                         // fillColor: yellowColor,
 
                         validator: (possiblePassword) =>
@@ -180,7 +181,7 @@ class EmailSignUpState extends State<EmailSignUp> {
                             height: size.height * 0.06,
                             width: size.width * 0.36,
                             text: "Back",
-                            fontSize: size.width/20 ,
+                            fontSize: size.width / 20,
                             color: whiteColor,
                             textColor: accountSelectionBackgroundColor,
                             press: () {
@@ -189,11 +190,10 @@ class EmailSignUpState extends State<EmailSignUp> {
                           ),
                           Spacer(),
                           RoundedButton(
-
                             height: size.height * 0.06,
                             width: size.width * 0.36,
                             text: "Sign up",
-                            fontSize: size.width/20 ,
+                            fontSize: size.width / 20,
                             color: yellowColor,
                             textColor: Colors.green,
                             press: () async {
@@ -267,6 +267,7 @@ class EmailSignUpState extends State<EmailSignUp> {
                 .document()
                 .setData({
                   "name": name.text,
+                  "status": "false",
                   "number": selectedCountryCode + phone.text.trim(),
                   "userId": value.documents[0]['userId'] + 1
                 })
@@ -287,17 +288,23 @@ class EmailSignUpState extends State<EmailSignUp> {
                                     .collection("phoneNumberUsers")
                                     .document()
                                     .setData({
+                                  "status" : "false",
                                   "userId": value1.documents[0]['userId'] + 1,
-                                  "number": selectedCountryCode+ phone.text.trim(),
+                                  "number":
+                                      selectedCountryCode + phone.text.trim(),
                                   'password': password.text
                                 }).then((value) => {
-                                  isLoading = false,
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LanguageScreen(userId: "${value1.documents[0]['userId'] + 1}",)),
-                                          (route) => false),
-                                })
+                                          isLoading = false,
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LanguageScreen(
+                                                        userId:
+                                                            "${value1.documents[0]['userId'] + 1}",
+                                                      )),
+                                              (route) => false),
+                                        })
                               })
                     })
                 .catchError((e) {
@@ -326,6 +333,7 @@ class EmailSignUpState extends State<EmailSignUp> {
                   .document(firebaseUser.uid.toString())
                   .setData({
                     "name": name.text,
+                    "status": "false",
                     "email": email.text.trim(),
                     "id": firebaseUser.uid.toString(),
                     "userId": value.documents[0]['userId'] + 1
@@ -343,14 +351,17 @@ class EmailSignUpState extends State<EmailSignUp> {
                                       .updateData({
                                     "userId": value1.documents[0]['userId'] + 1
                                   }).then((value) => {
-                                    isLoading = false,
-                                    Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                LanguageScreen(userId: "${value1.documents[0]['userId'] + 1}",)),
-                                            (route) => false),
-                                  })
+                                            isLoading = false,
+                                            Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LanguageScreen(
+                                                          userId:
+                                                              "${value1.documents[0]['userId'] + 1}",
+                                                        )),
+                                                (route) => false),
+                                          })
                                 })
                       })
                   .catchError((e) {
@@ -370,7 +381,8 @@ class EmailSignUpState extends State<EmailSignUp> {
       print("Exception caught => $err");
       print(err.message);
       setState(() {
-        if (err.message == "The email address is already in use by another account.") {
+        if (err.message ==
+            "The email address is already in use by another account.") {
           isLoading = false;
           AuthService().displayToastMessage("User Already exists", context);
         } else {
@@ -397,17 +409,14 @@ class EmailSignUpState extends State<EmailSignUp> {
       controller: controller,
       style: TextStyle(color: primaryColor),
       decoration: InputDecoration(
-
         isDense: true,
         contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
         //EdgeInsets.symmetric(vertical: 12, horizontal: 10.0),
         focusColor: Colors.white,
-        fillColor:  whiteColor,
+        fillColor: whiteColor,
         filled: true,
         hintText: "Number",
-        hintStyle: TextStyle(
-            color: primaryColor
-        ),
+        hintStyle: TextStyle(color: primaryColor),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(28.0)),
             borderSide: BorderSide(color: Colors.white24)),

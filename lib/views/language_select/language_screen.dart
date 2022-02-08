@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saman/views/role/role_selection.dart';
 import 'package:saman/views/welcome/components/background.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
@@ -9,8 +10,9 @@ import 'package:saman/localization/localization_constants.dart';
 
 class LanguageScreen extends StatefulWidget {
   final String userId;
+  final String status;
 
-  LanguageScreen({@required this.userId});
+  LanguageScreen({@required this.userId , this.status});
   @override
   _LanguageScreenState createState() => _LanguageScreenState();
 }
@@ -143,7 +145,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return RoleSelection(userId: widget.userId,);
+                        return RoleSelection(userId: widget.userId,status: widget.status,);
                       },
                     ),
                   );
