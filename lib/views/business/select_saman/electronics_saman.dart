@@ -166,7 +166,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -187,7 +187,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -208,7 +208,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -235,7 +235,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -258,7 +258,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
         drawer: drawerWidget(userId),
         appBar: AppbarWidget(
           check: false,
-          title: getTranslated(context, 'electronics'),
+          title: "electronics",
         ),
         body: Stack(
           alignment: Alignment.topCenter,
@@ -280,7 +280,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      getTranslated(context, 'selectTheObject'),
+                      "selectTheObject",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: 18,
@@ -335,7 +335,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 width: 20,
                               ),
                               Text(
-                                getTranslated(context, 'refrigerator'),
+                                "refrigerator",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -398,7 +398,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 width: 20,
                               ),
                               Text(
-                                getTranslated(context, 'airConditioner'),
+                                "airConditioner",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -461,7 +461,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 width: 20,
                               ),
                               Text(
-                                getTranslated(context, 'microwaveOven'),
+                                "microwaveOven",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -524,7 +524,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 width: 20,
                               ),
                               Text(
-                                getTranslated(context, 'electricStove'),
+                                "electricStove",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -587,7 +587,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 width: 20,
                               ),
                               Text(
-                                getTranslated(context, 'washingMachine'),
+                               "washingMachine",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -611,7 +611,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         RoundedButton(
                           height: size.height * 0.05,
                           width: size.width * 0.36,
-                          text: getTranslated(context, 'addOther'),
+                          text: "addOther",
                           fontSize: size.width/23 ,
                           color: whiteColor,
                           textColor: accountSelectionBackgroundColor,
@@ -626,7 +626,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                           height: size.height * 0.05,
                           width: size.width * 0.36,
                           fontSize: size.width/23 ,
-                          text: getTranslated(context, 'continue'),
+                          text: "continue",
                           color: yellowColor,
                           textColor: whiteColor,
                           press: () async {
@@ -751,7 +751,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                     RoundedButton(
                       height: size.height * 0.05,
                       width: size.width * 0.25,
-                      text: getTranslated(context, 'cancel'),
+                      text: "cancel",
                       color: whiteColor,
                       textColor: accountSelectionBackgroundColor,
                       press: () {
@@ -762,7 +762,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                     RoundedButton(
                       height: size.height * 0.05,
                       width: size.width * 0.25,
-                      text: getTranslated(context, 'continue'),
+                      text:"continue",
                       color: yellowColor,
                       textColor: accountSelectionBackgroundColor,
                       press: () async {

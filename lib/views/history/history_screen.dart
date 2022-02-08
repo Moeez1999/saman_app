@@ -107,7 +107,7 @@ class _HistoryState extends State<History> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              getTranslated(context, "orderId") + orderId,
+              "orderId" + orderId,
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class _HistoryState extends State<History> {
             Row(
               children: [
                 Text(
-                  getTranslated(context, 'to'),
+                  "to",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -136,7 +136,7 @@ class _HistoryState extends State<History> {
                 ),
                 Spacer(),
                 Text(
-                  getTranslated(context, 'status'),
+                  "status",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -162,14 +162,14 @@ class _HistoryState extends State<History> {
             Row(
               children: [
                 Text(
-                  getTranslated(context, 'weight'),
+                 "weight",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: yellowColor),
                 ),
                 Text(
-                  size + getTranslated(context, 'kg'),
+                  size + "kg",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -177,7 +177,7 @@ class _HistoryState extends State<History> {
                 ),
                 Spacer(),
                 Text(
-                  getTranslated(context, 'rs') + "$price/-",
+                  "rs" + "$price/-",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

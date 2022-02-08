@@ -58,7 +58,7 @@ class _OrderPickUpState extends State<OrderPickUp> {
               child: Icon(Icons.arrow_back_ios)),
           actions: [LanguageButton()],
           title: Text(
-            getTranslated(context, "orderPickUp"),
+           "orderPickUp",
           ),
           centerTitle: true,
           iconTheme: IconThemeData(color: yellowColor),
@@ -104,7 +104,7 @@ class _OrderPickUpState extends State<OrderPickUp> {
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
                               children: [
-                                Text(getTranslated(context, 'samanToPickup'),
+                                Text("samanToPickup",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -158,7 +158,7 @@ class _OrderPickUpState extends State<OrderPickUp> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(getTranslated(context, 'pickUpAddress'),
+                          Text("pickUpAddress",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -190,7 +190,7 @@ class _OrderPickUpState extends State<OrderPickUp> {
                             height: 10,
                           ),
                           Text(
-                            getTranslated(context, 'dropOffAddress'),
+                            "dropOffAddress",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -315,7 +315,7 @@ class _OrderPickUpState extends State<OrderPickUp> {
                       child: Center(
                         child: Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Text(getTranslated(context, 'confirm'),
+                            child: Text("confirm",
                                 style: TextStyle(
                                     color: selectedColorVehicle,
                                     fontWeight: FontWeight.bold))),

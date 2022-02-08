@@ -54,26 +54,26 @@ class _SamanState extends State<Saman> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'saman',
-      localizationsDelegates: [
-        AppLocalization.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: _locale,
-      supportedLocales: [
-        Locale('en', 'US'), // English, no country codes
-        Locale('ur', 'PK'), // Spanish, no country code
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
+      // localizationsDelegates: [
+      //   AppLocalization.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      // ],
+      // locale: _locale,
+      // supportedLocales: [
+      //   Locale('en', 'US'), // English, no country codes
+      //   Locale('ur', 'PK'), // Spanish, no country code
+      // ],
+      // localeResolutionCallback: (locale, supportedLocales) {
+      //   for (var supportedLocale in supportedLocales) {
+      //     if (supportedLocale.languageCode == locale.languageCode &&
+      //         supportedLocale.countryCode == locale.countryCode) {
+      //       return supportedLocale;
+      //     }
+      //   }
+      //   return supportedLocales.first;
+      // },
       home: SplashScreen(),
     );
   }

@@ -90,21 +90,21 @@ class _BusinessRegistrationScreenState
                         children: [
                           SizedBox(height: 20),
                           buildTextField(
-                              getTranslated(context, 'businessName'),
+                              "businessName",
                               businessName,
                               "assets/icons/building2-icon.png",
                               1,
                               TextInputType.name,
                               true),
                           buildTextField(
-                              getTranslated(context, 'firstName'),
+                              "firstName",
                               firstName,
                               "assets/icons/person.png",
                               1,
                               TextInputType.name,
                               true),
                           buildTextField(
-                              getTranslated(context, 'lastName'),
+                              "lastName",
                               lastName,
                               "assets/icons/id-card.png",
                               1,
@@ -155,7 +155,7 @@ class _BusinessRegistrationScreenState
                               });
                             },
                             child: buildTextField(
-                                getTranslated(context, 'showRoomAddress'),
+                                "showRoomAddress",
                                 showRoomAddress,
                                 "assets/icons/building1-icon.png",
                                 3,
@@ -173,7 +173,7 @@ class _BusinessRegistrationScreenState
                               });
                             },
                             child: buildTextField(
-                                getTranslated(context, 'wareHouseAddress'),
+                                "wareHouseAddress",
                                 wareHouseAddress,
                                 "assets/icons/warehouse.png",
                                 3,
@@ -186,7 +186,7 @@ class _BusinessRegistrationScreenState
                               RoundedButton(
                                 height: size.height * 0.05,
                                 width: size.width * 0.36,
-                                text: getTranslated(context, 'cancel'),
+                                text: "cancel",
                                 color: backButtonColor,
                                 textColor: Colors.white,
                                 press: () {
@@ -202,33 +202,29 @@ class _BusinessRegistrationScreenState
                               RoundedButton(
                                 height: size.height * 0.05,
                                 width: size.width * 0.36,
-                                text: getTranslated(context, 'save'),
+                                text: "save",
                                 color: yellowColor,
                                 textColor: textBoxColor,
                                 press: () async {
                                   if (firstName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(
-                                            context, 'enterFirstName'),
+                                        "enterFirstName",
                                         context);
                                   } else if (lastName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(context, 'enterLastName'),
+                                        "enterLastName",
                                         context);
                                   } else if (businessName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(
-                                            context, 'enterBusinessName'),
+                                       "enterBusinessName",
                                         context);
                                   } else if (showRoomAddress.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(
-                                            context, 'enterShowRoomAddress'),
+                                        "enterShowRoomAddress",
                                         context);
                                   } else if (wareHouseAddress.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(
-                                            context, 'enterWarehouseAddress'),
+                                        "enterWarehouseAddress",
                                         context);
                                   } else {
                                     isLoading = true;

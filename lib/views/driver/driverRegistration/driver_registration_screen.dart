@@ -99,14 +99,14 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                             height: 10,
                           ),
                           buildTextField(
-                              getTranslated(context, 'firstName'),
+                              "firstName",
                               firstName,
                               "assets/icons/person.png",
                               1,
                               TextInputType.name,
                               TextCapitalization.words),
                           buildTextField(
-                              getTranslated(context, 'lastName'),
+                             "lastName",
                               lastName,
                               "assets/icons/id-card.png",
                               1,
@@ -148,19 +148,19 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                           //   ],
                           // ),
                           buildTextField1(
-                              getTranslated(context, 'cnic'),
+                             "cnic",
                               cnic,
                               "assets/icons/building2-icon.png",
                               1,
                               TextInputType.number),
                           buildTextField(
-                              getTranslated(context, 'driverLicenseNumber'),
+                             "driverLicenseNumber",
                               driverLicenseNumber,
                               "assets/icons/driving-license.png",
                               1,
                               TextInputType.number,TextCapitalization.none),
                           buildTextField(
-                              getTranslated(context, 'vehicleRegistrationNumber'),
+                             "vehicleRegistrationNumber",
                               vehicleRegistrationNumber,
                               "assets/icons/open-pickup.png",
                               1,
@@ -170,7 +170,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                             child: Row(
                               children: [
                                 Text(
-                                  getTranslated(context, 'selectVehicleType'),
+                                  "selectVehicleType",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -210,7 +210,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                           "assets/icons/open-pickup.png",
                                           height: 40,
                                         ),
-                                        Text(getTranslated(context, 'openPickup'),
+                                        Text("openPickup",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: yellowColor)),
@@ -243,7 +243,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(getTranslated(context, 'closePickup'),
+                                        Text("closePickup",
                                             style: TextStyle(
                                                 color: yellowColor,
                                                 fontWeight: FontWeight.bold)),
@@ -291,7 +291,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                           "assets/icons/ricksha.png",
                                           height: 40,
                                         ),
-                                        Text(getTranslated(context, 'loaderRicksha'),
+                                        Text("loaderRicksha",
                                             style: TextStyle(
                                                 color: yellowColor,
                                                 fontWeight: FontWeight.bold)),
@@ -324,7 +324,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                       mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(getTranslated(context, 'deliveryTruck'),
+                                        Text("deliveryTruck",
                                             style: TextStyle(
                                                 color: yellowColor,
                                                 fontWeight: FontWeight.bold)),
@@ -346,7 +346,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                               RoundedButton(
                                 height: size.height * 0.06,
                                 width: size.width * 0.36,
-                                text: getTranslated(context, 'back'),
+                                text: "back",
                                 color: whiteColor,
                                 textColor: accountSelectionBackgroundColor,
                                 fontSize: size.width/20 ,
@@ -363,33 +363,31 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                               RoundedButton(
                                 height: size.height * 0.06,
                                 width: size.width * 0.36,
-                                text: getTranslated(context, 'save'),
+                                text: "save",
                                 color: yellowColor,
                                 fontSize: size.width/20 ,
                                 textColor: textBoxColor,
                                 press: () async {
                                   if (firstName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(context, 'enterFirstName'),
+                                        "enterFirstName",
                                         context);
                                   } else if (lastName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(context, 'enterLastName'),
+                                        "enterLastName",
                                         context);
                                   } else if (cnic.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(context, 'enterCnic'),
+                                        "enterCnic",
                                         context);
                                   } else if (driverLicenseNumber.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(
-                                            context, 'enterDrivingLicense'),
+                                        "enterDrivingLicense",
                                         context);
                                   } else if (vehicleRegistrationNumber
                                       .text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        getTranslated(
-                                            context, 'enterRegistrationNumber'),
+                                        "enterRegistrationNumber",
                                         context);
                                   } else {
                                     isLoading = true;

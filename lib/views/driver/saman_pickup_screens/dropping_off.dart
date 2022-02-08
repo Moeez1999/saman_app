@@ -78,7 +78,7 @@ class _DroppingOffState extends State<DroppingOff> {
                     },
                     child: Icon(Icons.arrow_back_ios)),
                 actions: [LanguageButton()],
-                title: Text(getTranslated(context, 'dropOff'),
+                title: Text("dropOff",
                 ),
                 centerTitle: true,
                 iconTheme: IconThemeData(color: yellowColor),
@@ -117,7 +117,7 @@ class _DroppingOffState extends State<DroppingOff> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              getTranslated(context, 'dropOffAddress'),
+                              "dropOffAddress",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -202,7 +202,7 @@ class _DroppingOffState extends State<DroppingOff> {
                                   borderRadius: BorderRadius.circular(20)),
                               child: Center(
                                   child: Text(
-                                getTranslated(context, 'direction'),
+                               "direction",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -276,7 +276,7 @@ class _DroppingOffState extends State<DroppingOff> {
                                   borderRadius: BorderRadius.circular(20)),
                               child: Center(
                                   child: Text(
-                                getTranslated(context, 'orderDelivered'),
+                                "orderDelivered",
                                 style: TextStyle(
                                     color: selectedColorVehicle,
                                     fontSize: 16,

@@ -132,7 +132,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -153,7 +153,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -175,7 +175,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -202,7 +202,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -225,7 +225,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
       drawer: drawerWidget(userId),
       appBar: AppbarWidget(
         check: false,
-        title: getTranslated(context, 'animals'),
+        title: "animals",
       ),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -250,7 +250,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                     height: 20,
                   ),
                   Text(
-                    getTranslated(context, 'customObjectDetail'),
+                    "customObjectDetail",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         fontSize: 18,
@@ -380,19 +380,19 @@ class _AnimalScreenState extends State<AnimalScreen> {
                     child: RoundedButton(
                       height: size.height * 0.05,
                       width: size.width * 0.36,
-                      text: getTranslated(context, 'confirm'),
+                      text: "confirm",
                       color: skyBlueColor,
                       textColor: Colors.white,
                       press: () {
                         if (categoryOfAnimal.text.isEmpty) {
                           AuthService().displayToastMessage(
-                              getTranslated(context, 'fillTheForm'), context);
+                              "fillTheForm", context);
                         } else if (weightObject.text.isEmpty) {
                           AuthService().displayToastMessage(
-                              getTranslated(context, 'fillTheForm'), context);
+                              "fillTheForm", context);
                         } else if (quatity.text.isEmpty) {
                           AuthService().displayToastMessage(
-                              getTranslated(context, 'fillTheForm'), context);
+                              "fillTheForm", context);
                         } else {
                           // Navigator.push(
                           //     context,

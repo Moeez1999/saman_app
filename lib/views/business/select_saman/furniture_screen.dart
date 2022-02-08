@@ -172,7 +172,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -193,7 +193,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -214,7 +214,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -241,7 +241,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -264,7 +264,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
         drawer: drawerWidget(userId),
         appBar: AppbarWidget(
           check: false,
-          title: getTranslated(context, 'furniture'),
+          title: "furniture",
         ),
         body: Stack(
           alignment: Alignment.topCenter,
@@ -286,7 +286,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      getTranslated(context, 'selectTheObject'),
+                      "selectTheObject",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: 18,
@@ -678,7 +678,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         RoundedButton(
                           height: size.height * 0.05,
                           width: size.width * 0.36,
-                          text: getTranslated(context, 'addOther'),
+                          text: "addOther",
                           color: backButtonColor,
                           textColor: Colors.white,
                           press: () {
@@ -689,7 +689,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         RoundedButton(
                           height: size.height * 0.05,
                           width: size.width * 0.36,
-                          text: getTranslated(context, 'continue'),
+                          text: "continue",
                           color: languageSelectColor,
                           textColor: Colors.white,
                           press: () async {
@@ -816,7 +816,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                     RoundedButton(
                       height: size.height * 0.05,
                       width: size.width * 0.25,
-                      text: getTranslated(context, 'cancel'),
+                      text: "cancel",
                       color: backButtonColor,
                       textColor: Colors.white,
                       press: () {
@@ -827,7 +827,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                     RoundedButton(
                       height: size.height * 0.05,
                       width: size.width * 0.25,
-                      text: getTranslated(context, 'continue'),
+                      text: "continue",
                       color: languageSelectColor,
                       textColor: Colors.white,
                       press: () async {

@@ -77,7 +77,7 @@ class _PickingUpState extends State<PickingUp> {
                     },
                     child: Icon(Icons.arrow_back_ios)),
                 actions: [LanguageButton()],
-                title: Text(getTranslated(context, 'pickingUp'),
+                title: Text("pickingUp",
                 ),
                 centerTitle: true,
                 iconTheme: IconThemeData(color: yellowColor),
@@ -118,7 +118,7 @@ class _PickingUpState extends State<PickingUp> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                getTranslated(context, 'pickUpAddress'),
+                               "pickUpAddress",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -200,7 +200,7 @@ class _PickingUpState extends State<PickingUp> {
                                   color: driverScreenDirectionButton,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Center(
-                                  child: Text(getTranslated(context, 'direction'),
+                                  child: Text("direction",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -233,7 +233,7 @@ class _PickingUpState extends State<PickingUp> {
                                   color: yellowColor,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Center(
-                                  child: Text(getTranslated(context, 'orderPicked'),
+                                  child: Text("orderPicked",
                                 style: TextStyle(
                                     color: selectedColorVehicle,
                                     fontSize: 16,

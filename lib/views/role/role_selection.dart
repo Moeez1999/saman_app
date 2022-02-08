@@ -12,8 +12,7 @@ import '../../constants.dart';
 class RoleSelection extends StatefulWidget {
   final String userId;
 
-   RoleSelection({@required this.userId});
-
+  RoleSelection({@required this.userId});
 
   @override
   _RoleSelectionState createState() => _RoleSelectionState();
@@ -32,13 +31,14 @@ class _RoleSelectionState extends State<RoleSelection> {
         child: isLoading == true
             ? Container(
                 child: Center(
-                  child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(yellowColor)),
+                  child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(yellowColor)),
                 ),
               )
             : Padding(
-          padding:  EdgeInsets.symmetric(vertical: 8.0,horizontal: 24),
-              child: SingleChildScrollView(
-                child: Column(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+                child: SingleChildScrollView(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(height: size.height * 0.15),
@@ -65,7 +65,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                         height: 40,
                       ),
                       Padding(
-                        padding:  EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -84,10 +84,11 @@ class _RoleSelectionState extends State<RoleSelection> {
                                   color: yellowColor,
                                 ),
                                 child: Padding(
-                                  padding:  EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Center(
                                     child: Text(
-                                      getTranslated(context, 'business'),
+                                      'Bussiness',
+                                      //getTranslated(context, 'business'),
                                       style: TextStyle(
                                           color: selectedColor,
                                           fontWeight: FontWeight.bold,
@@ -108,7 +109,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                         ),
                       ),
                       Padding(
-                        padding:  EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -134,14 +135,15 @@ class _RoleSelectionState extends State<RoleSelection> {
                                   color: yellowColor,
                                 ),
                                 child: Padding(
-                                  padding:  EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Center(
                                     child: Text(
-                                      getTranslated(context, 'driver'),
+                                      'Driver',
+                                      //getTranslated(context, 'driver'),
                                       style: TextStyle(
                                           color: selectedColor,
                                           fontWeight: FontWeight.bold,
-                                          fontSize:  size.width * 0.06),
+                                          fontSize: size.width * 0.06),
                                     ),
                                   ),
                                 ),
@@ -155,7 +157,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                         height: size.height * 0.06,
                         width: size.width * 0.36,
                         text: "Back",
-                        fontSize: size.width/20 ,
+                        fontSize: size.width / 20,
                         color: whiteColor,
                         textColor: accountSelectionBackgroundColor,
                         press: () {
@@ -164,8 +166,8 @@ class _RoleSelectionState extends State<RoleSelection> {
                       ),
                     ],
                   ),
+                ),
               ),
-            ),
       ),
     );
   }
@@ -176,18 +178,20 @@ class _RoleSelectionState extends State<RoleSelection> {
         .where("userId", isEqualTo: int.parse(widget.userId))
         .getDocuments()
         .then((val) => {
-      Firestore.instance
-          .collection("users")
-          .document(val.documents[0].documentID)
-          .updateData({'userType': 'Business'}).then((value) => {
-        isLoading = false,
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    BusinessRegistrationScreen(userId: widget.userId,)),),
-      }),
-    });
+              Firestore.instance
+                  .collection("users")
+                  .document(val.documents[0].documentID)
+                  .updateData({'userType': 'Business'}).then((value) => {
+                        isLoading = false,
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BusinessRegistrationScreen(
+                                    userId: widget.userId,
+                                  )),
+                        ),
+                      }),
+            });
   }
 
   goToDriverRegistration() {
@@ -196,17 +200,19 @@ class _RoleSelectionState extends State<RoleSelection> {
         .where("userId", isEqualTo: int.parse(widget.userId))
         .getDocuments()
         .then((val) => {
-      Firestore.instance
-          .collection("users")
-          .document(val.documents[0].documentID)
-          .updateData({'userType': 'Driver'}).then((value) => {
-        isLoading = false,
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    DriverRegistrationScreen(userId: widget.userId,)),),
-      }),
-    });
+              Firestore.instance
+                  .collection("users")
+                  .document(val.documents[0].documentID)
+                  .updateData({'userType': 'Driver'}).then((value) => {
+                        isLoading = false,
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DriverRegistrationScreen(
+                                    userId: widget.userId,
+                                  )),
+                        ),
+                      }),
+            });
   }
 }

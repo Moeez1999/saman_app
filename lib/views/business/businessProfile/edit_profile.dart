@@ -123,7 +123,8 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
+                          // getTranslated(context, "history"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -144,7 +145,8 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
+                          // getTranslated(context, "wallet"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -166,7 +168,8 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
+                          // getTranslated(context, "profile"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -193,7 +196,8 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
+                          // getTranslated(context, "logOut"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -252,7 +256,7 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
       drawer: drawerWidget(userId),
       appBar: AppbarWidget(
         check: true,
-        title: getTranslated(context, 'profile'),
+        title: "profile",
       ),
       body: Stack(alignment: Alignment.topCenter, children: [
         Positioned(
@@ -409,7 +413,7 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                           height: size.height * 0.06,
                           width: size.width * 0.36,
                           fontSize: size.width/20 ,
-                          text: getTranslated(context, 'cancel'),
+                          text: "cancel",
                           color: whiteColor,
                           textColor: accountSelectionBackgroundColor,
                           press: () {

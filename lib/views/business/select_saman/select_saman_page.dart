@@ -46,7 +46,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
         drawer: drawerWidget(userId),
         appBar: AppbarWidget(
           check: false,
-          title: getTranslated(context, 'selectSaman'),
+          title: "selectSaman",
         ),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -68,7 +68,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    getTranslated(context, 'selectCategory'),textAlign: TextAlign.start,
+                    "selectCategory",textAlign: TextAlign.start,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.white),
                   ),
                   SizedBox(height: 10,),
@@ -76,40 +76,40 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>ElectronicsSaman()));
                       },
-                      child: selectSamanTile(getTranslated(context, 'electronics'),'assets/icons/electronics.png')),
+                      child: selectSamanTile("electronics",'assets/icons/electronics.png')),
                   SizedBox(height: 15,),
                   InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>FurnitureScreen()));
                       },
-                      child: selectSamanTile(getTranslated(context, 'furniture'),'assets/icons/furniture.png')),
+                      child: selectSamanTile("furniture",'assets/icons/furniture.png')),
                   SizedBox(height: 15,),
                   InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>AnimalScreen()));
 
                       },
-                      child: selectSamanTile(getTranslated(context, 'animals'),'assets/icons/animal.png')),
+                      child: selectSamanTile("animals",'assets/icons/animal.png')),
                   SizedBox(height: 15,),
                   InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>ConstructionScreen()));
                       },
-                      child: selectSamanTile(getTranslated(context, 'construction'),'assets/icons/construction.png')),
+                      child: selectSamanTile("construction",'assets/icons/construction.png')),
                   SizedBox(height: 15,),
                   InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomSamanPage()));
 
                       },
-                      child: selectSamanTile(getTranslated(context, 'customSaman'),'assets/icons/custom.png')),
+                      child: selectSamanTile("customSaman",'assets/icons/custom.png')),
                   SizedBox(height: 20,),
 
                   Center(
                     child:    RoundedButton(
                       height: size.height * 0.05,
                       width: size.width * 0.30,
-                      text: getTranslated(context, 'back'),
+                      text: "back",
                       fontSize: size.width/23 ,
                       color: whiteColor,
                       textColor: accountSelectionBackgroundColor,
@@ -223,7 +223,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -244,7 +244,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -265,7 +265,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -292,7 +292,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,

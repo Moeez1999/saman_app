@@ -156,7 +156,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -177,7 +177,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -199,7 +199,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -226,7 +226,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -249,7 +249,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
       drawer: drawerWidget(userId),
       appBar: AppbarWidget(
         check: true,
-        title: getTranslated(context, 'placeAnOrder'),
+        title: "placeAnOrder",
       ),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -277,7 +277,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                           height: 20,
                         ),
                         buildTextField(
-                            getTranslated(context, 'from'),
+                            "from",
                             from,
                             "assets/icons/building2-icon.png",
                             1,
@@ -285,7 +285,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                           getSuggestion(e);
                         }, fromFocus, true),
                         buildTextField(
-                            getTranslated(context, 'to1'),
+                            "to1",
                             to,
                             "assets/icons/person.png",
                             1,
@@ -300,7 +300,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                               borderRadius: BorderRadius.circular(18)),
                           child: Center(
                             child: Text(
-                              getTranslated(context, 'fitting'),
+                              "fitting",
                               style: TextStyle(
                                   color: yellowColor,
                                   fontWeight: FontWeight.w500),
@@ -313,7 +313,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         Row(
                           children: [
                             Text(
-                              getTranslated(context, 'modeOfTransportation'),
+                              "modeOfTransportation",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -355,7 +355,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         "assets/icons/open-pickup.png",
                                         height: 40,
                                       ),
-                                      Text(getTranslated(context, 'openPickup'),
+                                      Text("openPickup",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               fontWeight: FontWeight.bold,
@@ -390,7 +390,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(
-                                          getTranslated(context, 'closePickup'),
+                                          "closePickup",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               color: yellowColor,
@@ -441,8 +441,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         height: 40,
                                       ),
                                       Text(
-                                          getTranslated(
-                                              context, 'loaderRicksha'),
+                                         "loaderRicksha",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               color: yellowColor,
@@ -476,8 +475,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(
-                                          getTranslated(
-                                              context, 'deliveryTruck'),
+                                          "deliveryTruck",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               color: yellowColor,
@@ -502,7 +500,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                             RoundedButton(
                               height: size.height * 0.05,
                               width: size.width * 0.36,
-                              text: getTranslated(context, 'cancel'),
+                              text: "cancel",
                               color: whiteColor,
                               textColor: accountSelectionBackgroundColor,
                               press: () {
@@ -513,7 +511,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                             RoundedButton(
                               height: size.height * 0.05,
                               width: size.width * 0.36,
-                              text: getTranslated(context, 'save'),
+                              text: "save",
                               color: yellowColor,
                               textColor: accountSelectionBackgroundColor,
                               press: () async {

@@ -123,7 +123,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -144,7 +144,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -166,7 +166,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                         "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -193,7 +193,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -252,7 +252,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
       drawer: drawerWidget(userId),
       appBar: AppbarWidget(
         check: true,
-        title: getTranslated(context, 'profile'),
+        title: "profile",
       ),
       body: Stack(alignment: Alignment.topCenter, children: [
         Positioned(
@@ -414,7 +414,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
                           height: size.height * 0.06,
                           width: size.width * 0.36,
                           fontSize: size.width/20 ,
-                          text: getTranslated(context, 'cancel'),
+                          text: "cancel",
                           color: whiteColor,
                           textColor: accountSelectionBackgroundColor,
                           press: () {
@@ -426,7 +426,7 @@ class _EditProfileDriverState extends State<EditProfileDriver> {
                           height: size.height * 0.06,
                           width: size.width * 0.36,
                           fontSize: size.width/20 ,
-                          text: getTranslated(context, 'save'),
+                          text: "save",
                           color: yellowColor,
                           textColor: textBoxColor,
                           press: () async {

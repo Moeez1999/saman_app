@@ -152,7 +152,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -173,7 +173,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                         "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -197,7 +197,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -224,7 +224,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -246,7 +246,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
       child: Scaffold(
           drawer: drawerWidget(userId),
           appBar: AppbarWidget(
-            title: getTranslated(context, 'driverHomepage'),
+            title:"driverHomepage",
             check: true,
           ),
           body: Stack(
@@ -271,7 +271,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         height: 20,
                       ),
                       Text(
-                        getTranslated(context, 'pickUpOrders'),
+                        "pickUpOrders",
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 17,
@@ -285,7 +285,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            getTranslated(context, 'inactive'),
+                            "inactive",
                             style: TextStyle(
                                 color: _switchValue == true
                                     ? _inactiveColor
@@ -311,7 +311,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                                 height: 70,
                               )),
                           Text(
-                            getTranslated(context, 'active'),
+                            "active",
                             style: TextStyle(
                                 color: _switchValue == true
                                     ? _activeColor
@@ -324,7 +324,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         height: 20,
                       ),
                       Text(
-                        getTranslated(context, 'listOfOrders'),
+                        "listOfOrders",
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             fontSize: 17,
@@ -425,7 +425,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              getTranslated(context, "orderId") + orderId,
+              "orderId" + orderId,
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -437,7 +437,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
             Row(
               children: [
                 Text(
-                  getTranslated(context, 'to'),
+                  "to",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -454,7 +454,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                 ),
                 Spacer(),
                 Text(
-                  getTranslated(context, 'from'),
+                 "from",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -480,14 +480,14 @@ class _DriverHomePageState extends State<DriverHomePage> {
             Row(
               children: [
                 Text(
-                  getTranslated(context, 'weight'),
+                 "weight",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: yellowColor),
                 ),
                 Text(
-                  size + getTranslated(context, 'kg'),
+                  size + "kg",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -495,7 +495,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                 ),
                 Spacer(),
                 Text(
-                  getTranslated(context, 'rs') + "$price/-",
+                 "rs" + "$price/-",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -519,7 +519,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         borderRadius: BorderRadius.circular(25)),
                     child: Center(
                         child: Text(
-                          getTranslated(context, 'accept'),
+                          "accept",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

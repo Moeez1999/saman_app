@@ -17,7 +17,7 @@ class OtpScreen extends StatefulWidget {
   final String name;
   final String userId;
 
-  const OtpScreen({this.name,@required this.userId});
+  const OtpScreen({this.name, @required this.userId});
 
   @override
   _OtpScreenState createState() => _OtpScreenState();
@@ -36,11 +36,11 @@ class _OtpScreenState extends State<OtpScreen> {
   void _onCountryChange(CountryCode countryCode) {
     selectedCountryCode = countryCode.toString();
   }
+
   bool isLoading = false;
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -51,133 +51,133 @@ class _OtpScreenState extends State<OtpScreen> {
         body: Background(
           index: 1,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 24),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
             child: isLoading == true
                 ? Center(
-                child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(yellowColor)))
+                    child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(yellowColor)))
                 : SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: size.height * 0.15),
-                  Center(
-                    child: Image.asset(
-                      "assets/icons/logo-cropped.png",
-                      width: size.width * 0.70,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "Please enter your phone number",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "Through SMS a verification code will be send to the number you provided",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.0425,
-                  ),
-                  Row(
-                    children: [
-                      Theme(
-                        data: ThemeData(
-                          primaryColor: toastColor,
-                          primaryColorDark: toastColor,
-                          textSelectionTheme: TextSelectionThemeData(
-                              cursorColor: toastColor),
-                        ),
-                        child: CountryCodePicker(
-                          textStyle: TextStyle(color: Colors.white),
-                          initialSelection: selectedCountryCode,
-                          onChanged: _onCountryChange,
-                          showCountryOnly: false,
-                          showOnlyCountryWhenClosed: false,
-                          searchDecoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                          boxDecoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(7),
-                              color: Colors.white),
-                        ),
-                      ),
-                      Expanded(
-                        child: Center(
-                          child: RoundedInputField(
-                            type: TextInputType.phone,
-                            hintText: "Phone Number",
-                            onChanged: (possibleEmail) {
-                              setState(() {
-                                number.text = possibleEmail;
-                              });
-                            },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: size.height * 0.15),
+                        Center(
+                          child: Image.asset(
+                            "assets/icons/logo-cropped.png",
+                            width: size.width * 0.70,
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "Please enter your phone number",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "Through SMS a verification code will be send to the number you provided",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.0425,
+                        ),
+                        Row(
+                          children: [
+                            Theme(
+                              data: ThemeData(
+                                primaryColor: toastColor,
+                                primaryColorDark: toastColor,
+                                textSelectionTheme: TextSelectionThemeData(
+                                    cursorColor: toastColor),
+                              ),
+                              child: CountryCodePicker(
+                                textStyle: TextStyle(color: Colors.white),
+                                initialSelection: selectedCountryCode,
+                                onChanged: _onCountryChange,
+                                showCountryOnly: false,
+                                showOnlyCountryWhenClosed: false,
+                                searchDecoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                ),
+                                boxDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7),
+                                    color: Colors.white),
+                              ),
+                            ),
+                            Expanded(
+                              child: Center(
+                                child: RoundedInputField(
+                                  type: TextInputType.phone,
+                                  hintText: "Phone Number",
+                                  onChanged: (possibleEmail) {
+                                    setState(() {
+                                      number.text = possibleEmail;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: size.height * 0.0425,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundedButton(
+                              height: size.height * 0.06,
+                              width: size.width * 0.36,
+                              text: "Back",
+                              fontSize: size.width / 20,
+                              color: whiteColor,
+                              textColor: accountSelectionBackgroundColor,
+                              press: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            Spacer(),
+                            RoundedButton(
+                              height: size.height * 0.06,
+                              width: size.width * 0.36,
+                              fontSize: size.width / 20,
+                              text: "Next",
+                              color: yellowColor,
+                              textColor: accountSelectionBackgroundColor,
+                              press: () async {
+                                if (number.text.isEmpty) {
+                                  AuthService().displayToastMessage(
+                                      "Please Provide Phone number!", context);
+                                } else {
+                                  if (widget.name == "forgot") {
+                                    print("ifffffff");
+                                    checkAvailabilityPhone();
+                                  } else {
+                                    print("elseee");
+                                    _showMyDialog(context);
+                                    _verifyPhone();
+                                  }
+                                }
+                                numberNode.unfocus();
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    height: size.height * 0.0425,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      RoundedButton(
-                        height: size.height * 0.06,
-                        width: size.width * 0.36,
-                        text: "Back",
-                        fontSize: size.width/20 ,
-                        color: whiteColor,
-                        textColor: accountSelectionBackgroundColor,
-                        press: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                      Spacer(),
-                      RoundedButton(
-                        height: size.height * 0.06,
-                        width: size.width * 0.36,
-                        fontSize: size.width/20 ,
-                        text: "Next",
-                        color: yellowColor,
-                        textColor: accountSelectionBackgroundColor,
-                        press: () async {
-                          if (number.text.isEmpty) {
-                            AuthService().displayToastMessage(
-                                "Please Provide Phone number!", context);
-                          } else {
-                            if (widget.name == "forgot") {
-                              print("ifffffff");
-                              checkAvailabilityPhone();
-                            } else {
-                              print("elseee");
-                              _showMyDialog(context);
-                              _verifyPhone();
-                            }
-                          }
-                          numberNode.unfocus();
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
           ),
         ));
   }
@@ -185,7 +185,7 @@ class _OtpScreenState extends State<OtpScreen> {
   pinputFunction() async {
     await FirebaseAuth.instance
         .signInWithCredential(PhoneAuthProvider.getCredential(
-        verificationId: _verificationCode, smsCode: pin))
+            verificationId: _verificationCode, smsCode: pin))
         .then((value) async {
       if (value.user != null) {
         setState(() {
@@ -199,27 +199,26 @@ class _OtpScreenState extends State<OtpScreen> {
                 .where("userId", isEqualTo: int.parse(widget.userId))
                 .getDocuments()
                 .then((val) => {
-              secureStorage.writeSecureData(
-                  'userType', "${val.documents[0]['userType']}"),
-              secureStorage.writeSecureData(
-                  'userId', widget.userId),
-              Firestore.instance
-                  .collection("users")
-                  .document(val.documents[0].documentID)
-                  .updateData(data)
-                  .then((value) => {
-                isLoading = false,
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            BusinessHomePage()),
-                        (route) => false),
-              })
-                  .catchError((e) {
-                print(e);
-              }),
-            });
+                      secureStorage.writeSecureData(
+                          'userType', "${val.documents[0]['userType']}"),
+                      secureStorage.writeSecureData('userId', widget.userId),
+                      Firestore.instance
+                          .collection("users")
+                          .document(val.documents[0].documentID)
+                          .updateData(data)
+                          .then((value) => {
+                                isLoading = false,
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BusinessHomePage()),
+                                    (route) => false),
+                              })
+                          .catchError((e) {
+                        print(e);
+                      }),
+                    });
           } else if (widget.name == "Driver") {
             Map<String, dynamic> data = {
               "number": selectedCountryCode + number.text,
@@ -230,36 +229,35 @@ class _OtpScreenState extends State<OtpScreen> {
                 .where("userId", isEqualTo: int.parse(widget.userId))
                 .getDocuments()
                 .then((val) => {
-              secureStorage.writeSecureData(
-                  'userType', "${val.documents[0]['userType']}"),
-              secureStorage.writeSecureData(
-                  'userId', widget.userId),
-              Firestore.instance
-                  .collection("users")
-                  .document(val.documents[0].documentID)
-                  .updateData(data)
-                  .then((value) => {
-                isLoading = false,
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => DriverHomePage()),
-                        (route) => false),
-              })
-                  .catchError((e) {
-                isLoading = false;
-                print(e);
-              }),
-            });
-
+                      secureStorage.writeSecureData(
+                          'userType', "${val.documents[0]['userType']}"),
+                      secureStorage.writeSecureData('userId', widget.userId),
+                      Firestore.instance
+                          .collection("users")
+                          .document(val.documents[0].documentID)
+                          .updateData(data)
+                          .then((value) => {
+                                isLoading = false,
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DriverHomePage()),
+                                    (route) => false),
+                              })
+                          .catchError((e) {
+                        isLoading = false;
+                        print(e);
+                      }),
+                    });
           } else if (widget.name == "forgot") {
             isLoading = false;
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                     builder: (context) => ChangePasswordScreen(
-                      number: selectedCountryCode + number.text,
-                    )),
-                    (route) => false);
+                          number: selectedCountryCode + number.text,
+                        )),
+                (route) => false);
           } else {
             print("error");
           }
@@ -306,26 +304,26 @@ class _OtpScreenState extends State<OtpScreen> {
                       .where("userId", isEqualTo: int.parse(widget.userId))
                       .getDocuments()
                       .then((val) => {
-                    secureStorage.writeSecureData(
-                        'userId', widget.userId),
-                    secureStorage.writeSecureData(
-                        'userType', "${val.documents[0]['userType']}"),
-                    Firestore.instance
-                        .collection("users")
-                        .document(val.documents[0].documentID)
-                        .updateData(data)
-                        .then((value) => {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  BusinessHomePage()),
-                              (route) => false),
-                    })
-                        .catchError((e) {
-                      print(e);
-                    }),
-                  });
+                            secureStorage.writeSecureData(
+                                'userId', widget.userId),
+                            secureStorage.writeSecureData(
+                                'userType', "${val.documents[0]['userType']}"),
+                            Firestore.instance
+                                .collection("users")
+                                .document(val.documents[0].documentID)
+                                .updateData(data)
+                                .then((value) => {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BusinessHomePage()),
+                                          (route) => false),
+                                    })
+                                .catchError((e) {
+                              print(e);
+                            }),
+                          });
                 } else if (widget.name == "Driver") {
                   Map<String, dynamic> data = {
                     "number": selectedCountryCode + number.text,
@@ -336,33 +334,34 @@ class _OtpScreenState extends State<OtpScreen> {
                       .where("userId", isEqualTo: int.parse(widget.userId))
                       .getDocuments()
                       .then((val) => {
-                    secureStorage.writeSecureData(
-                        'userId', widget.userId),
-                    secureStorage.writeSecureData(
-                        'userType', "${val.documents[0]['userType']}"),
-                    Firestore.instance
-                        .collection("users")
-                        .document(val.documents[0].documentID)
-                        .updateData(data)
-                        .then((value) => {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => DriverHomePage()),
-                              (route) => false),
-                    })
-                        .catchError((e) {
-                      print(e);
-                    }),
-                  });
-
+                            secureStorage.writeSecureData(
+                                'userId', widget.userId),
+                            secureStorage.writeSecureData(
+                                'userType', "${val.documents[0]['userType']}"),
+                            Firestore.instance
+                                .collection("users")
+                                .document(val.documents[0].documentID)
+                                .updateData(data)
+                                .then((value) => {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DriverHomePage()),
+                                          (route) => false),
+                                    })
+                                .catchError((e) {
+                              print(e);
+                            }),
+                          });
                 } else if (widget.name == "forgot") {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                           builder: (context) => ChangePasswordScreen(
-                            number: selectedCountryCode + number.text,
-                          )),
-                          (route) => false);
+                                number: selectedCountryCode + number.text,
+                              )),
+                      (route) => false);
                 } else {
                   print("error");
                 }
@@ -391,13 +390,13 @@ class _OtpScreenState extends State<OtpScreen> {
   checkAvailabilityPhone() {
     Firestore.instance
         .collection("phoneNumberUsers")
-        .where("number", isEqualTo:selectedCountryCode+ number.text)
+        .where("number", isEqualTo: selectedCountryCode + number.text)
         .getDocuments()
         .then((value) => {
-      print(value.documents[0].documentID),
-      _verifyPhone(),
-      _showMyDialog(context),
-    })
+              print(value.documents[0].documentID),
+              _verifyPhone(),
+              _showMyDialog(context),
+            })
         .catchError((e) {
       AuthService().displayToastMessage("No account!", context);
     });
@@ -456,9 +455,9 @@ class _OtpScreenState extends State<OtpScreen> {
                   children: [
                     RoundedButton(
                       height: size.height * 0.05,
-                      width: size.width * 0.30,
+                      width: size.width * 0.26,
                       text: "Back",
-                      fontSize: size.width/23 ,
+                      fontSize: size.width / 23,
                       color: whiteColor,
                       textColor: accountSelectionBackgroundColor,
                       press: () {
@@ -475,7 +474,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: size.height * 0.05,
                       width: size.width * 0.30,
                       text: "Confirm",
-                      fontSize: size.width/23 ,
+                      fontSize: size.width / 23,
                       color: yellowColor,
                       textColor: textBoxColor,
                       press: () async {

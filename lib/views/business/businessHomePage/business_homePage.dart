@@ -134,7 +134,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "history"),
+                          "History",
+                          // getTranslated(context, "history"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -155,7 +156,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "wallet"),
+                          "Wallet",
+                          // getTranslated(context, "wallet"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -179,7 +181,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "profile"),
+                          "profile",
+                          // getTranslated(context, "profile"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -206,7 +209,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          getTranslated(context, "logOut"),
+                          "logOut",
+                          // getTranslated(context, "logOut"),
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -233,7 +237,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
           drawer: drawerWidget(userId),
           appBar: AppbarWidget(
             check: true,
-            title: getTranslated(context, 'businessHomePage'),
+            title:"businessHomePage",
           ),
           body: Stack(
             alignment: Alignment.topCenter,
@@ -305,7 +309,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                               height: 15,
                             ),
                             Text(
-                              getTranslated(context, 'listOfOrders'),
+                              "listOfOrders",
+                              // getTranslated(context, 'listOfOrders'),
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontSize: 17,
@@ -447,7 +452,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              getTranslated(context, "orderId") + orderId,
+              "orderId $orderId",
+              // getTranslated(context, "orderId") + orderId,
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -459,7 +465,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
             Row(
               children: [
                 Text(
-                  getTranslated(context, 'to'),
+                  "to",
+                  // getTranslated(context, 'to'),
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -479,7 +486,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                 Container(
                   width: MediaQuery.of(context).size.width /9,
                   child: Text(
-                    getTranslated(context, 'status'),
+                    "status",
+                    // getTranslated(context, 'status'),
                     softWrap: false,
                     overflow: TextOverflow.fade,
                     style: TextStyle(
@@ -503,14 +511,15 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
             Row(
               children: [
                 Text(
-                  getTranslated(context, 'weight'),
+                  "weight",
+                  // getTranslated(context, 'weight'),
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
                 ),
                 Text(
-                  size + getTranslated(context, 'kg'),
+                  size + 'kg',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -518,7 +527,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                 ),
                 Spacer(),
                 Text(
-                  getTranslated(context, 'rs') + "$price/-",
+                  "rs" + "$price/-",
+                  // getTranslated(context, 'rs') + "$price/-",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
