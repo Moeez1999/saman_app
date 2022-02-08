@@ -8,8 +8,6 @@ import 'package:saman/services/auth.dart';
 import 'package:saman/views/welcome/welcome_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import '../../../constants.dart';
-import 'package:saman/localization/localization_constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:saman/views/business/businessRegistration/address_pickup_screen.dart';
 
 class BusinessRegistrationScreen extends StatefulWidget {

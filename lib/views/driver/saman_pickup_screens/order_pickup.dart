@@ -9,7 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:saman/views/driver/saman_pickup_screens/picking_up.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:saman/localization/localization_constants.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 

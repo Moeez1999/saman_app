@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
 import 'package:saman/views/business/place_order/place_order_page.dart';
 import 'package:saman/components/weightFile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -1,11 +1,9 @@
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
-import 'package:saman/views/business/place_order/place_order_page.dart';
 import 'package:saman/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:saman/model/secure_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/components/appbar_widget.dart';
 import 'package:saman/views/history/history_screen.dart';

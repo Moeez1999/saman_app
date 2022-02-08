@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:saman/components/appbar_widget.dart';
 import 'package:saman/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:saman/localization/localization_constants.dart';
 
 class History extends StatefulWidget {
   final String userId;

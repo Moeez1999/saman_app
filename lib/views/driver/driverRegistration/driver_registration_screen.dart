@@ -7,7 +7,6 @@ import 'package:saman/components/phone_otp.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:saman/services/auth.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
-import 'package:saman/views/welcome/welcome_screen.dart';
 import '../../../constants.dart';
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/main.dart';

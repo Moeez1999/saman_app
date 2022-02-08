@@ -210,49 +210,74 @@ class PhoneSignInState extends State<PhoneSignIn> {
                           if (!val.documents[0].data.containsKey('userType'))
                             {
                               isLoading = false,
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LanguageScreen(
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LanguageScreen(
                                             userId: value.documents[0]
-                                                    ['userType']
+                                            ['userType']
                                                 .toString(),
                                           )),
-                                  (route) => false),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
                             }
                           else if (!val.documents[0].data
                               .containsKey('firstName'))
                             {
                               isLoading = false,
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => val.documents[0]
-                                                  ['userType'] ==
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => val.documents[0]
+                                          ['userType'] ==
                                               "Business"
-                                          ? BusinessRegistrationScreen(
-                                              userId: value.documents[0]
-                                                  ['userType'],
-                                            )
-                                          : DriverRegistrationScreen(
-                                              userId: value.documents[0]
-                                                  ['userType'],
-                                            )),
-                                  (route) => false),
+                                              ? BusinessRegistrationScreen(
+                                            userId: value.documents[0]
+                                            ['userType'],
+                                          )
+                                              : DriverRegistrationScreen(
+                                            userId: value.documents[0]
+                                            ['userType'],
+                                          )),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
+
                             }
                           else if (!value.documents[0].data
                               .containsKey('isVerified'))
                             {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => OtpScreen(
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => OtpScreen(
                                             name: value.documents[0]
-                                                ['userType'],
+                                            ['userType'],
                                             userId: value.documents[0]
-                                                ['userType'],
+                                            ['userType'],
+                                            status: value.documents[0]
+                                            ['status'],
                                           )),
-                                  (route) => false),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
+
                             }
                           else
                             {
@@ -261,15 +286,23 @@ class PhoneSignInState extends State<PhoneSignIn> {
                                   'userId', "${val.documents[0]['userId']}"),
                               secureStorage.writeSecureData('userType',
                                   "${value.documents[0]['userType']}"),
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => val.documents[0]
-                                                  ['userType'] ==
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => val.documents[0]
+                                          ['userType'] ==
                                               "Business"
-                                          ? BusinessHomePage()
-                                          : DriverHomePage()),
-                                  (route) => false),
+                                              ? BusinessHomePage()
+                                              : DriverHomePage()),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
+
                             }
                         });
               }),

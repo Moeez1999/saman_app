@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:country_code_picker/country_code.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -211,7 +210,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           .updateData(data)
                           .then((value) => {
                                 isLoading = false,
-                                if (widget.status == 'true')
+                                if (widget.status == 'true' || val.documents[0]['status'] == 'true')
                                   {
                                     Navigator.pushAndRemoveUntil(
                                         context,
@@ -249,7 +248,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           .updateData(data)
                           .then((value) => {
                                 isLoading = false,
-                                if (widget.status == 'true')
+                                if (widget.status == 'true' || val.documents[0]['status'] == 'true')
                                   {
                                     Navigator.pushAndRemoveUntil(
                                         context,

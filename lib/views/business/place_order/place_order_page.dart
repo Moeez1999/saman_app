@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
 import 'dart:math' show cos, sqrt, asin;
 import 'package:saman/localization/localization_constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:saman/constants.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:saman/views/business/businessHomePage/business_homePage.dart';

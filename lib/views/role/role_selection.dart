@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:saman/views/business/businessRegistration/business_registration_screen.dart';
 import 'package:saman/views/driver/driverRegistration/driver_registration_screen.dart';

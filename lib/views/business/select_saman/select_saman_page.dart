@@ -4,7 +4,6 @@ import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:saman/views/business/select_saman/electronics_saman.dart';
 import 'package:saman/views/business/select_saman/custom_saman_page.dart';
  import 'package:cloud_firestore/cloud_firestore.dart';
-  import 'package:flutter/cupertino.dart';
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:saman/components/appbar_widget.dart';

@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:saman/views/role/role_selection.dart';
 import 'package:saman/views/welcome/components/background.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';

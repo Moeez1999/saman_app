@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:saman/views/business/businessHomePage/business_homePage.dart';
@@ -18,7 +16,6 @@ import 'package:saman/views/welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/main.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AuthService {
@@ -109,18 +106,7 @@ class AuthService {
                                                       })
                                                   .then((value) => {
                                                         isLoading = false,
-                                                        Navigator
-                                                            .pushAndRemoveUntil(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            LanguageScreen(
-                                                                              userId: "${value1.documents[0]['userId'] + 1}",
-                                                                              status: value1.documents[0]['status'],
-                                                                            )),
-                                                                (route) =>
-                                                                    false),
+                                                AuthService().displayToastMessage("Your request is send to admin for approved", context)
                                                         // _showMyDialog(context),
                                                       }),
                                             })
@@ -136,61 +122,85 @@ class AuthService {
                           if (!value.documents[0].data.containsKey('userType'))
                             {
                               isLoading = false,
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LanguageScreen(
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LanguageScreen(
                                             userId: value.documents[0]['userId']
                                                 .toString(),
                                             status: value.documents[0]['status']
                                                 .toString(),
                                           )),
-                                  (route) => false),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
+
                             }
                           else if (!value.documents[0].data
                               .containsKey('firstName'))
                             {
                               isLoading = false,
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => value.documents[0]
-                                                  ['userType'] ==
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => value.documents[0]
+                                          ['userType'] ==
                                               "Business"
-                                          ? BusinessRegistrationScreen(
-                                              userId: value.documents[0]
-                                                      ['userId']
-                                                  .toString(),
-                                              status: value.documents[0]
-                                                      ['status']
-                                                  .toString(),
-                                            )
-                                          : DriverRegistrationScreen(
-                                              userId: value.documents[0]
-                                                      ['userId']
-                                                  .toString(),
-                                              status: value.documents[0]
-                                                      ['status']
-                                                  .toString(),
-                                            )),
-                                  (route) => false),
+                                              ? BusinessRegistrationScreen(
+                                            userId: value.documents[0]
+                                            ['userId']
+                                                .toString(),
+                                            status: value.documents[0]
+                                            ['status']
+                                                .toString(),
+                                          )
+                                              : DriverRegistrationScreen(
+                                            userId: value.documents[0]
+                                            ['userId']
+                                                .toString(),
+                                            status: value.documents[0]
+                                            ['status']
+                                                .toString(),
+                                          )),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
+
                             }
                           else if (!value.documents[0].data
                               .containsKey('isVerified'))
                             {
                               isLoading = false,
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => OtpScreen(
+                              if(value.documents[0]['status'] == 'true')
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => OtpScreen(
                                             name: value.documents[0]
-                                                ['userType'],
+                                            ['userType'],
                                             userId: value.documents[0]['userId']
                                                 .toString(),
-                                        status: value.documents[0]
-                                        ['status'],
+                                            status: value.documents[0]
+                                            ['status'],
                                           )),
-                                  (route) => false),
+                                          (route) => false),
+                                }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
+
                             }
                           else
                             {
@@ -213,6 +223,10 @@ class AuthService {
                                             : DriverHomePage()),
                                         (route) => false),
                               }
+                              else
+                                {
+                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                }
                             }
                         }
                     });
@@ -297,17 +311,7 @@ class AuthService {
                                                   })
                                               .then((value) => {
                                                     isLoading = false,
-                                                    Navigator
-                                                        .pushAndRemoveUntil(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        LanguageScreen(
-                                                                          userId:
-                                                                              "${value1.documents[0]['userId'] + 1}",
-                                                                        )),
-                                                            (route) => false),
+                                            AuthService().displayToastMessage("Your request is send to admin for approved", context)
                                                     // _showMyDialog(context),
                                                   }),
                                         })
@@ -325,48 +329,79 @@ class AuthService {
                         {
                           print(value.documents[0]['userId'].toString()),
                           isLoading = false,
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LanguageScreen(
+                          if(value.documents[0]['status'] == 'true')
+                            {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LanguageScreen(
                                         userId: value.documents[0]['userId']
                                             .toString(),
+                                        status: value.documents[0]['status']
+                                            .toString(),
                                       )),
-                              (route) => false),
+                                      (route) => false),
+                            }
+                          else
+                            {
+                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                            }
+
                         }
                       else if (!value.documents[0].data
                           .containsKey('firstName'))
                         {
                           isLoading = false,
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => value.documents[0]
-                                              ['userType'] ==
+                          if(value.documents[0]['status'] == 'true')
+                            {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => value.documents[0]
+                                      ['userType'] ==
                                           "Business"
-                                      ? BusinessRegistrationScreen(
-                                          userId: value.documents[0]['userId']
-                                              .toString(),
-                                        )
-                                      : DriverRegistrationScreen(
-                                          userId: value.documents[0]['userId']
-                                              .toString(),
-                                        )),
-                              (route) => false),
+                                          ? BusinessRegistrationScreen(
+                                        userId: value.documents[0]['userId']
+                                            .toString(),
+                                        status: value.documents[0]['status']
+                                            .toString(),
+                                      )
+                                          : DriverRegistrationScreen(
+                                        userId: value.documents[0]['userId']
+                                            .toString(),
+                                        status: value.documents[0]['status']
+                                            .toString(),
+                                      )),
+                                      (route) => false),
+                            }
+                          else
+                            {
+                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                            }
+
                         }
                       else if (!value.documents[0].data
                           .containsKey('isVerified'))
                         {
                           isLoading = false,
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => OtpScreen(
+                          if(value.documents[0]['status'] == 'true')
+                            {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OtpScreen(
                                         name: value.documents[0]['userType'],
                                         userId: value.documents[0]['userId']
                                             .toString(),
+                                        status: value.documents[0]['status']
+                                            .toString(),
                                       )),
-                              (route) => false),
+                                      (route) => false),
+                            }
+                          else
+                            {
+                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                            }
                         }
                       else
                         {
@@ -376,14 +411,22 @@ class AuthService {
                               'userType', "${value.documents[0]['userType']}"),
                           fcmToken1(value.documents[0]['userId'].toString()),
                           isLoading = false,
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => value.documents[0]
-                                              ['userType'] ==
+                          if(value.documents[0]['status'] == 'true')
+                            {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => value.documents[0]
+                                      ['userType'] ==
                                           "Business"
-                                      ? BusinessHomePage()
-                                      : DriverHomePage())),
+                                          ? BusinessHomePage()
+                                          : DriverHomePage())),
+                            }
+                          else
+                            {
+                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                            }
+
                         }
                     }
                 });
@@ -429,6 +472,8 @@ class AuthService {
                                 builder: (context) => LanguageScreen(
                                   userId:
                                   value.documents[0]['userId'].toString(),
+                                  status: value.documents[0]['status']
+                                      .toString(),
                                 )),
                                 (route) => false),
                       }
@@ -451,9 +496,13 @@ class AuthService {
                                     ? BusinessRegistrationScreen(
                                   userId: value.documents[0]['userId']
                                       .toString(),
+                                  status: value.documents[0]['status']
+                                      .toString(),
                                 )
                                     : DriverRegistrationScreen(
                                   userId: value.documents[0]['userId']
+                                      .toString(),
+                                  status: value.documents[0]['status']
                                       .toString(),
                                 )),
                                 (route) => false),
@@ -476,6 +525,8 @@ class AuthService {
                                   name: value.documents[0]['userType'],
                                   userId:
                                   value.documents[0]['userId'].toString(),
+                                  status: value.documents[0]['status']
+                                      .toString(),
                                 )),
                                 (route) => false),
                       }

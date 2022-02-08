@@ -6,7 +6,6 @@ import 'package:saman/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:saman/model/secure_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/components/appbar_widget.dart';
 import 'package:saman/services/auth.dart';
@@ -14,9 +13,7 @@ import 'package:saman/views/history/history_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as Path;
-import 'package:flutter/services.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'dart:io' as io;
 

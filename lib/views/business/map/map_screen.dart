@@ -4,7 +4,6 @@ import 'package:saman/constants.dart';
 import 'package:saman/components/language_button.dart';
 import 'dart:typed_data' as i;
 import 'dart:ui' as ui;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart'as http;
