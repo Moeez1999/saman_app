@@ -1,3 +1,4 @@
+import 'package:saman/views/business/place_order/place_order_page.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
@@ -24,15 +25,23 @@ class _AnimalScreenState extends State<AnimalScreen> {
 
   @override
   void initState() {
-    storage.readSecureData("userId").then((value) => {
-          print(value),
-          userId = value,
-        });
-    storage.readSecureData("userType").then((value) => {
-          print(value),
-          userType = value,
-        });
+    getUserData();
     super.initState();
+  }
+
+  Future<void> getUserData() async {
+    await storage.readSecureData("userId").then((value) => {
+      print(value),
+      setState(() {
+        userId = value;
+      })
+    });
+    await storage.readSecureData("userType").then((value) => {
+      print(value),
+      setState(() {
+        userType = value;
+      })
+    });
   }
 
   Widget drawerWidget(userId) {
@@ -376,7 +385,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                   ),
                   Center(
                     child: RoundedButton(
-                      height: size.height * 0.05,
+                      height: size.height * 0.06,
                       width: size.width * 0.36,
                       text: "confirm",
                       color: skyBlueColor,
@@ -392,14 +401,14 @@ class _AnimalScreenState extends State<AnimalScreen> {
                           AuthService().displayToastMessage(
                               "fillTheForm", context);
                         } else {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => PlaceOrderPage(
-                          //           name: [{"name":categoryOfAnimal.text,"value":quatity.text}],
-                          //           weightOO: weightObject.text,
-                          //           screenName: "animalScreen",
-                          //         )));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PlaceOrderPage(
+                                    name: [{"name":categoryOfAnimal.text,"value":quatity.text}],
+                                    weightOO: weightObject.text,
+                                    screenName: "animalScreen",
+                                  )));
                         }
                       },
                     ),

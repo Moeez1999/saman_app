@@ -12,7 +12,7 @@ class RoleSelection extends StatefulWidget {
   final String userId;
   final String status;
 
-  RoleSelection({@required this.userId , this.status});
+  RoleSelection({@required this.userId, this.status});
 
   @override
   _RoleSelectionState createState() => _RoleSelectionState();
@@ -188,7 +188,7 @@ class _RoleSelectionState extends State<RoleSelection> {
                           MaterialPageRoute(
                               builder: (context) => BusinessRegistrationScreen(
                                     userId: widget.userId,
-                                status: widget.status,
+                                    status: widget.status,
                                   )),
                         ),
                       }),
@@ -200,21 +200,26 @@ class _RoleSelectionState extends State<RoleSelection> {
         .collection("users")
         .where("userId", isEqualTo: int.parse(widget.userId))
         .getDocuments()
-        .then((val) => {
-              Firestore.instance
-                  .collection("users")
-                  .document(val.documents[0].documentID)
-                  .updateData({'userType': 'Driver'}).then((value) => {
-                        isLoading = false,
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DriverRegistrationScreen(
-                                    userId: widget.userId,
-                                status: widget.status,
-                                  )),
-                        ),
-                      }),
-            });
+        .then(
+          (val) => {
+            Firestore.instance
+                .collection("users")
+                .document(val.documents[0].documentID)
+                .updateData({'userType': 'Driver'}).then(
+              (value) => {
+                isLoading = false,
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DriverRegistrationScreen(
+                      userId: widget.userId,
+                      status: widget.status,
+                    ),
+                  ),
+                ),
+              },
+            ),
+          },
+        );
   }
 }

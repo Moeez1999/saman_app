@@ -49,6 +49,7 @@ dependencies:
   maps_launcher:
   firebase_messaging:
   get: ^4.6.1
+  google_fonts:
 
   #  foree_checkout: ^0.0.5
   latlong:

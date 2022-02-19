@@ -52,6 +52,42 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
       "value": 1,
       "weight": WeightConstants.washingMachineWeight
     },
+    {
+      "name": "MINI REFRIGERATOR",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.minirefrigeratorWeight
+    },
+    {
+      "name": "FREEZER",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.freezerWeight
+    },
+    {
+      "name": "WASH MACHINE WITH DRYER",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.washingmachinewithdryerWeight
+    },
+    {
+      "name": "WATER DISPENSER",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.waterdisoenserWeight
+    },
+    {
+      "name": "LED TV",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.ledTvWeight
+    },
+    {
+      "name": "FANS",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.fanWeight
+    },
   ];
   var tmpArray = [];
   String finalWeight;
@@ -64,9 +100,9 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
           userId = value,
         });
     storage.readSecureData("userType").then((value) => {
-      print(value),
-      userType = value,
-    });
+          print(value),
+          userType = value,
+        });
     super.initState();
   }
 
@@ -79,11 +115,11 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
     return ClipRRect(
       borderRadius: _value == "en"
           ? BorderRadius.only(
-          topRight: Radius.circular(30.0),
-          bottomRight: Radius.circular(30.0))
+              topRight: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0))
           : BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0)),
+              topLeft: Radius.circular(30.0),
+              bottomLeft: Radius.circular(30.0)),
       child: Theme(
         data: ThemeData(canvasColor: Colors.transparent),
         child: Drawer(
@@ -124,22 +160,22 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                               height: 30, width: 30, child: Text(""));
                         return snapshot.data.documents.length == 0
                             ? Container(
-                          child: Center(
-                            child: Text(""),
-                          ),
-                        )
+                                child: Center(
+                                  child: Text(""),
+                                ),
+                              )
                             : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              snapshot.data.documents[0]['businessName'],
-                              style: TextStyle(
-                                  color: yellowColor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        );
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    snapshot.data.documents[0]['businessName'],
+                                    style: TextStyle(
+                                        color: yellowColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              );
                       }),
                   SizedBox(
                     height: 15,
@@ -153,9 +189,9 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => History(
-                                userId: userId,
-                                userType: userType,
-                              )));
+                                    userId: userId,
+                                    userType: userType,
+                                  )));
                     },
                     title: Row(
                       children: [
@@ -194,7 +230,8 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         )
                       ],
                     ),
-                  ), Divider(
+                  ),
+                  Divider(
                     color: Colors.black,
                   ),
                   ListTile(
@@ -249,6 +286,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -586,7 +624,7 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 width: 20,
                               ),
                               Text(
-                               "washingMachine",
+                                "washingMachine",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -604,14 +642,396 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                     SizedBox(
                       height: 20,
                     ),
+
+                    
+
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[5]['check'] == true) {
+                                      value[5]['check'] = false;
+                                    } else {
+                                      value[5]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[5]['check'] == true
+                                        ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                        : Icon(
+                                      Icons.check,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Mini Refrigerator",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[5]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(5)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[6]['check'] == true) {
+                                      value[6]['check'] = false;
+                                    } else {
+                                      value[6]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[6]['check'] == true
+                                        ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                        : Icon(
+                                      Icons.check,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Freezer",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[6]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(6)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[7]['check'] == true) {
+                                      value[7]['check'] = false;
+                                    } else {
+                                      value[7]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[7]['check'] == true
+                                        ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                        : Icon(
+                                      Icons.check,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Wash Machine with Dryer",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[7]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(7)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[8]['check'] == true) {
+                                      value[8]['check'] = false;
+                                    } else {
+                                      value[8]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[8]['check'] == true
+                                        ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                        : Icon(
+                                      Icons.check,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Water Dispenser",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[8]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(8)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[9]['check'] == true) {
+                                      value[9]['check'] = false;
+                                    } else {
+                                      value[9]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[9]['check'] == true
+                                        ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                        : Icon(
+                                      Icons.check,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Led Tv",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[9]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(9)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[10]['check'] == true) {
+                                      value[10]['check'] = false;
+                                    } else {
+                                      value[10]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[10]['check'] == true
+                                        ? Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    )
+                                        : Icon(
+                                      Icons.check,
+                                      color: Colors.transparent,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Fans",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[10]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(10)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RoundedButton(
-                          height: size.height * 0.05,
+                          height: size.height * 0.06,
                           width: size.width * 0.36,
                           text: "addOther",
-                          fontSize: size.width/23 ,
+                          fontSize: size.width / 23,
                           color: whiteColor,
                           textColor: accountSelectionBackgroundColor,
                           press: () {
@@ -622,9 +1042,9 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                         ),
                         Spacer(),
                         RoundedButton(
-                          height: size.height * 0.05,
+                          height: size.height * 0.06,
                           width: size.width * 0.36,
-                          fontSize: size.width/23 ,
+                          fontSize: size.width / 23,
                           text: "continue",
                           color: yellowColor,
                           textColor: whiteColor,
@@ -635,7 +1055,14 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 value[1]['check'] == true ||
                                 value[2]['check'] == true ||
                                 value[3]['check'] == true ||
-                                value[4]['check'] == true) {
+                                value[4]['check'] == true ||
+                                value[5]['check'] == true ||
+                                value[6]['check'] == true ||
+                                value[7]['check'] == true ||
+                                value[8]['check'] == true ||
+                                value[9]['check'] == true ||
+                                value[10]['check'] == true
+                            ) {
                               value.forEach((element) {
                                 if (element["check"] == true) {
                                   setState(() {
@@ -652,9 +1079,9 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                                 finalWeight = weight.toString();
                                 _showMyDialog(context, tmpArray);
                               });
-                            }
-                           else{
-                             AuthService().displayToastMessage("Please select one Object", context);
+                            } else {
+                              AuthService().displayToastMessage(
+                                  "Please select one Object", context);
                             }
                           },
                         ),
@@ -748,8 +1175,8 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RoundedButton(
-                      height: size.height * 0.05,
-                      width: size.width * 0.25,
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
                       text: "cancel",
                       color: whiteColor,
                       textColor: accountSelectionBackgroundColor,
@@ -759,9 +1186,9 @@ class _ElectronicsSamanState extends State<ElectronicsSaman> {
                     ),
                     Spacer(),
                     RoundedButton(
-                      height: size.height * 0.05,
-                      width: size.width * 0.25,
-                      text:"continue",
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
+                      text: "continue",
                       color: yellowColor,
                       textColor: accountSelectionBackgroundColor,
                       press: () async {

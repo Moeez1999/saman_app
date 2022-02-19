@@ -422,7 +422,7 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                           height: size.height * 0.06,
                           width: size.width * 0.36,
                           fontSize: size.width/20 ,
-                          text: getTranslated(context, 'save'),
+                          text: 'Save',
                           color: yellowColor,
                           textColor: accountSelectionBackgroundColor,
                           press: () async {

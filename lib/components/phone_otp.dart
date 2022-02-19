@@ -332,7 +332,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 .document(val.documents[0].documentID)
                                 .updateData(data)
                                 .then((value) => {
-                                      if (widget.status == "true")
+                                      if (widget.status == "true" || val.documents[0]['status'] == 'true')
                                         {
                                           Navigator.pushAndRemoveUntil(
                                               context,
@@ -370,7 +370,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 .document(val.documents[0].documentID)
                                 .updateData(data)
                                 .then((value) => {
-                                      if (widget.status == "true")
+                                      if (widget.status == "true" || val.documents[0]['status'] == 'true')
                                         {
                                           Navigator.pushAndRemoveUntil(
                                               context,

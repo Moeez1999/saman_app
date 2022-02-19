@@ -9,6 +9,7 @@ import 'package:saman/components/appbar_widget.dart';
 import 'package:saman/services/auth.dart';
 import 'package:saman/views/history/history_screen.dart';
 import 'package:saman/views/business/businessProfile/edit_profile.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 
 class BusinessHomePage extends StatefulWidget {
   @override
@@ -25,12 +26,38 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
   @override
   void initState() {
+<<<<<<< HEAD
     getUserData();
     super.initState();
+=======
+    setState(() {
+      isLoading = true;
+    });
+
+    super.initState();
+    getUserData();
+  }
+
+  Future<void> getUserData() async {
+    await storage.readSecureData("userId").then((value) => {
+          print(value),
+          setState(() {
+            userId = value;
+          })
+        });
+    await storage.readSecureData("userType").then((value) => {
+          print(value),
+          setState(() {
+            userType = value;
+            isLoading = false;
+          })
+        });
+>>>>>>> 198dd4e52d45ea70740906c4eefc5ce9314029a9
   }
 
 
   Widget drawerWidget(userId) {
+    print('User Id is $userId');
     getLocale().then((locale) {
       setState(() {
         _value = locale.languageCode;
@@ -139,6 +166,17 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(

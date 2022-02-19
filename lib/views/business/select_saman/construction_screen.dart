@@ -1,3 +1,4 @@
+import 'package:saman/views/business/place_order/place_order_page.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
@@ -15,30 +16,23 @@ class ConstructionScreen extends StatefulWidget {
 }
 
 class _ConstructionScreenState extends State<ConstructionScreen> {
+  TextEditingController cement = TextEditingController();
+  TextEditingController sand = TextEditingController();
+  TextEditingController stonet = TextEditingController();
+  TextEditingController tiles = TextEditingController();
+  TextEditingController doors = TextEditingController();
+  TextEditingController windows = TextEditingController();
+  TextEditingController steel = TextEditingController();
+  TextEditingController bricks = TextEditingController();
   String selectedElectronics = "Refrigerator";
   SharedPreference storage = SharedPreference();
   String userId;
   String _value = 'en';
   String userType;
   List value = [
-    {
-      "name": "cement",
-      "check": false,
-      "value": 1,
-      "weight": WeightConstants.refrigeratorWeight
-    },
-    {
-      "name": "tiles",
-      "check": false,
-      "value": 1,
-      "weight": WeightConstants.airConditionerWeight
-    },
-    {
-      "name": "doors",
-      "check": false,
-      "value": 1,
-      "weight": WeightConstants.microwaveOvenWeight
-    },
+    {"name": "cement", "check": false, "value": 1, "weight": ''},
+    {"name": "tiles", "check": false, "value": 1, "weight": ""},
+    {"name": "doors", "check": false, "value": 1, "weight": ""},
     {
       "name": "windows",
       "check": false,
@@ -52,10 +46,46 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
       "weight": WeightConstants.washingMachineWeight
     },
     {
+      "name": "steel",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.washingMachineWeight
+    },
+    {
+      "name": "Bricks",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.washingMachineWeight
+    },
+    {
       "name": "crushed stone",
       "check": false,
       "value": 1,
       "weight": WeightConstants.washingMachineWeight
+    },
+    {
+      "name": "Toilet",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.toiletWeight
+    },
+    {
+      "name": "Sink",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.sinkWeight
+    },
+    {
+      "name": "Large Mirror",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.largemirrorWeight
+    },
+    {
+      "name": "Small Mirror",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.smallmirroeWeight
     },
   ];
   var tmpArray = [];
@@ -64,15 +94,23 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
 
   @override
   void initState() {
-    storage.readSecureData("userId").then((value) => {
-      print(value),
-      userId = value,
-    });
-    storage.readSecureData("userType").then((value) => {
-      print(value),
-      userType = value,
-    });
+    getUserData();
     super.initState();
+  }
+
+  Future<void> getUserData() async {
+    await storage.readSecureData("userId").then((value) => {
+          print(value),
+          setState(() {
+            userId = value;
+          })
+        });
+    await storage.readSecureData("userType").then((value) => {
+          print(value),
+          setState(() {
+            userType = value;
+          })
+        });
   }
 
   Widget drawerWidget(userId) {
@@ -84,11 +122,11 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
     return ClipRRect(
       borderRadius: _value == "en"
           ? BorderRadius.only(
-          topRight: Radius.circular(30.0),
-          bottomRight: Radius.circular(30.0))
+              topRight: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0))
           : BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0)),
+              topLeft: Radius.circular(30.0),
+              bottomLeft: Radius.circular(30.0)),
       child: Theme(
         data: ThemeData(canvasColor: Colors.transparent),
         child: Drawer(
@@ -129,22 +167,22 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                               height: 30, width: 30, child: Text(""));
                         return snapshot.data.documents.length == 0
                             ? Container(
-                          child: Center(
-                            child: Text(""),
-                          ),
-                        )
+                                child: Center(
+                                  child: Text(""),
+                                ),
+                              )
                             : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              snapshot.data.documents[0]['businessName'],
-                              style: TextStyle(
-                                  color: yellowColor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        );
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    snapshot.data.documents[0]['businessName'],
+                                    style: TextStyle(
+                                        color: yellowColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              );
                       }),
                   SizedBox(
                     height: 15,
@@ -158,9 +196,9 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => History(
-                                userId: userId,
-                                userType: userType,
-                              )));
+                                    userId: userId,
+                                    userType: userType,
+                                  )));
                     },
                     title: Row(
                       children: [
@@ -170,7 +208,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                         "history",
+                          "history",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -199,7 +237,8 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                         )
                       ],
                     ),
-                  ), Divider(
+                  ),
+                  Divider(
                     color: Colors.black,
                   ),
                   ListTile(
@@ -254,6 +293,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -262,7 +302,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
         drawer: drawerWidget(userId),
         appBar: AppbarWidget(
           check: false,
-          title: "construction",
+          title: "Construction",
         ),
         body: Stack(
           alignment: Alignment.topCenter,
@@ -279,12 +319,12 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
             SingleChildScrollView(
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                     "selectTheObject",
+                      "Select The Object",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: 18,
@@ -296,60 +336,80 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     ),
                     Expanded(
                       flex: 0,
-                      child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            color: selectedColorVehicle,
-                            borderRadius: BorderRadius.circular(10)),
+                      child: Center(
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 9),
-                          child: Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    if (value[0]['check'] == true) {
-                                      value[0]['check'] = false;
-                                    } else {
-                                      value[0]['check'] = true;
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 8),
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: selectedColorVehicle,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 9),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (value[0]['check'] == true) {
+                                        value[0]['check'] = false;
+                                      } else {
+                                        value[0]['check'] = true;
+                                      }
+                                    });
+                                  },
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                          width: 4, color: Colors.yellow),
-                                    ),
-                                    child: value[0]['check'] == true
-                                        ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
-                                        : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
+                                    margin: EdgeInsets.only(left: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                            width: 4, color: Colors.yellow),
+                                      ),
+                                      child: value[0]['check'] == true
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                            )
+                                          : Icon(
+                                              Icons.check,
+                                              color: Colors.transparent,
+                                            ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                "CEMENT",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              Spacer(),
-                              value[0]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(0)
-                            ],
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  "CEMENT",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Spacer(),
+                                Container(
+                                  width: 100,
+                                  child: TextField(
+                                    controller: cement,
+                                    decoration: InputDecoration(
+                                        isDense: true,
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 10.0, horizontal: 16.0),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        fillColor: Color(0xff338B6B),
+                                        filled: true,
+                                        hintText: '0',
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey.shade200)),
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -388,13 +448,13 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     ),
                                     child: value[1]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -409,9 +469,26 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     color: Colors.white),
                               ),
                               Spacer(),
-                              value[1]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(1)
+                              Container(
+                                width: 100,
+                                child: TextField(
+                                  controller: tiles,
+                                  decoration: InputDecoration(
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 16.0),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      fillColor: Color(0xff338B6B),
+                                      filled: true,
+                                      hintText: '0',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey.shade200)),
+                                  keyboardType: TextInputType.number,
+                                  cursorColor: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -451,13 +528,13 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     ),
                                     child: value[2]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -472,9 +549,26 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     color: Colors.white),
                               ),
                               Spacer(),
-                              value[2]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(2)
+                              Container(
+                                width: 100,
+                                child: TextField(
+                                  controller: doors,
+                                  decoration: InputDecoration(
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 16.0),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      fillColor: Color(0xff338B6B),
+                                      filled: true,
+                                      hintText: '0',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey.shade200)),
+                                  keyboardType: TextInputType.number,
+                                  cursorColor: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -514,13 +608,13 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     ),
                                     child: value[3]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -535,14 +629,32 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     color: Colors.white),
                               ),
                               Spacer(),
-                              value[3]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(3)
+                              Container(
+                                width: 100,
+                                child: TextField(
+                                  controller: windows,
+                                  decoration: InputDecoration(
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 16.0),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      fillColor: Color(0xff338B6B),
+                                      filled: true,
+                                      hintText: '0',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey.shade200)),
+                                  keyboardType: TextInputType.number,
+                                  cursorColor: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    ),  SizedBox(
+                    ),
+                    SizedBox(
                       height: 15,
                     ),
                     Expanded(
@@ -576,13 +688,13 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     ),
                                     child: value[4]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -597,14 +709,198 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     color: Colors.white),
                               ),
                               Spacer(),
-                              value[4]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(4)
+                              Container(
+                                width: 100,
+                                child: TextField(
+                                  controller: sand,
+                                  decoration: InputDecoration(
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 10.0, horizontal: 16.0),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      fillColor: Color(0xff338B6B),
+                                      filled: true,
+                                      hintText: '0',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey.shade200)),
+                                  keyboardType: TextInputType.number,
+                                  cursorColor: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    ),  SizedBox(
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Center(
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: selectedColorVehicle,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 9),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (value[5]['check'] == true) {
+                                        value[5]['check'] = false;
+                                      } else {
+                                        value[5]['check'] = true;
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                            width: 4, color: Colors.yellow),
+                                      ),
+                                      child: value[5]['check'] == true
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                            )
+                                          : Icon(
+                                              Icons.check,
+                                              color: Colors.transparent,
+                                            ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  "Steel",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Spacer(),
+                                Container(
+                                  width: 100,
+                                  child: TextField(
+                                    controller: steel,
+                                    decoration: InputDecoration(
+                                        isDense: true,
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 10.0, horizontal: 16.0),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        fillColor: Color(0xff338B6B),
+                                        filled: true,
+                                        hintText: '0',
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey.shade200)),
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Center(
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: selectedColorVehicle,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 9),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (value[7]['check'] == true) {
+                                        value[7]['check'] = false;
+                                      } else {
+                                        value[7]['check'] = true;
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                            width: 4, color: Colors.yellow),
+                                      ),
+                                      child: value[7]['check'] == true
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                            )
+                                          : Icon(
+                                              Icons.check,
+                                              color: Colors.transparent,
+                                            ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  "Bricks",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Spacer(),
+                                Container(
+                                  width: 100,
+                                  child: TextField(
+                                    controller: bricks,
+                                    decoration: InputDecoration(
+                                        isDense: true,
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 10.0, horizontal: 16.0),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        fillColor: Color(0xff338B6B),
+                                        filled: true,
+                                        hintText: '0',
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey.shade200)),
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
                       height: 15,
                     ),
                     Expanded(
@@ -621,10 +917,10 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                               InkWell(
                                 onTap: () {
                                   setState(() {
-                                    if (value[5]['check'] == true) {
-                                      value[5]['check'] = false;
+                                    if (value[8]['check'] == true) {
+                                      value[8]['check'] = false;
                                     } else {
-                                      value[5]['check'] = true;
+                                      value[8]['check'] = true;
                                     }
                                   });
                                 },
@@ -636,15 +932,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                       border: Border.all(
                                           width: 4, color: Colors.yellow),
                                     ),
-                                    child: value[5]['check'] == true
+                                    child: value[8]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -652,16 +948,207 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "CRUSHED STONE",
+                                "Toilet",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
                               Spacer(),
-                              value[5]['check'] == false
+                              Spacer(),
+                              value[8]['check'] == false
                                   ? Container()
-                                  : quantityButtons(5)
+                                  : quantityButtons(8)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[9]['check'] == true) {
+                                      value[9]['check'] = false;
+                                    } else {
+                                      value[9]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[9]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Sand",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              Spacer(),
+                              value[9]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(9)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[10]['check'] == true) {
+                                      value[10]['check'] = false;
+                                    } else {
+                                      value[10]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[10]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Large Mirror",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[10]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(10)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[11]['check'] == true) {
+                                      value[11]['check'] = false;
+                                    } else {
+                                      value[11]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[11]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Small Mirror",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[11]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(11)
                             ],
                           ),
                         ),
@@ -674,7 +1161,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RoundedButton(
-                          height: size.height * 0.05,
+                          height: size.height * 0.06,
                           width: size.width * 0.36,
                           text: "addOther",
                           color: backButtonColor,
@@ -685,7 +1172,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                         ),
                         Spacer(),
                         RoundedButton(
-                          height: size.height * 0.05,
+                          height: size.height * 0.06,
                           width: size.width * 0.36,
                           text: "continue",
                           color: languageSelectColor,
@@ -698,7 +1185,13 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 value[2]['check'] == true ||
                                 value[3]['check'] == true ||
                                 value[4]['check'] == true ||
-                                value[5]['check'] == true) {
+                                value[5]['check'] == true ||
+                                value[6]['check'] == true ||
+                                value[7]['check'] == true ||
+                                value[8]['check'] == true ||
+                                value[9]['check'] == true ||
+                                value[10]['check'] == true ||
+                                value[11]['check'] == true) {
                               value.forEach((element) {
                                 if (element["check"] == true) {
                                   setState(() {
@@ -715,9 +1208,9 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 finalWeight = weight.toString();
                                 _showMyDialog(context, tmpArray);
                               });
-                            }
-                            else{
-                              AuthService().displayToastMessage("Please select one Object", context);
+                            } else {
+                              AuthService().displayToastMessage(
+                                  "Please select one Object", context);
                             }
                           },
                         ),
@@ -766,7 +1259,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                   height: 250.0, // Change as per your requirement
                   width: 300.0,
                   child: ListView.builder(
-                    // physics: NeverScrollableScrollPhysics(),
+                      // physics: NeverScrollableScrollPhysics(),
                       physics: ClampingScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: selectedList.length,
@@ -812,8 +1305,8 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RoundedButton(
-                      height: size.height * 0.05,
-                      width: size.width * 0.25,
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
                       text: "cancel",
                       color: backButtonColor,
                       textColor: Colors.white,
@@ -823,21 +1316,21 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     ),
                     Spacer(),
                     RoundedButton(
-                      height: size.height * 0.05,
-                      width: size.width * 0.25,
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
                       text: "continue",
                       color: languageSelectColor,
                       textColor: Colors.white,
                       press: () async {
-                        // Navigator.pop(context);
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => PlaceOrderPage(
-                        //           name: selectedList,
-                        //           weightOO: finalWeight,
-                        //           screenName: "electronics",
-                        //         )));
+                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlaceOrderPage(
+                                      name: selectedList,
+                                      weightOO: finalWeight,
+                                      screenName: "electronics",
+                                    )));
                       },
                     ),
                   ],
@@ -855,29 +1348,29 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
       children: [
         value[index]['value'] == 1
             ? Container(
-          height: 25,
-          width: 25,
-        )
+                height: 25,
+                width: 25,
+              )
             : InkWell(
-          onTap: () {
-            setState(() {
-              value[index]['value']--;
-            });
-          },
-          child: Container(
-            height: 25,
-            width: 25,
-            decoration: BoxDecoration(
-                color: yellowColor,
-                borderRadius: BorderRadius.circular(5)),
-            child: Center(
+                onTap: () {
+                  setState(() {
+                    value[index]['value']--;
+                  });
+                },
                 child: Container(
-                  width: 10,
-                  height: 2,
-                  color: selectedColorVehicle,
-                )),
-          ),
-        ),
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                      color: yellowColor,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Center(
+                      child: Container(
+                    width: 10,
+                    height: 2,
+                    color: selectedColorVehicle,
+                  )),
+                ),
+              ),
         SizedBox(
           width: 4,
         ),
@@ -895,29 +1388,29 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
         ),
         value[index]['value'] == 99
             ? Container(
-          height: 25,
-          width: 25,
-        )
+                height: 25,
+                width: 25,
+              )
             : InkWell(
-          onTap: () {
-            setState(() {
-              value[index]['value']++;
-            });
-          },
-          child: Container(
-            height: 25,
-            width: 25,
-            decoration: BoxDecoration(
-                color: yellowColor,
-                borderRadius: BorderRadius.circular(5)),
-            child: Center(
-                child: Icon(
-                  Icons.add,
-                  size: 20,
-                  color: selectedColorVehicle,
-                )),
-          ),
-        ),
+                onTap: () {
+                  setState(() {
+                    value[index]['value']++;
+                  });
+                },
+                child: Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                      color: yellowColor,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Center(
+                      child: Icon(
+                    Icons.add,
+                    size: 20,
+                    color: selectedColorVehicle,
+                  )),
+                ),
+              ),
         SizedBox(
           width: 8,
         )
