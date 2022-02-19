@@ -1,3 +1,4 @@
+import 'package:saman/views/business/place_order/place_order_page.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
@@ -64,15 +65,23 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
 
   @override
   void initState() {
-    storage.readSecureData("userId").then((value) => {
-      print(value),
-      userId = value,
-    });
-    storage.readSecureData("userType").then((value) => {
-      print(value),
-      userType = value,
-    });
+    getUserData();
     super.initState();
+  }
+
+  Future<void> getUserData() async {
+    await storage.readSecureData("userId").then((value) => {
+      print(value),
+      setState(() {
+        userId = value;
+      })
+    });
+    await storage.readSecureData("userType").then((value) => {
+      print(value),
+      setState(() {
+        userType = value;
+      })
+    });
   }
 
   Widget drawerWidget(userId) {
@@ -674,7 +683,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RoundedButton(
-                          height: size.height * 0.05,
+                          height: size.height * 0.06,
                           width: size.width * 0.36,
                           text: "addOther",
                           color: backButtonColor,
@@ -685,13 +694,14 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         ),
                         Spacer(),
                         RoundedButton(
-                          height: size.height * 0.05,
+                          height: size.height * 0.06,
                           width: size.width * 0.36,
                           text: "continue",
                           color: languageSelectColor,
                           textColor: Colors.white,
                           press: () async {
                             weightList.clear();
+                            print('Value Check is ${value[0]['check']}');
                             tmpArray.clear();
                             if (value[0]['check'] == true ||
                                 value[1]['check'] == true ||
@@ -812,8 +822,8 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RoundedButton(
-                      height: size.height * 0.05,
-                      width: size.width * 0.25,
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
                       text: "cancel",
                       color: backButtonColor,
                       textColor: Colors.white,
@@ -823,21 +833,21 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                     ),
                     Spacer(),
                     RoundedButton(
-                      height: size.height * 0.05,
-                      width: size.width * 0.25,
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
                       text: "continue",
                       color: languageSelectColor,
                       textColor: Colors.white,
                       press: () async {
-                        // Navigator.pop(context);
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => PlaceOrderPage(
-                        //           name: selectedList,
-                        //           weightOO: finalWeight,
-                        //           screenName: "electronics",
-                        //         )));
+                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PlaceOrderPage(
+                                  name: selectedList,
+                                  weightOO: finalWeight,
+                                  screenName: "electronics",
+                                )));
                       },
                     ),
                   ],

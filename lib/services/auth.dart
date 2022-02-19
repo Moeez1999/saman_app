@@ -12,6 +12,7 @@ import 'package:saman/views/driver/driverRegistration/driver_registration_screen
 import 'package:saman/components/phone_otp.dart';
 import 'dart:async';
 import 'package:saman/views/language_select/language_screen.dart';
+import 'package:saman/views/role/role_selection.dart';
 import 'package:saman/views/welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:saman/localization/localization_constants.dart';
@@ -106,9 +107,22 @@ class AuthService {
                                                       })
                                                   .then((value) => {
                                                         isLoading = false,
-                                                AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                                Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          RoleSelection(
+                                                            userId: value1
+                                                                .documents[
+                                                            0]['userId'] +
+                                                                1.toString(),
+                                                            status: "false",
+                                                          ),
+                                                    ),
+                                                        (route) => false)
                                                         // _showMyDialog(context),
-                                                      }),
+                                                      },
+                                              ),
                                             })
                                         .catchError((e) {
                                           isLoading = false;
@@ -122,85 +136,64 @@ class AuthService {
                           if (!value.documents[0].data.containsKey('userType'))
                             {
                               isLoading = false,
-                              if(value.documents[0]['status'] == 'true')
-                                {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LanguageScreen(
-                                            userId: value.documents[0]['userId']
-                                                .toString(),
-                                            status: value.documents[0]['status']
-                                                .toString(),
-                                          )),
-                                          (route) => false),
-                                }
-                              else
-                                {
-                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                                }
-
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RoleSelection(
+                                        userId: value.documents[0]
+                                        ['userId']
+                                            .toString(),
+                                        status: value.documents[0]
+                                        ['status']
+                                            .toString(),
+                                      )),
+                                      (route) => false),
                             }
                           else if (!value.documents[0].data
                               .containsKey('firstName'))
                             {
                               isLoading = false,
-                              if(value.documents[0]['status'] == 'true')
-                                {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => value.documents[0]
-                                          ['userType'] ==
-                                              "Business"
-                                              ? BusinessRegistrationScreen(
-                                            userId: value.documents[0]
-                                            ['userId']
-                                                .toString(),
-                                            status: value.documents[0]
-                                            ['status']
-                                                .toString(),
-                                          )
-                                              : DriverRegistrationScreen(
-                                            userId: value.documents[0]
-                                            ['userId']
-                                                .toString(),
-                                            status: value.documents[0]
-                                            ['status']
-                                                .toString(),
-                                          )),
-                                          (route) => false),
-                                }
-                              else
-                                {
-                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                                }
-
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      value.documents[0]['userType'] ==
+                                          "Business"
+                                          ? BusinessRegistrationScreen(
+                                        userId: value.documents[0]
+                                        ['userId']
+                                            .toString(),
+                                        status: value.documents[0]
+                                        ['status']
+                                            .toString(),
+                                      )
+                                          : DriverRegistrationScreen(
+                                        userId: value.documents[0]
+                                        ['userId']
+                                            .toString(),
+                                        status: value.documents[0]
+                                        ['status']
+                                            .toString(),
+                                      )),
+                                      (route) => false),
                             }
                           else if (!value.documents[0].data
                               .containsKey('isVerified'))
                             {
                               isLoading = false,
-                              if(value.documents[0]['status'] == 'true')
-                                {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => OtpScreen(
-                                            name: value.documents[0]
-                                            ['userType'],
-                                            userId: value.documents[0]['userId']
-                                                .toString(),
-                                            status: value.documents[0]
-                                            ['status'],
-                                          )),
-                                          (route) => false),
-                                }
-                              else
-                                {
-                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                                }
-
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OtpScreen(
+                                        name: value.documents[0]
+                                        ['userType'],
+                                        userId: value.documents[0]
+                                        ['userId']
+                                            .toString(),
+                                        status: value.documents[0]
+                                        ['status'],
+                                      )),
+                                      (route) => false),
                             }
                           else
                             {
@@ -209,23 +202,23 @@ class AuthService {
                               secureStorage.writeSecureData('userType',
                                   "${value.documents[0]['userType']}"),
                               isLoading = false,
-
-                              if(value.documents[0]['status']=="true"){
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                        value.documents[0]
-                                        ['userType'] ==
-                                            "Business"
-                                            ? BusinessHomePage(
-                                        )
-                                            : DriverHomePage()),
-                                        (route) => false),
-                              }
+                              if (value.documents[0]['status'] == "true")
+                                {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              value.documents[0]['userType'] ==
+                                                      "Business"
+                                                  ? BusinessHomePage()
+                                                  : DriverHomePage()),
+                                      (route) => false),
+                                }
                               else
                                 {
-                                  AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                                  AuthService().displayToastMessage(
+                                      "Your request is send to admin for approved",
+                                      context)
                                 }
                             }
                         }
@@ -309,11 +302,26 @@ class AuthService {
                                                               1
                                                     })
                                                   })
-                                              .then((value) => {
-                                                    isLoading = false,
-                                            AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                                                    // _showMyDialog(context),
-                                                  }),
+                                              .then(
+                                                (v) => {
+                                                  isLoading = false,
+                                                  Navigator.pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            RoleSelection(
+                                                          userId: value1
+                                                                      .documents[
+                                                                  0]['userId'] +
+                                                              1.toString(),
+                                                          status: "false",
+                                                        ),
+                                                      ),
+                                                      (route) => false),
+
+                                                  // _showMyDialog(context),
+                                                },
+                                              ),
                                         })
                                     .catchError((e) {
                                       isLoading = false;
@@ -329,79 +337,56 @@ class AuthService {
                         {
                           print(value.documents[0]['userId'].toString()),
                           isLoading = false,
-                          if(value.documents[0]['status'] == 'true')
-                            {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LanguageScreen(
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RoleSelection(
                                         userId: value.documents[0]['userId']
                                             .toString(),
                                         status: value.documents[0]['status']
                                             .toString(),
                                       )),
-                                      (route) => false),
-                            }
-                          else
-                            {
-                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                            }
-
+                              (route) => false),
                         }
                       else if (!value.documents[0].data
                           .containsKey('firstName'))
                         {
                           isLoading = false,
-                          if(value.documents[0]['status'] == 'true')
-                            {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => value.documents[0]
-                                      ['userType'] ==
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => value.documents[0]
+                                              ['userType'] ==
                                           "Business"
-                                          ? BusinessRegistrationScreen(
-                                        userId: value.documents[0]['userId']
-                                            .toString(),
-                                        status: value.documents[0]['status']
-                                            .toString(),
-                                      )
-                                          : DriverRegistrationScreen(
-                                        userId: value.documents[0]['userId']
-                                            .toString(),
-                                        status: value.documents[0]['status']
-                                            .toString(),
-                                      )),
-                                      (route) => false),
-                            }
-                          else
-                            {
-                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                            }
-
+                                      ? BusinessRegistrationScreen(
+                                          userId: value.documents[0]['userId']
+                                              .toString(),
+                                          status: value.documents[0]['status']
+                                              .toString(),
+                                        )
+                                      : DriverRegistrationScreen(
+                                          userId: value.documents[0]['userId']
+                                              .toString(),
+                                          status: value.documents[0]['status']
+                                              .toString(),
+                                        )),
+                              (route) => false),
                         }
                       else if (!value.documents[0].data
                           .containsKey('isVerified'))
                         {
                           isLoading = false,
-                          if(value.documents[0]['status'] == 'true')
-                            {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => OtpScreen(
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OtpScreen(
                                         name: value.documents[0]['userType'],
                                         userId: value.documents[0]['userId']
                                             .toString(),
                                         status: value.documents[0]['status']
                                             .toString(),
                                       )),
-                                      (route) => false),
-                            }
-                          else
-                            {
-                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                            }
+                              (route) => false),
                         }
                       else
                         {
@@ -411,22 +396,23 @@ class AuthService {
                               'userType', "${value.documents[0]['userType']}"),
                           fcmToken1(value.documents[0]['userId'].toString()),
                           isLoading = false,
-                          if(value.documents[0]['status'] == 'true')
+                          if (value.documents[0]['status'] == 'true')
                             {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => value.documents[0]
-                                      ['userType'] ==
-                                          "Business"
+                                                  ['userType'] ==
+                                              "Business"
                                           ? BusinessHomePage()
                                           : DriverHomePage())),
                             }
                           else
                             {
-                              AuthService().displayToastMessage("Your request is send to admin for approved", context)
+                              AuthService().displayToastMessage(
+                                  "Your request is send to admin for approved",
+                                  context)
                             }
-
                         }
                     }
                 });
@@ -464,81 +450,58 @@ class AuthService {
                 if (!value.documents[0].data.containsKey('userType'))
                   {
                     isLoading = false,
-                    if(value.documents[0]['status'] == 'true')
-                      {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LanguageScreen(
-                                  userId:
-                                  value.documents[0]['userId'].toString(),
-                                  status: value.documents[0]['status']
-                                      .toString(),
-                                )),
-                                (route) => false),
-                      }
-                    else
-                      {
-                        AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                      }
-
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RoleSelection(
+                              userId: value.documents[0]['userId']
+                                  .toString(),
+                              status: value.documents[0]['status']
+                                  .toString(),
+                            )),
+                            (route) => false),
                   }
                 else if (!value.documents[0].data.containsKey('firstName'))
                   {
                     isLoading = false,
-                    if(value.documents[0]['status'] == 'true')
-                      {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                value.documents[0]['userType'] == "Business"
-                                    ? BusinessRegistrationScreen(
-                                  userId: value.documents[0]['userId']
-                                      .toString(),
-                                  status: value.documents[0]['status']
-                                      .toString(),
-                                )
-                                    : DriverRegistrationScreen(
-                                  userId: value.documents[0]['userId']
-                                      .toString(),
-                                  status: value.documents[0]['status']
-                                      .toString(),
-                                )),
-                                (route) => false),
-                      }
-                    else
-                      {
-                        AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                      }
-
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                            value.documents[0]['userType'] == "Business"
+                                ? BusinessRegistrationScreen(
+                              userId: value.documents[0]['userId']
+                                  .toString(),
+                              status: value.documents[0]['status']
+                                  .toString(),
+                            )
+                                : DriverRegistrationScreen(
+                              userId: value.documents[0]['userId']
+                                  .toString(),
+                              status: value.documents[0]['status']
+                                  .toString(),
+                            )),
+                            (route) => false),
                   }
                 else if (!value.documents[0].data.containsKey('isVerified'))
                   {
                     isLoading = false,
-                    if(value.documents[0]['status'] == 'true')
-                      {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OtpScreen(
-                                  name: value.documents[0]['userType'],
-                                  userId:
-                                  value.documents[0]['userId'].toString(),
-                                  status: value.documents[0]['status']
-                                      .toString(),
-                                )),
-                                (route) => false),
-                      }
-                    else
-                      {
-                        AuthService().displayToastMessage("Your request is send to admin for approved", context)
-                      }
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OtpScreen(
+                              name: value.documents[0]['userType'],
+                              userId: value.documents[0]['userId']
+                                  .toString(),
+                              status: value.documents[0]['status']
+                                  .toString(),
+                            )),
+                            (route) => false),
                   }
                 else
                   {
                     isLoading = false,
-                    if(value.documents[0]['status'] == 'true')
+                    if (value.documents[0]['status'] == 'true')
                       {
                         fcmToken1(value.documents[0]['userId'].toString()),
                         secureStorage.writeSecureData(
@@ -549,13 +512,14 @@ class AuthService {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                value.documents[0]['userType'] == "Business"
-                                    ? BusinessHomePage()
-                                    : DriverHomePage()),
-                                (route) => false),
+                                    value.documents[0]['userType'] == "Business"
+                                        ? BusinessHomePage()
+                                        : DriverHomePage()),
+                            (route) => false),
                       }
                     else
                       {
+
                         AuthService().displayToastMessage(
                             "Your request is send to admin for approved",
                             context)

@@ -9,6 +9,7 @@ import 'package:saman/components/appbar_widget.dart';
 import 'package:saman/services/auth.dart';
 import 'package:saman/views/history/history_screen.dart';
 import 'package:saman/views/business/businessProfile/edit_profile.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 
 class BusinessHomePage extends StatefulWidget {
   @override
@@ -25,20 +26,32 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
   @override
   void initState() {
-    isLoading = true;
-    storage.readSecureData("userId").then((value) => {
-          print(value),
-          userId = value,
-          isLoading = false,
-        });
-    storage.readSecureData("userType").then((value) => {
-          print(value),
-          userType = value,
-        });
+    setState(() {
+      isLoading = true;
+    });
+
     super.initState();
+    getUserData();
+  }
+
+  Future<void> getUserData() async {
+    await storage.readSecureData("userId").then((value) => {
+          print(value),
+          setState(() {
+            userId = value;
+          })
+        });
+    await storage.readSecureData("userType").then((value) => {
+          print(value),
+          setState(() {
+            userType = value;
+            isLoading = false;
+          })
+        });
   }
 
   Widget drawerWidget(userId) {
+    print('User Id is $userId');
     getLocale().then((locale) {
       setState(() {
         _value = locale.languageCode;
@@ -147,6 +160,17 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(
@@ -164,12 +188,16 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                         )
                       ],
                     ),
-                  ), Divider(
+                  ),
+                  Divider(
                     color: Colors.black,
                   ),
                   ListTile(
-                    onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfileBusiness()));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfileBusiness()));
                     },
                     title: Row(
                       children: [
@@ -236,7 +264,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
           drawer: drawerWidget(userId),
           appBar: AppbarWidget(
             check: true,
-            title:"businessHomePage",
+            title: "businessHomePage",
           ),
           body: Stack(
             alignment: Alignment.topCenter,
@@ -444,7 +472,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
   Widget orderTile(String orderId, deliveryLocation, status, size, price) {
     return Container(
       decoration: BoxDecoration(
-          color:status == "waiting..." ? yellowColor : selectedColorVehicle, borderRadius: BorderRadius.circular(10)),
+          color: status == "waiting..." ? yellowColor : selectedColorVehicle,
+          borderRadius: BorderRadius.circular(10)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
         child: Column(
@@ -469,8 +498,9 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor
-                      ),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 2.5,
@@ -478,12 +508,16 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                     deliveryLocation,
                     softWrap: false,
                     overflow: TextOverflow.fade,
-                    style: TextStyle(fontSize: 16, color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: status == "waiting..."
+                            ? selectedColorVehicle
+                            : yellowColor),
                   ),
                 ),
                 Spacer(),
                 Container(
-                  width: MediaQuery.of(context).size.width /9,
+                  width: MediaQuery.of(context).size.width / 9,
                   child: Text(
                     "status",
                     // getTranslated(context, 'status'),
@@ -492,7 +526,9 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                        color: status == "waiting..."
+                            ? selectedColorVehicle
+                            : yellowColor),
                   ),
                 ),
                 Text(
@@ -515,14 +551,18 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
                 Text(
                   size + 'kg',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
                 Spacer(),
                 Text(
@@ -531,7 +571,9 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
               ],
             ), //text2

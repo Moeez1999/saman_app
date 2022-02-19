@@ -29,15 +29,23 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
 
   @override
   void initState() {
-    storage.readSecureData("userId").then((value) => {
-          print(value),
-          userId = value,
-        });
-    storage.readSecureData("userType").then((value) => {
-      print(value),
-      userType = value,
-    });
+    getUserData();
     super.initState();
+  }
+
+  Future<void> getUserData() async {
+    await storage.readSecureData("userId").then((value) => {
+      print(value),
+      setState(() {
+        userId = value;
+      })
+    });
+    await storage.readSecureData("userType").then((value) => {
+      print(value),
+      setState(() {
+        userType = value;
+      })
+    });
   }
 
   Widget drawerWidget(userId) {
@@ -455,7 +463,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                   ),
                   Center(
                     child: RoundedButton(
-                      height: size.height * 0.05,
+                      height: size.height * 0.06,
                       width: size.width * 0.36,
                       text: "confirm",
                       color: whiteColor,

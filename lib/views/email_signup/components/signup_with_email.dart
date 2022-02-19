@@ -11,6 +11,7 @@ import 'package:saman/util/validate_email.dart';
 import 'package:saman/util/validate_non_empty.dart';
 import 'package:saman/util/validate_password.dart';
 import 'package:saman/views/language_select/language_screen.dart';
+import 'package:saman/views/role/role_selection.dart';
 import 'package:saman/views/welcome/components/background.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'dart:async';
@@ -275,37 +276,41 @@ class EmailSignUpState extends State<EmailSignUp> {
                       Firestore.instance
                           .collection("userList")
                           .getDocuments()
-                          .then((value1) => {
-                                secureStorage.writeSecureData('userId',
-                                    "${value1.documents[0]['userId'] + 1}"),
-                                Firestore.instance
-                                    .collection("userList")
-                                    .document(value1.documents[0].documentID)
-                                    .updateData({
-                                  "userId": value1.documents[0]['userId'] + 1
-                                }),
-                                Firestore.instance
-                                    .collection("phoneNumberUsers")
-                                    .document()
-                                    .setData({
-                                  "status" : "false",
-                                  "userId": value1.documents[0]['userId'] + 1,
-                                  "number":
-                                      selectedCountryCode + phone.text.trim(),
-                                  'password': password.text
-                                }).then((value) => {
-                                          isLoading = false,
-                                          Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      LanguageScreen(
-                                                        userId:
-                                                            "${value1.documents[0]['userId'] + 1}",
-                                                      )),
-                                              (route) => false),
-                                        })
-                              })
+                          .then(
+                            (value1) => {
+                              secureStorage.writeSecureData('userId',
+                                  "${value1.documents[0]['userId'] + 1}"),
+                              Firestore.instance
+                                  .collection("userList")
+                                  .document(value1.documents[0].documentID)
+                                  .updateData({
+                                "userId": value1.documents[0]['userId'] + 1
+                              }),
+                              Firestore.instance
+                                  .collection("phoneNumberUsers")
+                                  .document()
+                                  .setData({
+                                "status": "false",
+                                "userId": value1.documents[0]['userId'] + 1,
+                                "number":
+                                    selectedCountryCode + phone.text.trim(),
+                                'password': password.text
+                              }).then(
+                                (value) => {
+                                  isLoading = false,
+                                  Navigator.pushAndRemoveUntil(context,
+                                      MaterialPageRoute(
+                                    builder: (context) {
+                                      return RoleSelection(
+                                        userId: value1.documents[0]['userId'],
+                                        status: "false",
+                                      );
+                                    },
+                                  ), (route) => false),
+                                },
+                              )
+                            },
+                          )
                     })
                 .catchError((e) {
                   isLoading = false;
