@@ -23,7 +23,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
   String userType;
   List value = [
     {
-      "name": "Sofa",
+      "name": "Single Sofa",
       "check": false,
       "value": 1,
       "weight": WeightConstants.refrigeratorWeight
@@ -32,13 +32,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
       "name": "Chair",
       "check": false,
       "value": 1,
-      "weight": WeightConstants.airConditionerWeight
-    },
-    {
-      "name": "Bed",
-      "check": false,
-      "value": 1,
-      "weight": WeightConstants.microwaveOvenWeight
+      "weight": WeightConstants.chairWeight
     },
     {
       "name": "Table",
@@ -53,10 +47,82 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
       "weight": WeightConstants.washingMachineWeight
     },
     {
-      "name": "Dressing",
+      "name": "Dressing Table",
       "check": false,
       "value": 1,
-      "weight": WeightConstants.washingMachineWeight
+      "weight": WeightConstants.dressingtableWeight
+    },
+    {
+      "name": "Double Bed",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.doublebedWeight
+    },
+    {
+      "name": "King Size Bed",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.kingsizebedWeight
+    },
+    {
+      "name": "Single Bed",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.singlebedWeight
+    },
+    {
+      "name": "2 Seater Sofa",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.twoseatersofaWeight
+    },
+    {
+      "name": "3 Seater Sofa",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.threeseatersofaWeight
+    },
+    {
+      "name": "Dining Table",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.diningtableWeight
+    },
+    {
+      "name": "Bed Side Table",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.bedsidetableWeight
+    },
+    {
+      "name": "Wardrobe",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.wardrobeWeight
+    },
+    {
+      "name": "Shelf",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.shelfWeight
+    },
+    {
+      "name": "Single Matress",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.singlematressWeight
+    },
+    {
+      "name": "Doubel Matress",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.doublematressWeight
+    },
+    {
+      "name": "King Size Matress",
+      "check": false,
+      "value": 1,
+      "weight": WeightConstants.kingsizematressWeight
     },
   ];
   var tmpArray = [];
@@ -71,17 +137,17 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
 
   Future<void> getUserData() async {
     await storage.readSecureData("userId").then((value) => {
-      print(value),
-      setState(() {
-        userId = value;
-      })
-    });
+          print(value),
+          setState(() {
+            userId = value;
+          })
+        });
     await storage.readSecureData("userType").then((value) => {
-      print(value),
-      setState(() {
-        userType = value;
-      })
-    });
+          print(value),
+          setState(() {
+            userType = value;
+          })
+        });
   }
 
   Widget drawerWidget(userId) {
@@ -93,11 +159,11 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
     return ClipRRect(
       borderRadius: _value == "en"
           ? BorderRadius.only(
-          topRight: Radius.circular(30.0),
-          bottomRight: Radius.circular(30.0))
+              topRight: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0))
           : BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0)),
+              topLeft: Radius.circular(30.0),
+              bottomLeft: Radius.circular(30.0)),
       child: Theme(
         data: ThemeData(canvasColor: Colors.transparent),
         child: Drawer(
@@ -138,22 +204,22 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                               height: 30, width: 30, child: Text(""));
                         return snapshot.data.documents.length == 0
                             ? Container(
-                          child: Center(
-                            child: Text(""),
-                          ),
-                        )
+                                child: Center(
+                                  child: Text(""),
+                                ),
+                              )
                             : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              snapshot.data.documents[0]['businessName'],
-                              style: TextStyle(
-                                  color: yellowColor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        );
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    snapshot.data.documents[0]['businessName'],
+                                    style: TextStyle(
+                                        color: yellowColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              );
                       }),
                   SizedBox(
                     height: 15,
@@ -167,9 +233,9 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => History(
-                                userId: userId,
-                                userType: userType,
-                              )));
+                                    userId: userId,
+                                    userType: userType,
+                                  )));
                     },
                     title: Row(
                       children: [
@@ -208,7 +274,8 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         )
                       ],
                     ),
-                  ), Divider(
+                  ),
+                  Divider(
                     color: Colors.black,
                   ),
                   ListTile(
@@ -263,6 +330,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -288,7 +356,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
             SingleChildScrollView(
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -334,13 +402,13 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                     ),
                                     child: value[0]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -348,7 +416,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Sofa",
+                                "Single Sofa",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -397,13 +465,13 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                     ),
                                     child: value[1]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -411,7 +479,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 width: 20,
                               ),
                               Text(
-                              "Chair",
+                                "Chair",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -460,13 +528,13 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                     ),
                                     child: value[2]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -474,7 +542,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Bed",
+                                "Table",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -523,13 +591,13 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                     ),
                                     child: value[3]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -537,7 +605,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Table",
+                                "ShowCase",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -551,7 +619,8 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                           ),
                         ),
                       ),
-                    ),  SizedBox(
+                    ),
+                    SizedBox(
                       height: 15,
                     ),
                     Expanded(
@@ -585,13 +654,13 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                     ),
                                     child: value[4]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -599,7 +668,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Showcase",
+                                "Dressing Table",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -613,7 +682,8 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                           ),
                         ),
                       ),
-                    ),  SizedBox(
+                    ),
+                    SizedBox(
                       height: 15,
                     ),
                     Expanded(
@@ -647,13 +717,13 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                     ),
                                     child: value[5]['check'] == true
                                         ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
                                         : Icon(
-                                      Icons.check,
-                                      color: Colors.transparent,
-                                    ),
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -661,7 +731,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Dressing",
+                                "Double Bed",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -676,6 +746,1012 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         ),
                       ),
                     ),
+
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[6]['check'] == true) {
+                                      value[6]['check'] = false;
+                                    } else {
+                                      value[6]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[6]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "King Size Bed",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[6]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(6)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[7]['check'] == true) {
+                                      value[7]['check'] = false;
+                                    } else {
+                                      value[7]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[7]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Single Bed",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[7]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(7)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[8]['check'] == true) {
+                                      value[8]['check'] = false;
+                                    } else {
+                                      value[8]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[8]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "2 Seater Sofa",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[8]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(8)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[9]['check'] == true) {
+                                      value[9]['check'] = false;
+                                    } else {
+                                      value[9]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[9]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "3 Seater Sofa",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[9]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(9)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[10]['check'] == true) {
+                                      value[10]['check'] = false;
+                                    } else {
+                                      value[10]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[10]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Dining Table",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[10]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(10)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[11]['check'] == true) {
+                                      value[11]['check'] = false;
+                                    } else {
+                                      value[11]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[11]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Bed Side Table",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[11]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(11)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[12]['check'] == true) {
+                                      value[12]['check'] = false;
+                                    } else {
+                                      value[12]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[12]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Wardrobe",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[12]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(12)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[13]['check'] == true) {
+                                      value[13]['check'] = false;
+                                    } else {
+                                      value[13]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[13]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Shelf",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[13]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(13)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[14]['check'] == true) {
+                                      value[14]['check'] = false;
+                                    } else {
+                                      value[14]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[14]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Single Matress",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[14]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(14)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[15]['check'] == true) {
+                                      value[15]['check'] = false;
+                                    } else {
+                                      value[15]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[15]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Double Matress",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[15]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(15)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[16]['check'] == true) {
+                                      value[16]['check'] = false;
+                                    } else {
+                                      value[16]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[16]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "King Size Matress",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              value[16]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(16)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Expanded(
+                    //   flex: 0,
+                    //   child: Container(
+                    //     height: 60,
+                    //     decoration: BoxDecoration(
+                    //         color: selectedColorVehicle,
+                    //         borderRadius: BorderRadius.circular(10)),
+                    //     child: Container(
+                    //       margin: EdgeInsets.symmetric(horizontal: 9),
+                    //       child: Row(
+                    //         children: [
+                    //           InkWell(
+                    //             onTap: () {
+                    //               setState(() {
+                    //                 if (value[1]['check'] == true) {
+                    //                   value[1]['check'] = false;
+                    //                 } else {
+                    //                   value[1]['check'] = true;
+                    //                 }
+                    //               });
+                    //             },
+                    //             child: Container(
+                    //               margin: EdgeInsets.only(left: 8),
+                    //               child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(8),
+                    //                   border: Border.all(
+                    //                       width: 4, color: Colors.yellow),
+                    //                 ),
+                    //                 child: value[1]['check'] == true
+                    //                     ? Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.white,
+                    //                       )
+                    //                     : Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.transparent,
+                    //                       ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 20,
+                    //           ),
+                    //           Text(
+                    //             "Chair",
+                    //             style: TextStyle(
+                    //                 fontSize: 16,
+                    //                 fontWeight: FontWeight.bold,
+                    //                 color: Colors.white),
+                    //           ),
+                    //           Spacer(),
+                    //           value[1]['check'] == false
+                    //               ? Container()
+                    //               : quantityButtons(1)
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    // Expanded(
+                    //   flex: 0,
+                    //   child: Container(
+                    //     height: 60,
+                    //     decoration: BoxDecoration(
+                    //         color: selectedColorVehicle,
+                    //         borderRadius: BorderRadius.circular(10)),
+                    //     child: Container(
+                    //       margin: EdgeInsets.symmetric(horizontal: 9),
+                    //       child: Row(
+                    //         children: [
+                    //           InkWell(
+                    //             onTap: () {
+                    //               setState(() {
+                    //                 if (value[2]['check'] == true) {
+                    //                   value[2]['check'] = false;
+                    //                 } else {
+                    //                   value[2]['check'] = true;
+                    //                 }
+                    //               });
+                    //             },
+                    //             child: Container(
+                    //               margin: EdgeInsets.only(left: 8),
+                    //               child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(8),
+                    //                   border: Border.all(
+                    //                       width: 4, color: Colors.yellow),
+                    //                 ),
+                    //                 child: value[2]['check'] == true
+                    //                     ? Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.white,
+                    //                       )
+                    //                     : Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.transparent,
+                    //                       ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 20,
+                    //           ),
+                    //           Text(
+                    //             "Bed",
+                    //             style: TextStyle(
+                    //                 fontSize: 16,
+                    //                 fontWeight: FontWeight.bold,
+                    //                 color: Colors.white),
+                    //           ),
+                    //           Spacer(),
+                    //           value[2]['check'] == false
+                    //               ? Container()
+                    //               : quantityButtons(2)
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    // Expanded(
+                    //   flex: 0,
+                    //   child: Container(
+                    //     height: 60,
+                    //     decoration: BoxDecoration(
+                    //         color: selectedColorVehicle,
+                    //         borderRadius: BorderRadius.circular(10)),
+                    //     child: Container(
+                    //       margin: EdgeInsets.symmetric(horizontal: 9),
+                    //       child: Row(
+                    //         children: [
+                    //           InkWell(
+                    //             onTap: () {
+                    //               setState(() {
+                    //                 if (value[3]['check'] == true) {
+                    //                   value[3]['check'] = false;
+                    //                 } else {
+                    //                   value[3]['check'] = true;
+                    //                 }
+                    //               });
+                    //             },
+                    //             child: Container(
+                    //               margin: EdgeInsets.only(left: 8),
+                    //               child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(8),
+                    //                   border: Border.all(
+                    //                       width: 4, color: Colors.yellow),
+                    //                 ),
+                    //                 child: value[3]['check'] == true
+                    //                     ? Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.white,
+                    //                       )
+                    //                     : Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.transparent,
+                    //                       ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 20,
+                    //           ),
+                    //           Text(
+                    //             "Table",
+                    //             style: TextStyle(
+                    //                 fontSize: 16,
+                    //                 fontWeight: FontWeight.bold,
+                    //                 color: Colors.white),
+                    //           ),
+                    //           Spacer(),
+                    //           value[3]['check'] == false
+                    //               ? Container()
+                    //               : quantityButtons(3)
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    // Expanded(
+                    //   flex: 0,
+                    //   child: Container(
+                    //     height: 60,
+                    //     decoration: BoxDecoration(
+                    //         color: selectedColorVehicle,
+                    //         borderRadius: BorderRadius.circular(10)),
+                    //     child: Container(
+                    //       margin: EdgeInsets.symmetric(horizontal: 9),
+                    //       child: Row(
+                    //         children: [
+                    //           InkWell(
+                    //             onTap: () {
+                    //               setState(() {
+                    //                 if (value[4]['check'] == true) {
+                    //                   value[4]['check'] = false;
+                    //                 } else {
+                    //                   value[4]['check'] = true;
+                    //                 }
+                    //               });
+                    //             },
+                    //             child: Container(
+                    //               margin: EdgeInsets.only(left: 8),
+                    //               child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(8),
+                    //                   border: Border.all(
+                    //                       width: 4, color: Colors.yellow),
+                    //                 ),
+                    //                 child: value[4]['check'] == true
+                    //                     ? Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.white,
+                    //                       )
+                    //                     : Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.transparent,
+                    //                       ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 20,
+                    //           ),
+                    //           Text(
+                    //             "Showcase",
+                    //             style: TextStyle(
+                    //                 fontSize: 16,
+                    //                 fontWeight: FontWeight.bold,
+                    //                 color: Colors.white),
+                    //           ),
+                    //           Spacer(),
+                    //           value[4]['check'] == false
+                    //               ? Container()
+                    //               : quantityButtons(4)
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 15,
+                    // ),
+                    // Expanded(
+                    //   flex: 0,
+                    //   child: Container(
+                    //     height: 60,
+                    //     decoration: BoxDecoration(
+                    //         color: selectedColorVehicle,
+                    //         borderRadius: BorderRadius.circular(10)),
+                    //     child: Container(
+                    //       margin: EdgeInsets.symmetric(horizontal: 9),
+                    //       child: Row(
+                    //         children: [
+                    //           InkWell(
+                    //             onTap: () {
+                    //               setState(() {
+                    //                 if (value[5]['check'] == true) {
+                    //                   value[5]['check'] = false;
+                    //                 } else {
+                    //                   value[5]['check'] = true;
+                    //                 }
+                    //               });
+                    //             },
+                    //             child: Container(
+                    //               margin: EdgeInsets.only(left: 8),
+                    //               child: Container(
+                    //                 decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(8),
+                    //                   border: Border.all(
+                    //                       width: 4, color: Colors.yellow),
+                    //                 ),
+                    //                 child: value[5]['check'] == true
+                    //                     ? Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.white,
+                    //                       )
+                    //                     : Icon(
+                    //                         Icons.check,
+                    //                         color: Colors.transparent,
+                    //                       ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 20,
+                    //           ),
+                    //           Text(
+                    //             "Dressing",
+                    //             style: TextStyle(
+                    //                 fontSize: 16,
+                    //                 fontWeight: FontWeight.bold,
+                    //                 color: Colors.white),
+                    //           ),
+                    //           Spacer(),
+                    //           value[5]['check'] == false
+                    //               ? Container()
+                    //               : quantityButtons(5)
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 20,
                     ),
@@ -708,7 +1784,18 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 value[2]['check'] == true ||
                                 value[3]['check'] == true ||
                                 value[4]['check'] == true ||
-                                value[5]['check'] == true) {
+                                value[5]['check'] == true ||
+                                value[6]['check'] == true ||
+                                value[7]['check'] == true ||
+                                value[8]['check'] == true ||
+                                value[9]['check'] == true ||
+                                value[10]['check'] == true ||
+                                value[11]['check'] == true ||
+                                value[12]['check'] == true ||
+                                value[13]['check'] == true ||
+                                value[14]['check'] == true ||
+                                value[15]['check'] == true ||
+                                value[16]['check'] == true) {
                               value.forEach((element) {
                                 if (element["check"] == true) {
                                   setState(() {
@@ -725,9 +1812,9 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                                 finalWeight = weight.toString();
                                 _showMyDialog(context, tmpArray);
                               });
-                            }
-                            else{
-                              AuthService().displayToastMessage("Please select one Object", context);
+                            } else {
+                              AuthService().displayToastMessage(
+                                  "Please select one Object", context);
                             }
                           },
                         ),
@@ -777,7 +1864,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                   width: 300.0,
                   child: ListView.builder(
                       // physics: NeverScrollableScrollPhysics(),
-                    physics: ClampingScrollPhysics(),
+                      physics: ClampingScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: selectedList.length,
                       itemBuilder: (context, index) {
@@ -844,10 +1931,10 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => PlaceOrderPage(
-                                  name: selectedList,
-                                  weightOO: finalWeight,
-                                  screenName: "electronics",
-                                )));
+                                      name: selectedList,
+                                      weightOO: finalWeight,
+                                      screenName: "electronics",
+                                    )));
                       },
                     ),
                   ],
@@ -865,29 +1952,29 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
       children: [
         value[index]['value'] == 1
             ? Container(
-          height: 25,
-          width: 25,
-        )
+                height: 25,
+                width: 25,
+              )
             : InkWell(
-          onTap: () {
-            setState(() {
-              value[index]['value']--;
-            });
-          },
-          child: Container(
-            height: 25,
-            width: 25,
-            decoration: BoxDecoration(
-                color: yellowColor,
-                borderRadius: BorderRadius.circular(5)),
-            child: Center(
+                onTap: () {
+                  setState(() {
+                    value[index]['value']--;
+                  });
+                },
                 child: Container(
-                  width: 10,
-                  height: 2,
-                  color: selectedColorVehicle,
-                )),
-          ),
-        ),
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                      color: yellowColor,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Center(
+                      child: Container(
+                    width: 10,
+                    height: 2,
+                    color: selectedColorVehicle,
+                  )),
+                ),
+              ),
         SizedBox(
           width: 4,
         ),
@@ -905,29 +1992,29 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
         ),
         value[index]['value'] == 99
             ? Container(
-          height: 25,
-          width: 25,
-        )
+                height: 25,
+                width: 25,
+              )
             : InkWell(
-          onTap: () {
-            setState(() {
-              value[index]['value']++;
-            });
-          },
-          child: Container(
-            height: 25,
-            width: 25,
-            decoration: BoxDecoration(
-                color: yellowColor,
-                borderRadius: BorderRadius.circular(5)),
-            child: Center(
-                child: Icon(
-                  Icons.add,
-                  size: 20,
-                  color: selectedColorVehicle,
-                )),
-          ),
-        ),
+                onTap: () {
+                  setState(() {
+                    value[index]['value']++;
+                  });
+                },
+                child: Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                      color: yellowColor,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Center(
+                      child: Icon(
+                    Icons.add,
+                    size: 20,
+                    color: selectedColorVehicle,
+                  )),
+                ),
+              ),
         SizedBox(
           width: 8,
         )
