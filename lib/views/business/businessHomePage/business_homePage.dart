@@ -25,18 +25,10 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
   @override
   void initState() {
-    isLoading = true;
-    storage.readSecureData("userId").then((value) => {
-          print(value),
-          userId = value,
-          isLoading = false,
-        });
-    storage.readSecureData("userType").then((value) => {
-          print(value),
-          userType = value,
-        });
+    getUserData();
     super.initState();
   }
+
 
   Widget drawerWidget(userId) {
     getLocale().then((locale) {
@@ -164,12 +156,16 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                         )
                       ],
                     ),
-                  ), Divider(
+                  ),
+                  Divider(
                     color: Colors.black,
                   ),
                   ListTile(
-                    onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfileBusiness()));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfileBusiness()));
                     },
                     title: Row(
                       children: [
@@ -229,6 +225,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('User Id in Class $userId');
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -236,7 +233,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
           drawer: drawerWidget(userId),
           appBar: AppbarWidget(
             check: true,
-            title:"businessHomePage",
+            title: "businessHomePage",
           ),
           body: Stack(
             alignment: Alignment.topCenter,
@@ -444,7 +441,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
   Widget orderTile(String orderId, deliveryLocation, status, size, price) {
     return Container(
       decoration: BoxDecoration(
-          color:status == "waiting..." ? yellowColor : selectedColorVehicle, borderRadius: BorderRadius.circular(10)),
+          color: status == "waiting..." ? yellowColor : selectedColorVehicle,
+          borderRadius: BorderRadius.circular(10)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
         child: Column(
@@ -469,8 +467,9 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor
-                      ),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 2.5,
@@ -478,12 +477,16 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                     deliveryLocation,
                     softWrap: false,
                     overflow: TextOverflow.fade,
-                    style: TextStyle(fontSize: 16, color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: status == "waiting..."
+                            ? selectedColorVehicle
+                            : yellowColor),
                   ),
                 ),
                 Spacer(),
                 Container(
-                  width: MediaQuery.of(context).size.width /9,
+                  width: MediaQuery.of(context).size.width / 9,
                   child: Text(
                     "status",
                     // getTranslated(context, 'status'),
@@ -492,7 +495,9 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                        color: status == "waiting..."
+                            ? selectedColorVehicle
+                            : yellowColor),
                   ),
                 ),
                 Text(
@@ -515,14 +520,18 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
                 Text(
                   size + 'kg',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
                 Spacer(),
                 Text(
@@ -531,7 +540,9 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color:  status == "waiting..." ? selectedColorVehicle : yellowColor),
+                      color: status == "waiting..."
+                          ? selectedColorVehicle
+                          : yellowColor),
                 ),
               ],
             ), //text2
@@ -543,4 +554,21 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
       ),
     );
   }
+}
+
+Future<void> getUserData() async
+{
+  isLoading = true;
+  await storage.readSecureData("userId").then((value) => {
+    print(value),
+    setState(() {
+      userId = value;
+      isLoading = false;
+    }),
+  });
+  await storage.readSecureData("userType").then((value) => {
+    print(value),
+    userType = value,
+  });
+  print("user id ${userId}");
 }
