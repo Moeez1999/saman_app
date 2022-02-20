@@ -156,7 +156,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          "history",
+                          "History",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -169,7 +169,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                     color: Colors.black,
                   ),
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -188,7 +188,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          "wallet",
+                          "Wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -210,7 +210,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          "profile",
+                          "Profile",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -237,7 +237,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                          "logOut",
+                          "Log Out",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -260,7 +260,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
       drawer: drawerWidget(userId),
       appBar: AppbarWidget(
         check: true,
-        title: "placeAnOrder",
+        title: "Place An Order",
       ),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -295,11 +295,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                             TextInputType.name, (e) {
                           getSuggestion(e);
                         }, fromFocus, true),
-                        buildTextField(
-                            "to1",
-                            to,
-                            "assets/icons/person.png",
-                            1,
+                        buildTextField("to1", to, "assets/icons/person.png", 1,
                             TextInputType.name, (e) {
                           getSuggestion1(e);
                         }, toFocus, true),
@@ -324,7 +320,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                         Row(
                           children: [
                             Text(
-                              "modeOfTransportation",
+                              "Mode Of Transportation",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -345,7 +341,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                 });
                               },
                               child: Container(
-                                width: size.width / 2.3,
+                                width: size.width / 2.5,
                                 decoration: BoxDecoration(
                                     color: index == "openPickup"
                                         ? selectedColorVehicle
@@ -356,8 +352,8 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         width: 2,
                                         style: BorderStyle.solid)),
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
@@ -366,7 +362,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         "assets/icons/open-pickup.png",
                                         height: 40,
                                       ),
-                                      Text("openPickup",
+                                      Text("Open Pickup",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               fontWeight: FontWeight.bold,
@@ -383,7 +379,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                 });
                               },
                               child: Container(
-                                width: size.width / 2.3,
+                                width: size.width / 2.5,
                                 decoration: BoxDecoration(
                                     color: index == "closePickup"
                                         ? selectedColorVehicle
@@ -394,14 +390,13 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         width: 2,
                                         style: BorderStyle.solid)),
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 1),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text(
-                                          "closePickup",
+                                      Text("Close Pickup",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               color: yellowColor,
@@ -430,7 +425,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                 });
                               },
                               child: Container(
-                                width: size.width / 2.3,
+                                width: size.width / 2.5,
                                 decoration: BoxDecoration(
                                     color: index == "loaderRicksha"
                                         ? selectedColorVehicle
@@ -451,8 +446,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                         "assets/icons/ricksha.png",
                                         height: 40,
                                       ),
-                                      Text(
-                                         "loaderRicksha",
+                                      Text("Loader Ricksha",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               color: yellowColor,
@@ -469,7 +463,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                 });
                               },
                               child: Container(
-                                width: size.width / 2.3,
+                                width: size.width / 2.5,
                                 decoration: BoxDecoration(
                                     color: index == "deliveryTruck"
                                         ? selectedColorVehicle
@@ -485,8 +479,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text(
-                                          "deliveryTruck",
+                                      Text("Delivery Truck",
                                           style: TextStyle(
                                               fontSize: size.width * 0.03,
                                               color: yellowColor,
@@ -522,7 +515,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                             RoundedButton(
                               height: size.height * 0.05,
                               width: size.width * 0.36,
-                              text: "save",
+                              text: "Save",
                               color: yellowColor,
                               textColor: accountSelectionBackgroundColor,
                               press: () async {

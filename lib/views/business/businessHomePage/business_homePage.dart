@@ -54,7 +54,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
 
   Widget drawerWidget(userId) {
-    print('User Id is $userId');
+    // print('User Id is $userId');
     getLocale().then((locale) {
       setState(() {
         _value = locale.languageCode;
@@ -260,7 +260,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('User Id in Class $userId');
+    // print('User Id in Class $userId');
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(

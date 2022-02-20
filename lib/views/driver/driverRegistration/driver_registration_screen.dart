@@ -16,7 +16,7 @@ class DriverRegistrationScreen extends StatefulWidget {
   final String userId;
   final String status;
 
-  DriverRegistrationScreen({@required this.userId , this.status});
+  DriverRegistrationScreen({@required this.userId, this.status});
   @override
   _DriverRegistrationScreenState createState() =>
       _DriverRegistrationScreenState();
@@ -59,10 +59,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
       appBar: AppBar(
         elevation: 0,
         iconTheme: IconThemeData(color: yellowColor),
-        actions: [
-          LanguageButton(
-          )
-        ],
+        actions: [LanguageButton()],
         title: Text(
           "Driver Registration",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -86,8 +83,9 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
             isLoading == true
                 ? Container(
                     child: Center(
-                      child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(yellowColor))
-                    ),
+                        child: CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(yellowColor))),
                   )
                 : SingleChildScrollView(
                     child: Padding(
@@ -99,22 +97,22 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                             height: 10,
                           ),
                           buildTextField(
-                              "First Name",
-                              firstName,
-                              "assets/icons/person.png",
-                              1,
-                              TextInputType.name,
-                              TextCapitalization.words,
+                            "First Name",
+                            firstName,
+                            "assets/icons/person.png",
+                            1,
+                            TextInputType.name,
+                            TextCapitalization.words,
                             "",
-
-
                           ),
                           buildTextField(
-                             "Last Name",
+                              "Last Name",
                               lastName,
                               "assets/icons/id-card.png",
                               1,
-                              TextInputType.name,TextCapitalization.words,""),
+                              TextInputType.name,
+                              TextCapitalization.words,
+                              ""),
                           // Row(
                           //   children: [
                           //     Padding(
@@ -152,23 +150,27 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                           //   ],
                           // ),
                           buildTextField1(
-                             "Cnic",
+                              "Cnic",
                               cnic,
                               "assets/icons/building2-icon.png",
                               1,
                               TextInputType.number),
                           buildTextField(
-                             "Driver License Number",
+                              "Driver License Number",
                               driverLicenseNumber,
                               "assets/icons/driving-license.png",
                               1,
-                              TextInputType.number,TextCapitalization.none,""),
+                              TextInputType.number,
+                              TextCapitalization.none,
+                              ""),
                           buildTextField(
-                             "Vehicle Registration Number",
+                              "Vehicle Registration Number",
                               vehicleRegistrationNumber,
                               "assets/icons/open-pickup.png",
                               1,
-                              TextInputType.text,TextCapitalization.sentences,""),
+                              TextInputType.text,
+                              TextCapitalization.sentences,
+                              ""),
                           Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Row(
@@ -195,7 +197,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                 child: Container(
                                   width: size.width / 2.5,
                                   decoration: BoxDecoration(
-                                      color: index == "Open Pickup"
+                                      color: index == "openPickup"
                                           ? selectedColorVehicle
                                           : Colors.transparent,
                                       borderRadius: BorderRadius.circular(50),
@@ -205,7 +207,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                           style: BorderStyle.solid)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                        horizontal: 5),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -226,13 +228,13 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                               InkWell(
                                 onTap: () {
                                   setState(() {
-                                    index = "Close Pickup";
+                                    index = "closePickup";
                                   });
                                 },
                                 child: Container(
-                                  width: size.width / 2.4,
+                                  width: size.width / 2.5,
                                   decoration: BoxDecoration(
-                                      color: index == "Close Pickup"
+                                      color: index == "closePickup"
                                           ? selectedColorVehicle
                                           : Colors.transparent,
                                       borderRadius: BorderRadius.circular(50),
@@ -242,7 +244,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                           style: BorderStyle.solid)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                        horizontal: 5),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -260,23 +262,24 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
-                          SizedBox(height: 20,),
+                          SizedBox(
+                            height: 20,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               InkWell(
                                 onTap: () {
                                   setState(() {
-                                    index = "Loader Rickshaw";
+                                    index = "loaderRickshaw";
                                   });
                                 },
                                 child: Container(
-                                  width: size.width / 2.3,
+                                  width: size.width / 2.5,
                                   decoration: BoxDecoration(
-                                      color: index == "Loader Rickshaw"
+                                      color: index == "loaderRickshaw"
                                           ? selectedColorVehicle
                                           : Colors.transparent,
                                       borderRadius: BorderRadius.circular(50),
@@ -286,18 +289,22 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                           style: BorderStyle.solid)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                        horizontal: 5),
                                     child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      // mainAxisAlignment:
+                                      //     MainAxisAlignment.spaceBetween,
                                       children: [
                                         Image.asset(
                                           "assets/icons/ricksha.png",
                                           height: 40,
                                         ),
-                                        Text("Loader Rickshaw",
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text("Loader\nRickshaw",
                                             style: TextStyle(
                                                 color: yellowColor,
+                                                fontSize: 13,
                                                 fontWeight: FontWeight.bold)),
                                       ],
                                     ),
@@ -307,13 +314,13 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                               InkWell(
                                 onTap: () {
                                   setState(() {
-                                    index = "Delivery Truck";
+                                    index = "deliveryTruck";
                                   });
                                 },
                                 child: Container(
-                                  width: size.width / 2.4,
+                                  width: size.width / 2.5,
                                   decoration: BoxDecoration(
-                                      color: index == "Delivery Truck"
+                                      color: index == "deliveryTruck"
                                           ? selectedColorVehicle
                                           : Colors.transparent,
                                       borderRadius: BorderRadius.circular(50),
@@ -323,14 +330,15 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                           style: BorderStyle.solid)),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                        horizontal: 5),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text("Delivery Truck",
                                             style: TextStyle(
                                                 color: yellowColor,
+                                                fontSize: 13,
                                                 fontWeight: FontWeight.bold)),
                                         Image.asset(
                                           "assets/icons/truck.png",
@@ -343,7 +351,9 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 20,),
+                          SizedBox(
+                            height: 20,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -353,7 +363,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                 text: "BACK",
                                 color: whiteColor,
                                 textColor: accountSelectionBackgroundColor,
-                                fontSize: size.width/20 ,
+                                fontSize: size.width / 20,
                                 press: () {
                                   // Navigator.pushAndRemoveUntil(
                                   //     context,
@@ -369,30 +379,25 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
                                 width: size.width * 0.36,
                                 text: "SAVE",
                                 color: yellowColor,
-                                fontSize: size.width/20 ,
+                                fontSize: size.width / 20,
                                 textColor: textBoxColor,
                                 press: () async {
                                   if (firstName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        "Enter First Name",
-                                        context);
+                                        "Enter First Name", context);
                                   } else if (lastName.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        "Enter Last Name",
-                                        context);
+                                        "Enter Last Name", context);
                                   } else if (cnic.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        "Enter Cnic",
-                                        context);
+                                        "Enter Cnic", context);
                                   } else if (driverLicenseNumber.text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        "Enter Driving License",
-                                        context);
+                                        "Enter Driving License", context);
                                   } else if (vehicleRegistrationNumber
                                       .text.isEmpty) {
                                     AuthService().displayToastMessage(
-                                        "Enter Registration Number",
-                                        context);
+                                        "Enter Registration Number", context);
                                   } else {
                                     isLoading = true;
                                     driverRegistrationFunction();
@@ -422,34 +427,35 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
       // "number": selectedCountryCode + number.text,
       "driverLicenseNumber": driverLicenseNumber.text,
       "vehicleRegistrationNumber": vehicleRegistrationNumber.text,
-      "vehicleType":index,
-      "profilePic":""
+      "vehicleType": index,
+      "profilePic": ""
     };
     Firestore.instance
         .collection("users")
         .where("userId", isEqualTo: int.parse(widget.userId))
         .getDocuments()
         .then((val) => {
-      Firestore.instance
-          .collection("users")
-          .document(val.documents[0].documentID)
-          .updateData(data)
-          .then((value) => {
-        isLoading = false,
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => OtpScreen(
-                userId: widget.userId,
-                name: 'Driver',
-                status: widget.status,
-              )),
-        ),
-      })
-          .catchError((e) {
-        isLoading = false;
-      }),
-    }).catchError((e){
+              Firestore.instance
+                  .collection("users")
+                  .document(val.documents[0].documentID)
+                  .updateData(data)
+                  .then((value) => {
+                        isLoading = false,
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OtpScreen(
+                                    userId: widget.userId,
+                                    name: 'Driver',
+                                    status: widget.status,
+                                  )),
+                        ),
+                      })
+                  .catchError((e) {
+                isLoading = false;
+              }),
+            })
+        .catchError((e) {
       isLoading = false;
     });
   }
@@ -458,8 +464,8 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
     selectedCountryCode = countryCode.toString();
   }
 
-  Widget buildTextField(
-      text, dynamic controller, icon, int lines, dynamic type,dynamic textCapitalization,hint) {
+  Widget buildTextField(text, dynamic controller, icon, int lines, dynamic type,
+      dynamic textCapitalization, hint) {
     return Column(
       children: [
         TextField(
@@ -469,7 +475,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
           maxLines: lines,
           decoration: InputDecoration(
               contentPadding:
-              EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
@@ -484,7 +490,7 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
               filled: true,
               hintStyle: TextStyle(color: Colors.white),
               hintText: hint,
-              labelStyle: TextStyle(color: Colors.white,fontSize: 18),
+              labelStyle: TextStyle(color: Colors.white, fontSize: 18),
               labelText: text,
               fillColor: Color(0xff338F6D)),
         ),
@@ -501,13 +507,12 @@ class _DriverRegistrationScreenState extends State<DriverRegistrationScreen> {
       children: [
         TextField(
           keyboardType: type,
-
           maxLength: 13,
           controller: controller,
           maxLines: lines,
           decoration: InputDecoration(
               contentPadding:
-              EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(

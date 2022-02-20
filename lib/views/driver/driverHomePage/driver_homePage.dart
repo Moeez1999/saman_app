@@ -11,7 +11,6 @@ import 'package:saman/services/auth.dart';
 import 'package:saman/views/driver/saman_pickup_screens/order_pickup.dart';
 import 'package:saman/views/driver/driverProfile/edit_profile.dart';
 
-
 class DriverHomePage extends StatefulWidget {
   @override
   _DriverHomePageState createState() => _DriverHomePageState();
@@ -48,13 +47,13 @@ class _DriverHomePageState extends State<DriverHomePage> {
                                   .where("modeOfTransportation",
                                       isEqualTo: v.data['vehicleType'])
                                   .snapshots(),
-                            })
+                            }),
                   }),
         });
     storage.readSecureData("userType").then((value) => {
-      print(value),
-      userType = value,
-    });
+          print(value),
+          userType = value,
+        });
   }
 
   Widget drawerWidget(userId) {
@@ -66,11 +65,11 @@ class _DriverHomePageState extends State<DriverHomePage> {
     return ClipRRect(
       borderRadius: _value == "en"
           ? BorderRadius.only(
-          topRight: Radius.circular(30.0),
-          bottomRight: Radius.circular(30.0))
+              topRight: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0))
           : BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          bottomLeft: Radius.circular(30.0)),
+              topLeft: Radius.circular(30.0),
+              bottomLeft: Radius.circular(30.0)),
       child: Theme(
         data: ThemeData(canvasColor: Colors.transparent),
         child: Drawer(
@@ -111,22 +110,22 @@ class _DriverHomePageState extends State<DriverHomePage> {
                               height: 30, width: 30, child: Text(""));
                         return snapshot.data.documents.length == 0
                             ? Container(
-                          child: Center(
-                            child: Text(""),
-                          ),
-                        )
+                                child: Center(
+                                  child: Text(""),
+                                ),
+                              )
                             : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              snapshot.data.documents[0]['firstName'],
-                              style: TextStyle(
-                                  color: yellowColor,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        );
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    snapshot.data.documents[0]['firstName'],
+                                    style: TextStyle(
+                                        color: yellowColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              );
                       }),
                   SizedBox(
                     height: 15,
@@ -140,9 +139,9 @@ class _DriverHomePageState extends State<DriverHomePage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => History(
-                                userId: userId,
-                                userType: userType,
-                              )));
+                                    userId: userId,
+                                    userType: userType,
+                                  )));
                     },
                     title: Row(
                       children: [
@@ -165,7 +164,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                     color: Colors.black,
                   ),
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -184,7 +183,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         ),
                         SizedBox(width: 20),
                         Text(
-                         "wallet",
+                          "wallet",
                           style: TextStyle(
                               color: yellowColor,
                               fontSize: 18,
@@ -192,12 +191,16 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         )
                       ],
                     ),
-                  ), Divider(
+                  ),
+                  Divider(
                     color: Colors.black,
                   ),
                   ListTile(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfileDriver()));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfileDriver()));
                     },
                     title: Row(
                       children: [
@@ -250,6 +253,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -257,7 +261,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
       child: Scaffold(
           drawer: drawerWidget(userId),
           appBar: AppbarWidget(
-            title:"driverHomepage",
+            title: "Driver Homepage",
             check: true,
           ),
           body: Stack(
@@ -357,8 +361,8 @@ class _DriverHomePageState extends State<DriverHomePage> {
                                         child: Center(
                                             child: CircularProgressIndicator(
                                                 valueColor:
-                                                AlwaysStoppedAnimation<
-                                                    Color>(yellowColor)))),
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(yellowColor)))),
                                   );
                                 return snapshot.data.documents.length == 0
                                     ? Container(
@@ -369,6 +373,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                                     : Container(
                                         child: ListView.builder(
                                           shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
                                           itemCount:
                                               snapshot.data.documents.length,
                                           itemBuilder: (context, index) {
@@ -465,7 +470,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                 ),
                 Spacer(),
                 Text(
-                 "from",
+                  "from",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -491,7 +496,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
             Row(
               children: [
                 Text(
-                 "weight",
+                  "weight",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -506,7 +511,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                 ),
                 Spacer(),
                 Text(
-                 "rs" + "$price/-",
+                  "rs" + "$price/-",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -530,7 +535,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                         borderRadius: BorderRadius.circular(25)),
                     child: Center(
                         child: Text(
-                          "accept",
+                      "accept",
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

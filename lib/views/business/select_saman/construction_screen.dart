@@ -65,24 +65,9 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
       "value": 1,
       "weight": '',
     },
-    {
-      "name": "sand",
-      "check": false,
-      "value": 1,
-      "weight": ''
-    },
-    {
-      "name": "steel",
-      "check": false,
-      "value": 1,
-      "weight": ''
-    },
-    {
-      "name": "Bricks",
-      "check": false,
-      "value": 1,
-      "weight": ''
-    },
+    {"name": "sand", "check": false, "value": 1, "weight": ''},
+    {"name": "steel", "check": false, "value": 1, "weight": ''},
+    {"name": "Bricks", "check": false, "value": 1, "weight": ''},
     {
       "name": "Toilet",
       "check": false,
@@ -241,7 +226,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     color: Colors.black,
                   ),
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -422,7 +407,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                   width: 100,
                                   child: TextField(
                                     controller: cement,
-                                    onTap: (){
+                                    onTap: () {
                                       setState(() {
                                         if (value[0]['check'] == true) {
                                           value[0]['check'] = false;
@@ -513,7 +498,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: tiles,
-                                  onTap: (){
+                                  onTap: () {
                                     setState(() {
                                       if (value[1]['check'] == true) {
                                         value[1]['check'] = false;
@@ -602,7 +587,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: doors,
-                                  onTap: (){
+                                  onTap: () {
                                     setState(() {
                                       if (value[2]['check'] == true) {
                                         value[2]['check'] = false;
@@ -691,7 +676,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: windows,
-                                  onTap: (){
+                                  onTap: () {
                                     setState(() {
                                       if (value[3]['check'] == true) {
                                         value[3]['check'] = false;
@@ -780,7 +765,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: sand,
-                                  onTap: (){
+                                  onTap: () {
                                     setState(() {
                                       if (value[4]['check'] == true) {
                                         value[4]['check'] = false;
@@ -870,7 +855,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                   width: 100,
                                   child: TextField(
                                     controller: steel,
-                                    onTap: (){
+                                    onTap: () {
                                       setState(() {
                                         if (value[5]['check'] == true) {
                                           value[5]['check'] = false;
@@ -962,7 +947,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                   width: 100,
                                   child: TextField(
                                     controller: bricks,
-                                    onTap: (){
+                                    onTap: () {
                                       setState(() {
                                         if (value[6]['check'] == true) {
                                           value[6]['check'] = false;
@@ -1061,7 +1046,6 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     SizedBox(
                       height: 15,
                     ),
-
                     Expanded(
                       flex: 0,
                       child: Container(
@@ -1220,74 +1204,52 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 value[6]['check'] == true ||
                                 value[7]['check'] == true ||
                                 value[8]['check'] == true ||
-                                value[9]['check'] == true ) {
+                                value[9]['check'] == true) {
                               value.forEach((element) {
                                 if (element["check"] == true) {
-                                  if(element["name"] == 'cement')
-                                    {
-                                      setState(() {
-                                        weightList.add(
-                                            int.parse(cement.text));
-                                        print(weightList);
-                                      });
-                                    }
-                                  else if(element["name"] == 'sand')
-                                    {
-                                      setState(() {
-                                        weightList.add(
-                                            int.parse(sand.text));
-                                        print(weightList);
-                                      });
-                                    }
-                                  else if(element["name"] == 'tiles')
-                                  {
+                                  if (element["name"] == 'cement') {
+                                    setState(() {
+                                      weightList.add(int.parse(cement.text));
+                                      print(weightList);
+                                    });
+                                  } else if (element["name"] == 'sand') {
+                                    setState(() {
+                                      weightList.add(int.parse(sand.text));
+                                      print(weightList);
+                                    });
+                                  } else if (element["name"] == 'tiles') {
+                                    setState(() {
+                                      weightList.add(int.parse(tiles.text));
+                                      print(weightList);
+                                    });
+                                  } else if (element["name"] == 'doors') {
+                                    setState(() {
+                                      weightList.add(int.parse(doors.text));
+                                      print(weightList);
+                                    });
+                                  } else if (element["name"] == 'windows') {
+                                    setState(() {
+                                      weightList.add(int.parse(windows.text));
+                                      print(weightList);
+                                    });
+                                  } else if (element["name"] == 'steel') {
+                                    setState(() {
+                                      weightList.add(int.parse(steel.text));
+                                      print(weightList);
+                                    });
+                                  } else if (element["name"] == 'bricks') {
+                                    setState(() {
+                                      weightList.add(int.parse(bricks.text));
+                                      print(weightList);
+                                    });
+                                  } else {
                                     setState(() {
                                       weightList.add(
-                                          int.parse(tiles.text));
+                                          int.parse(element['weight']) *
+                                              element['value']);
                                       print(weightList);
                                     });
                                   }
-                                  else if(element["name"] == 'doors')
-                                  {
-                                    setState(() {
-                                      weightList.add(
-                                          int.parse(doors.text));
-                                      print(weightList);
-                                    });
-                                  }
-                                  else if(element["name"] == 'windows')
-                                  {
-                                    setState(() {
-                                      weightList.add(
-                                          int.parse(windows.text));
-                                      print(weightList);
-                                    });
-                                  }
-                                  else if(element["name"] == 'steel')
-                                  {
-                                    setState(() {
-                                      weightList.add(
-                                          int.parse(steel.text));
-                                      print(weightList);
-                                    });
-                                  }
-                                  else if(element["name"] == 'bricks')
-                                  {
-                                    setState(() {
-                                      weightList.add(
-                                          int.parse(bricks.text));
-                                      print(weightList);
-                                    });
-                                  }
-                                  else
-                                    {
-                                      setState(() {
-                                        weightList.add(
-                                            int.parse(element['weight']) *
-                                                element['value']);
-                                        print(weightList);
-                                      });
-                                    }
 
                                   tmpArray.add(element);
                                 }
@@ -1391,12 +1353,12 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                       }),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RoundedButton(
                       height: size.height * 0.06,
-                      width: size.width * 0.36,
-                      text: "cancel",
+                      width: size.width * 0.3,
+                      text: "Cancel",
                       color: backButtonColor,
                       textColor: Colors.white,
                       press: () {
@@ -1406,8 +1368,8 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     Spacer(),
                     RoundedButton(
                       height: size.height * 0.06,
-                      width: size.width * 0.36,
-                      text: "continue",
+                      width: size.width * 0.3,
+                      text: "Continue",
                       color: languageSelectColor,
                       textColor: Colors.white,
                       press: () async {
