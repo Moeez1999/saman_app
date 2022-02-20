@@ -26,10 +26,8 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
 
   @override
   void initState() {
-<<<<<<< HEAD
     getUserData();
     super.initState();
-=======
     setState(() {
       isLoading = true;
     });
@@ -52,7 +50,6 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
             isLoading = false;
           })
         });
->>>>>>> 198dd4e52d45ea70740906c4eefc5ce9314029a9
   }
 
 
@@ -327,7 +324,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                                       margin: EdgeInsets.fromLTRB(3, 3, 3, 3),
                                     ),
                                     Text(
-                                      "addNewOrder",
+                                      "Add New Order",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontSize: 17,
@@ -343,7 +340,7 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
                               height: 15,
                             ),
                             Text(
-                              "listOfOrders",
+                              "List Of Orders",
                               // getTranslated(context, 'listOfOrders'),
                               textAlign: TextAlign.start,
                               style: TextStyle(
@@ -592,21 +589,21 @@ class _BusinessHomePageState extends State<BusinessHomePage> {
       ),
     );
   }
+  // Future<void> getUserData() async
+  // {
+  //   isLoading = true;
+  //   await storage.readSecureData("userId").then((value) => {
+  //     print(value),
+  //     setState(() {
+  //       userId = value;
+  //       isLoading = false;
+  //     }),
+  //   });
+  //   await storage.readSecureData("userType").then((value) => {
+  //     print(value),
+  //     userType = value,
+  //   });
+  //   print("user id ${userId}");
+  // }
 }
 
-Future<void> getUserData() async
-{
-  isLoading = true;
-  await storage.readSecureData("userId").then((value) => {
-    print(value),
-    setState(() {
-      userId = value;
-      isLoading = false;
-    }),
-  });
-  await storage.readSecureData("userType").then((value) => {
-    print(value),
-    userType = value,
-  });
-  print("user id ${userId}");
-}

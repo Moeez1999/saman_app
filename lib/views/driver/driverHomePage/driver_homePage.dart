@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:saman/components/appbar_widget.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 import '../../../constants.dart';
 import 'package:saman/constants.dart';
 import 'package:saman/localization/localization_constants.dart';
@@ -164,6 +165,17 @@ class _DriverHomePageState extends State<DriverHomePage> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(

@@ -1,3 +1,4 @@
+import 'package:saman/views/wallet/wallet_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
@@ -156,6 +157,17 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(
@@ -260,7 +272,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                     height: 20,
                   ),
                   Text(
-                    "customObjectDetail",
+                    "Custom Object Detail",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         fontSize: 18,
@@ -276,7 +288,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "heightOfObject",
+                          "Height Of Object",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -314,7 +326,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                         "widthOfObject",
+                         "Width Of Object",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -352,7 +364,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "lengthOfObject",
+                          "Length Of Object",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -390,7 +402,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "weightOfObject",
+                          "Weight Of Object",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -428,7 +440,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "quantityOfObject",
+                          "Quantity Of Object",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -465,7 +477,7 @@ class _CustomSamanPageState extends State<CustomSamanPage> {
                     child: RoundedButton(
                       height: size.height * 0.06,
                       width: size.width * 0.36,
-                      text: "confirm",
+                      text: "CONFIRM",
                       color: whiteColor,
                       textColor: accountSelectionBackgroundColor,
                       press: () {

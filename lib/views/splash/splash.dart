@@ -7,26 +7,25 @@ import 'package:saman/views/welcome/welcome_screen.dart';
 import 'package:saman/model/secure_storage.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-class SplashScreen extends StatefulWidget  {
+class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>  with WidgetsBindingObserver{
+class _SplashScreenState extends State<SplashScreen>
+    with WidgetsBindingObserver {
   final SharedPreference secureStorage = SharedPreference();
   bool isShow = false;
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _firebaseMessaging.configure(
-      onMessage: (message) async {
-      },
-      onResume: (message) async {
-      },
-      onLaunch: (message) async {
-      },
+      onMessage: (message) async {},
+      onResume: (message) async {},
+      onLaunch: (message) async {},
     );
     _firebaseMessaging.requestNotificationPermissions(
         const IosNotificationSettings(
@@ -34,44 +33,48 @@ class _SplashScreenState extends State<SplashScreen>  with WidgetsBindingObserve
     userPresence();
     connect();
   }
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
-  goToHomePages() {
-    secureStorage.readSecureData('userType').then((value) => {
-          print(value),
-          if (value == "Driver")
-            {
-              Timer(
-                  Duration(seconds: 5),
-                  () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => DriverHomePage()))),
-            }
-          else if (value == "Business")
-            {
-              Timer(
-                  Duration(seconds: 5),
-                  () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => BusinessHomePage()))),
-            }
-          else
-            {
-              Timer(
-                  Duration(seconds: 5),
-                  () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => WelcomeScreen()))),
-            }
-        });
-  }
+  // goToHomePages() {
+  //   secureStorage.readSecureData('userType').then((value) => {
+  //         print(value),
+  //         if (value == "Driver")
+  //           {
+  //             Timer(
+  //                 Duration(seconds: 5),
+  //                 () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+  //                     builder: (BuildContext context) => DriverHomePage()))),
+  //           }
+  //         else if (value == "Business")
+  //           {
+  //             Timer(
+  //                 Duration(seconds: 5),
+  //                 () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+  //                     builder: (BuildContext context) => BusinessHomePage()))),
+  //           }
+  //         else
+  //           {
+  //             Timer(
+  //                 Duration(seconds: 5),
+  //                 () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+  //                     builder: (BuildContext context) => WelcomeScreen()))),
+  //           }
+  //       });
+  // }
 
   userPresence() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      goToHomePages();
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (BuildContext context) => WelcomeScreen()));
+      // WelcomeScreen();
+      // goToHomePages();
     } else {
       setState(() {
         isShow = true;
@@ -84,7 +87,9 @@ class _SplashScreenState extends State<SplashScreen>  with WidgetsBindingObserve
           if (value == ConnectivityResult.mobile ||
               value == ConnectivityResult.wifi)
             {
-              goToHomePages(),
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) => WelcomeScreen()))
+              // goToHomePages(),
             }
           else
             {

@@ -89,21 +89,21 @@ class _BusinessRegistrationScreenState
                         children: [
                           SizedBox(height: 20),
                           buildTextField(
-                              "businessName",
+                              "Business Name",
                               businessName,
                               "assets/icons/building2-icon.png",
                               1,
                               TextInputType.name,
                               true),
                           buildTextField(
-                              "firstName",
+                              "First Name",
                               firstName,
                               "assets/icons/person.png",
                               1,
                               TextInputType.name,
                               true),
                           buildTextField(
-                              "lastName",
+                              "Last Name",
                               lastName,
                               "assets/icons/id-card.png",
                               1,
@@ -154,7 +154,7 @@ class _BusinessRegistrationScreenState
                               });
                             },
                             child: buildTextField(
-                                "showRoomAddress",
+                                "Show Room Address",
                                 showRoomAddress,
                                 "assets/icons/building1-icon.png",
                                 3,
@@ -172,7 +172,7 @@ class _BusinessRegistrationScreenState
                               });
                             },
                             child: buildTextField(
-                                "wareHouseAddress",
+                                "Ware House Address",
                                 wareHouseAddress,
                                 "assets/icons/warehouse.png",
                                 3,
@@ -183,11 +183,15 @@ class _BusinessRegistrationScreenState
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RoundedButton(
-                                height: size.height * 0.05,
+                                height: size.height * 0.06,
                                 width: size.width * 0.36,
-                                text: "cancel",
-                                color: backButtonColor,
-                                textColor: Colors.white,
+                                text: "CANCEL",
+                                color: Colors.white,
+                                fontSize: size.width/20 ,
+
+                                textColor: textBoxColor,
+
+
                                 press: () {
                                   Navigator.pushAndRemoveUntil(
                                       context,
@@ -201,8 +205,10 @@ class _BusinessRegistrationScreenState
                               RoundedButton(
                                 height: size.height * 0.05,
                                 width: size.width * 0.36,
-                                text: "save",
+                                text: "SAVE",
                                 color: yellowColor,
+                                fontSize: size.width/20 ,
+
                                 textColor: textBoxColor,
                                 press: () async {
                                   if (firstName.text.isEmpty) {
@@ -292,10 +298,12 @@ class _BusinessRegistrationScreenState
           keyboardType: type,
           controller: controller,
           enabled: enabled,
+
           // focusNode: allNode,
           style: TextStyle(color: Colors.white),
           maxLines: lines,
           decoration: InputDecoration(
+            //labelText: text,
               isDense: true,
               contentPadding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
@@ -312,7 +320,9 @@ class _BusinessRegistrationScreenState
               ),
               filled: true,
               hintStyle: TextStyle(color: Colors.white),
-              hintText: text,
+               //hintText: text,
+              labelText: text,
+              labelStyle: TextStyle(color: Colors.white,fontSize:18),
               fillColor: Color(0xff338F6D)),
         ),
         SizedBox(

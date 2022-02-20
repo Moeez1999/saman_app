@@ -98,39 +98,39 @@ class _LanguageScreenState extends State<LanguageScreen> {
               SizedBox(
                 height: 20,
               ),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    _value = "ur";
-                    _changeLanguage(_value);
-                  });
-                },
-                child: Container(
-                  width: size.width / 2,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: _value == "ur"
-                          ? yellowColor
-                          : Color(0xff80BE2D),
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                          color: yellowColor,
-                          width: 2,
-                          style: BorderStyle.solid)),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Center(child: Text(
-                      'اردو',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color:_value == "ur"
-                              ? accountSelectionBackgroundColor : Colors.white),
-                    ),)
-                  ),
-                ),
-              ),
-
+              // InkWell(
+              //   onTap: () {
+              //     setState(() {
+              //       _value = "ur";
+              //       _changeLanguage(_value);
+              //     });
+              //   },
+              //   child: Container(
+              //     width: size.width / 2,
+              //     height: 50,
+              //     decoration: BoxDecoration(
+              //         color: _value == "ur"
+              //             ? yellowColor
+              //             : Color(0xff80BE2D),
+              //         borderRadius: BorderRadius.circular(15),
+              //         border: Border.all(
+              //             color: yellowColor,
+              //             width: 2,
+              //             style: BorderStyle.solid)),
+              //     child: Padding(
+              //       padding: const EdgeInsets.symmetric(horizontal: 12),
+              //       child: Center(child: Text(
+              //         'اردو',
+              //         style: TextStyle(
+              //             fontSize: 20,
+              //             fontWeight: FontWeight.bold,
+              //             color:_value == "ur"
+              //                 ? accountSelectionBackgroundColor : Colors.white),
+              //       ),)
+              //     ),
+              //   ),
+              // ),
+              //
               SizedBox(height: 40),
               RoundedButton(
                 height: size.height * 0.06,

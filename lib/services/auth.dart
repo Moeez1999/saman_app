@@ -99,10 +99,7 @@ class AuthService {
                                                                 .documents[0]
                                                                 .documentID)
                                                             .updateData({
-                                                          "userId": value
-                                                                      .documents[
-                                                                  0]['userId'] +
-                                                              1
+                                                          "userId": value.documents[0]['userId'] + 1
                                                         })
                                                       })
                                                   .then((value) => {
@@ -112,10 +109,7 @@ class AuthService {
                                                     MaterialPageRoute(
                                                       builder: (context) =>
                                                           RoleSelection(
-                                                            userId: value1
-                                                                .documents[
-                                                            0]['userId'] +
-                                                                1.toString(),
+                                                            userId: value1.documents[0]['userId'] + 1,
                                                             status: "false",
                                                           ),
                                                     ),
@@ -216,8 +210,14 @@ class AuthService {
                                 }
                               else
                                 {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              WelcomeScreen()),
+                                          (route) => false),
                                   AuthService().displayToastMessage(
-                                      "Your request is send to admin for approved",
+                                      "Request is send to admin for approved",
                                       context)
                                 }
                             }
@@ -313,7 +313,7 @@ class AuthService {
                                                           userId: value1
                                                                       .documents[
                                                                   0]['userId'] +
-                                                              1.toString(),
+                                                              1,
                                                           status: "false",
                                                         ),
                                                       ),
@@ -409,9 +409,16 @@ class AuthService {
                             }
                           else
                             {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          WelcomeScreen()),
+                                      (route) => false),
                               AuthService().displayToastMessage(
-                                  "Your request is send to admin for approved",
+                                  "Request is send to admin for approved",
                                   context)
+
                             }
                         }
                     }
@@ -519,9 +526,14 @@ class AuthService {
                       }
                     else
                       {
-
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    WelcomeScreen()),
+                                (route) => false),
                         AuthService().displayToastMessage(
-                            "Your request is send to admin for approved",
+                            "Request is send to admin for approved",
                             context)
                       }
                   }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:saman/components/rounded_input_field.dart';
 import 'package:saman/services/auth.dart';
 import 'package:saman/views/business/businessHomePage/business_homePage.dart';
@@ -11,6 +11,7 @@ import 'package:saman/views/phoneNumberSignIn/changePassword.dart';
 import 'package:saman/views/welcome/components/background.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:saman/model/secure_storage.dart';
+import 'package:saman/views/welcome/welcome_screen.dart';
 import '../constants.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -142,7 +143,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             RoundedButton(
                               height: size.height * 0.06,
                               width: size.width * 0.36,
-                              text: "Back",
+                              text: "BACK",
                               fontSize: size.width / 20,
                               color: whiteColor,
                               textColor: accountSelectionBackgroundColor,
@@ -155,7 +156,7 @@ class _OtpScreenState extends State<OtpScreen> {
                               height: size.height * 0.06,
                               width: size.width * 0.36,
                               fontSize: size.width / 20,
-                              text: "Next",
+                              text: "NEXT",
                               color: yellowColor,
                               textColor: accountSelectionBackgroundColor,
                               press: () async {
@@ -210,7 +211,8 @@ class _OtpScreenState extends State<OtpScreen> {
                           .updateData(data)
                           .then((value) => {
                                 isLoading = false,
-                                if (widget.status == 'true' || val.documents[0]['status'] == 'true')
+                                if (widget.status == 'true' ||
+                                    val.documents[0]['status'] == 'true')
                                   {
                                     Navigator.pushAndRemoveUntil(
                                         context,
@@ -221,8 +223,17 @@ class _OtpScreenState extends State<OtpScreen> {
                                   }
                                 else
                                   {
-                                    Get.snackbar('Warning',
-                                        'Your request send to admin for approved')
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                WelcomeScreen()),
+                                            (route) => false),
+                                    AuthService().displayToastMessage(
+                                        "Request is send to admin for approved",
+                                        context)
+                                    // Get.snackbar('Warning',
+                                    //     'Your request send to admin for approved')
                                   }
                               })
                           .catchError((e) {
@@ -248,7 +259,8 @@ class _OtpScreenState extends State<OtpScreen> {
                           .updateData(data)
                           .then((value) => {
                                 isLoading = false,
-                                if (widget.status == 'true' || val.documents[0]['status'] == 'true')
+                                if (widget.status == 'true' ||
+                                    val.documents[0]['status'] == 'true')
                                   {
                                     Navigator.pushAndRemoveUntil(
                                         context,
@@ -259,8 +271,17 @@ class _OtpScreenState extends State<OtpScreen> {
                                   }
                                 else
                                   {
-                                    Get.snackbar('Warning',
-                                        'Your request send to admin for approved')
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                WelcomeScreen()),
+                                            (route) => false),
+                                    AuthService().displayToastMessage(
+                                        "Request is send to admin for approved",
+                                        context)
+                                    // Get.snackbar('Warning',
+                                    //     'Your request send to admin for approved')
                                   }
                               })
                           .catchError((e) {
@@ -332,7 +353,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                 .document(val.documents[0].documentID)
                                 .updateData(data)
                                 .then((value) => {
-                                      if (widget.status == "true" || val.documents[0]['status'] == 'true')
+                                      if (widget.status == "true" ||
+                                          val.documents[0]['status'] == 'true')
                                         {
                                           Navigator.pushAndRemoveUntil(
                                               context,
@@ -343,8 +365,15 @@ class _OtpScreenState extends State<OtpScreen> {
                                         }
                                       else
                                         {
-                                          Get.snackbar('Warning',
-                                              'Your request send to admin for approved')
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      WelcomeScreen()),
+                                                  (route) => false),
+                                          AuthService().displayToastMessage(
+                                              "Request is send to admin for approved",
+                                              context)
                                         }
                                     })
                                 .catchError((e) {
@@ -370,7 +399,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                 .document(val.documents[0].documentID)
                                 .updateData(data)
                                 .then((value) => {
-                                      if (widget.status == "true" || val.documents[0]['status'] == 'true')
+                                      if (widget.status == "true" ||
+                                          val.documents[0]['status'] == 'true')
                                         {
                                           Navigator.pushAndRemoveUntil(
                                               context,
@@ -381,8 +411,17 @@ class _OtpScreenState extends State<OtpScreen> {
                                         }
                                       else
                                         {
-                                          Get.snackbar('Warning',
-                                              'Your request send to admin for approved')
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      WelcomeScreen()),
+                                                  (route) => false),
+                                          AuthService().displayToastMessage(
+                                              "Request is send to admin for approved",
+                                              context)
+                                          // Get.snackbar('Warning',
+                                          //     'Your request send to admin for approved')
                                         }
                                     })
                                 .catchError((e) {
@@ -516,7 +555,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         otpNode.unfocus();
                         print(widget.userId);
                         Navigator.pop(context);
-                        pinputFunction();
+                        await pinputFunction();
                         isLoading = true;
                       },
                     ),

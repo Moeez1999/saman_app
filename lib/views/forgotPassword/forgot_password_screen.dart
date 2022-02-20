@@ -107,7 +107,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       RoundedButton(
                         height: size.height * 0.06,
                         width: size.width * 0.36,
-                        text: "Back",
+                        text: "BACK",
                         fontSize: size.width/20 ,
                         color: whiteColor,
                         textColor: accountSelectionBackgroundColor,
@@ -119,7 +119,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       RoundedButton(
                         height: size.height * 0.06,
                         width: size.width * 0.36,
-                        text: "Confirm",
+                        text: "CONFIRM",
 
                         fontSize: size.width/20 ,
                         color: yellowColor,

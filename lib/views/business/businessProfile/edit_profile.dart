@@ -410,7 +410,7 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                           height: size.height * 0.06,
                           width: size.width * 0.36,
                           fontSize: size.width/20 ,
-                          text: "cancel",
+                          text: "CANCEL",
                           color: whiteColor,
                           textColor: accountSelectionBackgroundColor,
                           press: () {
@@ -422,7 +422,7 @@ class _EditProfileBusinessState extends State<EditProfileBusiness> {
                           height: size.height * 0.06,
                           width: size.width * 0.36,
                           fontSize: size.width/20 ,
-                          text: 'Save',
+                          text: 'SAVE',
                           color: yellowColor,
                           textColor: accountSelectionBackgroundColor,
                           press: () async {

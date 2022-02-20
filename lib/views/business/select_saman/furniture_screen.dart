@@ -1,4 +1,5 @@
 import 'package:saman/views/business/place_order/place_order_page.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
@@ -258,6 +259,17 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(
@@ -1761,7 +1773,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         RoundedButton(
                           height: size.height * 0.06,
                           width: size.width * 0.36,
-                          text: "addOther",
+                          text: "ADD OTHER",
                           color: backButtonColor,
                           textColor: Colors.white,
                           press: () {
@@ -1772,7 +1784,7 @@ class _FurnitureScreenState extends State<FurnitureScreen> {
                         RoundedButton(
                           height: size.height * 0.06,
                           width: size.width * 0.36,
-                          text: "continue",
+                          text: "CONTINUE",
                           color: languageSelectColor,
                           textColor: Colors.white,
                           press: () async {

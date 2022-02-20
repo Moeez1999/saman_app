@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:saman/views/business/select_saman/electronics_saman.dart';
 import 'package:saman/views/business/select_saman/custom_saman_page.dart';
@@ -141,7 +142,7 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                       child: RoundedButton(
                         height: size.height * 0.06,
                         width: size.width * 0.36,
-                        text: "back",
+                        text: "BACK",
                         fontSize: size.width / 23,
                         color: whiteColor,
                         textColor: accountSelectionBackgroundColor,
@@ -268,6 +269,17 @@ class _SelectSamanPageState extends State<SelectSamanPage> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(

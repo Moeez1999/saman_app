@@ -1,5 +1,9 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+import 'package:saman/views/business/businessRegistration/business_registration_screen.dart';
+import 'package:saman/views/business/place_order/place_order_page.dart';
+import 'package:saman/views/driver/driverRegistration/driver_registration_screen.dart';
+import 'package:saman/views/language_select/language_screen.dart';
 import 'package:saman/views/splash/splash.dart';
 import 'package:saman/localization/localization_constants.dart';
 
@@ -72,6 +76,7 @@ class _SamanState extends State<Saman> {
       //   return supportedLocales.first;
       // },
       home: SplashScreen(),
+      //home:LanguageScreen(),
     );
   }
 }

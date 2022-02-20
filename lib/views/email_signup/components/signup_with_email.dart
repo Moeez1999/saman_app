@@ -181,7 +181,7 @@ class EmailSignUpState extends State<EmailSignUp> {
                           RoundedButton(
                             height: size.height * 0.06,
                             width: size.width * 0.36,
-                            text: "Back",
+                            text: "BACK",
                             fontSize: size.width / 20,
                             color: whiteColor,
                             textColor: accountSelectionBackgroundColor,
@@ -193,7 +193,7 @@ class EmailSignUpState extends State<EmailSignUp> {
                           RoundedButton(
                             height: size.height * 0.06,
                             width: size.width * 0.36,
-                            text: "Sign up",
+                            text: "SIGN UP",
                             fontSize: size.width / 20,
                             color: yellowColor,
                             textColor: Colors.green,
@@ -361,13 +361,16 @@ class EmailSignUpState extends State<EmailSignUp> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        LanguageScreen(
+                                                        RoleSelection(
                                                           userId:
                                                               "${value1.documents[0]['userId'] + 1}",
+                                                          status: 'false',
                                                         )),
                                                 (route) => false),
-                                          })
-                                })
+                                          },
+                                  )
+                                },
+                        )
                       })
                   .catchError((e) {
                     isLoading = false;

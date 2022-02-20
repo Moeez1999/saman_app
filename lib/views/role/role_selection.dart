@@ -189,10 +189,13 @@ class _RoleSelectionState extends State<RoleSelection> {
                               builder: (context) => BusinessRegistrationScreen(
                                     userId: widget.userId,
                                     status: widget.status,
-                                  )),
+                                  ),
+                          ),
                         ),
-                      }),
-            });
+                      },
+              ),
+            },
+    );
   }
 
   goToDriverRegistration() {

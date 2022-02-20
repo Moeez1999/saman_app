@@ -46,14 +46,22 @@ class RoundedInputField extends StatelessWidget {
           focusColor: Colors.white,
           fillColor: fillColor == null? Colors.white : fillColor,
           filled: true,
-          hintText: hintText,
-          hintStyle: TextStyle(
-              color: textColor
+          labelText: hintText,
+          labelStyle: TextStyle(
+              color: textColor ?? Colors.black
           ),
+          // hintText: hintText,
+          // hintStyle: TextStyle(
+          //     color: textColor
+          // ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(28.0)),
             borderSide: BorderSide(color: Colors.white24)
             ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(28.0)),
+              borderSide: BorderSide(color: Colors.black)
+          )
         ),
     );
   }

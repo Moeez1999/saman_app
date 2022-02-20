@@ -1,4 +1,5 @@
 import 'package:saman/views/business/place_order/place_order_page.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:saman/constants.dart';
@@ -26,42 +27,61 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
   TextEditingController bricks = TextEditingController();
   String selectedElectronics = "Refrigerator";
   SharedPreference storage = SharedPreference();
+
+  String cement1 = '';
+  String sand1 = '';
+  String stonet1 = '';
+  String tiles1 = '';
+  String doors1 = '';
+  String windows1 = '';
+  String steel1 = '';
+  String bricks1 = '';
+
   String userId;
   String _value = 'en';
   String userType;
   List value = [
-    {"name": "cement", "check": false, "value": 1, "weight": ''},
-    {"name": "tiles", "check": false, "value": 1, "weight": ""},
-    {"name": "doors", "check": false, "value": 1, "weight": ""},
+    {
+      "name": "cement",
+      "check": false,
+      "value": 1,
+      "weight": '',
+    },
+    {
+      "name": "tiles",
+      "check": false,
+      "value": 1,
+      "weight": "",
+    },
+    {
+      "name": "doors",
+      "check": false,
+      "value": 1,
+      "weight": "",
+    },
     {
       "name": "windows",
       "check": false,
       "value": 1,
-      "weight": WeightConstants.electricStoveWeight
+      "weight": '',
     },
     {
       "name": "sand",
       "check": false,
       "value": 1,
-      "weight": WeightConstants.washingMachineWeight
+      "weight": ''
     },
     {
       "name": "steel",
       "check": false,
       "value": 1,
-      "weight": WeightConstants.washingMachineWeight
+      "weight": ''
     },
     {
       "name": "Bricks",
       "check": false,
       "value": 1,
-      "weight": WeightConstants.washingMachineWeight
-    },
-    {
-      "name": "crushed stone",
-      "check": false,
-      "value": 1,
-      "weight": WeightConstants.washingMachineWeight
+      "weight": ''
     },
     {
       "name": "Toilet",
@@ -221,6 +241,17 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(
@@ -391,6 +422,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                   width: 100,
                                   child: TextField(
                                     controller: cement,
+                                    onTap: (){
+                                      setState(() {
+                                        if (value[0]['check'] == true) {
+                                          value[0]['check'] = false;
+                                        } else {
+                                          value[0]['check'] = true;
+                                        }
+                                      });
+                                    },
                                     decoration: InputDecoration(
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
@@ -473,6 +513,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: tiles,
+                                  onTap: (){
+                                    setState(() {
+                                      if (value[1]['check'] == true) {
+                                        value[1]['check'] = false;
+                                      } else {
+                                        value[1]['check'] = true;
+                                      }
+                                    });
+                                  },
                                   decoration: InputDecoration(
                                       isDense: true,
                                       contentPadding: EdgeInsets.symmetric(
@@ -553,6 +602,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: doors,
+                                  onTap: (){
+                                    setState(() {
+                                      if (value[2]['check'] == true) {
+                                        value[2]['check'] = false;
+                                      } else {
+                                        value[2]['check'] = true;
+                                      }
+                                    });
+                                  },
                                   decoration: InputDecoration(
                                       isDense: true,
                                       contentPadding: EdgeInsets.symmetric(
@@ -633,6 +691,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: windows,
+                                  onTap: (){
+                                    setState(() {
+                                      if (value[3]['check'] == true) {
+                                        value[3]['check'] = false;
+                                      } else {
+                                        value[3]['check'] = true;
+                                      }
+                                    });
+                                  },
                                   decoration: InputDecoration(
                                       isDense: true,
                                       contentPadding: EdgeInsets.symmetric(
@@ -713,6 +780,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 100,
                                 child: TextField(
                                   controller: sand,
+                                  onTap: (){
+                                    setState(() {
+                                      if (value[4]['check'] == true) {
+                                        value[4]['check'] = false;
+                                      } else {
+                                        value[4]['check'] = true;
+                                      }
+                                    });
+                                  },
                                   decoration: InputDecoration(
                                       isDense: true,
                                       contentPadding: EdgeInsets.symmetric(
@@ -794,6 +870,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                   width: 100,
                                   child: TextField(
                                     controller: steel,
+                                    onTap: (){
+                                      setState(() {
+                                        if (value[5]['check'] == true) {
+                                          value[5]['check'] = false;
+                                        } else {
+                                          value[5]['check'] = true;
+                                        }
+                                      });
+                                    },
                                     decoration: InputDecoration(
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
@@ -835,10 +920,10 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 InkWell(
                                   onTap: () {
                                     setState(() {
-                                      if (value[7]['check'] == true) {
-                                        value[7]['check'] = false;
+                                      if (value[6]['check'] == true) {
+                                        value[6]['check'] = false;
                                       } else {
-                                        value[7]['check'] = true;
+                                        value[6]['check'] = true;
                                       }
                                     });
                                   },
@@ -850,7 +935,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                         border: Border.all(
                                             width: 4, color: Colors.yellow),
                                       ),
-                                      child: value[7]['check'] == true
+                                      child: value[6]['check'] == true
                                           ? Icon(
                                               Icons.check,
                                               color: Colors.white,
@@ -877,6 +962,15 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                   width: 100,
                                   child: TextField(
                                     controller: bricks,
+                                    onTap: (){
+                                      setState(() {
+                                        if (value[6]['check'] == true) {
+                                          value[6]['check'] = false;
+                                        } else {
+                                          value[6]['check'] = true;
+                                        }
+                                      });
+                                    },
                                     decoration: InputDecoration(
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
@@ -903,6 +997,71 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                     SizedBox(
                       height: 15,
                     ),
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: selectedColorVehicle,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 9),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    if (value[7]['check'] == true) {
+                                      value[7]['check'] = false;
+                                    } else {
+                                      value[7]['check'] = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 8),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          width: 4, color: Colors.yellow),
+                                    ),
+                                    child: value[7]['check'] == true
+                                        ? Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.check,
+                                            color: Colors.transparent,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Toilet",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Spacer(),
+                              Spacer(),
+                              value[7]['check'] == false
+                                  ? Container()
+                                  : quantityButtons(7)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+
                     Expanded(
                       flex: 0,
                       child: Container(
@@ -948,13 +1107,12 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Toilet",
+                                "Large Mirror",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
-                              Spacer(),
                               Spacer(),
                               value[8]['check'] == false
                                   ? Container()
@@ -1012,133 +1170,6 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 width: 20,
                               ),
                               Text(
-                                "Sand",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              Spacer(),
-                              Spacer(),
-                              value[9]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(9)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Expanded(
-                      flex: 0,
-                      child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            color: selectedColorVehicle,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 9),
-                          child: Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    if (value[10]['check'] == true) {
-                                      value[10]['check'] = false;
-                                    } else {
-                                      value[10]['check'] = true;
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                          width: 4, color: Colors.yellow),
-                                    ),
-                                    child: value[10]['check'] == true
-                                        ? Icon(
-                                            Icons.check,
-                                            color: Colors.white,
-                                          )
-                                        : Icon(
-                                            Icons.check,
-                                            color: Colors.transparent,
-                                          ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                "Large Mirror",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              Spacer(),
-                              value[10]['check'] == false
-                                  ? Container()
-                                  : quantityButtons(10)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Expanded(
-                      flex: 0,
-                      child: Container(
-                        height: 60,
-                        decoration: BoxDecoration(
-                            color: selectedColorVehicle,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 9),
-                          child: Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    if (value[11]['check'] == true) {
-                                      value[11]['check'] = false;
-                                    } else {
-                                      value[11]['check'] = true;
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                          width: 4, color: Colors.yellow),
-                                    ),
-                                    child: value[11]['check'] == true
-                                        ? Icon(
-                                            Icons.check,
-                                            color: Colors.white,
-                                          )
-                                        : Icon(
-                                            Icons.check,
-                                            color: Colors.transparent,
-                                          ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
                                 "Small Mirror",
                                 style: TextStyle(
                                     fontSize: 16,
@@ -1146,9 +1177,9 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                     color: Colors.white),
                               ),
                               Spacer(),
-                              value[11]['check'] == false
+                              value[9]['check'] == false
                                   ? Container()
-                                  : quantityButtons(11)
+                                  : quantityButtons(9)
                             ],
                           ),
                         ),
@@ -1163,7 +1194,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                         RoundedButton(
                           height: size.height * 0.06,
                           width: size.width * 0.36,
-                          text: "addOther",
+                          text: "ADD OTHER",
                           color: backButtonColor,
                           textColor: Colors.white,
                           press: () {
@@ -1174,7 +1205,7 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                         RoundedButton(
                           height: size.height * 0.06,
                           width: size.width * 0.36,
-                          text: "continue",
+                          text: "CONTINUE",
                           color: languageSelectColor,
                           textColor: Colors.white,
                           press: () async {
@@ -1189,17 +1220,75 @@ class _ConstructionScreenState extends State<ConstructionScreen> {
                                 value[6]['check'] == true ||
                                 value[7]['check'] == true ||
                                 value[8]['check'] == true ||
-                                value[9]['check'] == true ||
-                                value[10]['check'] == true ||
-                                value[11]['check'] == true) {
+                                value[9]['check'] == true ) {
                               value.forEach((element) {
                                 if (element["check"] == true) {
-                                  setState(() {
-                                    weightList.add(
-                                        int.parse(element['weight']) *
-                                            element['value']);
-                                    print(weightList);
-                                  });
+                                  if(element["name"] == 'cement')
+                                    {
+                                      setState(() {
+                                        weightList.add(
+                                            int.parse(cement.text));
+                                        print(weightList);
+                                      });
+                                    }
+                                  else if(element["name"] == 'sand')
+                                    {
+                                      setState(() {
+                                        weightList.add(
+                                            int.parse(sand.text));
+                                        print(weightList);
+                                      });
+                                    }
+                                  else if(element["name"] == 'tiles')
+                                  {
+                                    setState(() {
+                                      weightList.add(
+                                          int.parse(tiles.text));
+                                      print(weightList);
+                                    });
+                                  }
+                                  else if(element["name"] == 'doors')
+                                  {
+                                    setState(() {
+                                      weightList.add(
+                                          int.parse(doors.text));
+                                      print(weightList);
+                                    });
+                                  }
+                                  else if(element["name"] == 'windows')
+                                  {
+                                    setState(() {
+                                      weightList.add(
+                                          int.parse(windows.text));
+                                      print(weightList);
+                                    });
+                                  }
+                                  else if(element["name"] == 'steel')
+                                  {
+                                    setState(() {
+                                      weightList.add(
+                                          int.parse(steel.text));
+                                      print(weightList);
+                                    });
+                                  }
+                                  else if(element["name"] == 'bricks')
+                                  {
+                                    setState(() {
+                                      weightList.add(
+                                          int.parse(bricks.text));
+                                      print(weightList);
+                                    });
+                                  }
+                                  else
+                                    {
+                                      setState(() {
+                                        weightList.add(
+                                            int.parse(element['weight']) *
+                                                element['value']);
+                                        print(weightList);
+                                      });
+                                    }
+
                                   tmpArray.add(element);
                                 }
                               });

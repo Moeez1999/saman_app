@@ -3,6 +3,7 @@ import 'package:latlong/latlong.dart';
 import 'dart:math' show cos, sqrt, asin;
 import 'package:saman/localization/localization_constants.dart';
 import 'package:saman/constants.dart';
+import 'package:saman/views/wallet/wallet_screen.dart';
 import 'package:saman/views/welcome/components/rounded_button.dart';
 import 'package:saman/views/business/businessHomePage/business_homePage.dart';
 import 'package:http/http.dart' as http;
@@ -168,6 +169,17 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                     color: Colors.black,
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WalletScreen(
+                            userId: userId,
+                            userType: userType,
+                          ),
+                        ),
+                      );
+                    },
                     title: Row(
                       children: [
                         Image.asset(
@@ -299,7 +311,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                               borderRadius: BorderRadius.circular(18)),
                           child: Center(
                             child: Text(
-                              "fitting",
+                              "PLACE AN ORDER",
                               style: TextStyle(
                                   color: yellowColor,
                                   fontWeight: FontWeight.w500),
@@ -499,7 +511,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                             RoundedButton(
                               height: size.height * 0.05,
                               width: size.width * 0.36,
-                              text: "cancel",
+                              text: "CANCEL",
                               color: whiteColor,
                               textColor: accountSelectionBackgroundColor,
                               press: () {

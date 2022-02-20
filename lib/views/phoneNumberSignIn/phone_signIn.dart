@@ -161,7 +161,7 @@ class PhoneSignInState extends State<PhoneSignIn> {
                             height: size.height * 0.06,
                             width: size.width * 0.36,
                             fontSize: size.width/20 ,
-                            text: "Back",
+                            text: "BACK",
                             color: whiteColor,
 
                             textColor: accountSelectionBackgroundColor,
@@ -173,7 +173,7 @@ class PhoneSignInState extends State<PhoneSignIn> {
                           RoundedButton(
                             height: size.height * 0.06,
                             width: size.width * 0.36,
-                            text: "Log in",
+                            text: "LOGIN",
                             fontSize: size.width/20 ,
                             color: yellowColor,
                             textColor: accountSelectionBackgroundColor,
